@@ -10,7 +10,7 @@ import java.io.IOException;
 public class StyleScraper {
 
     public static void main (String[] args) {
-        System.out.println("TESTED new new");
+        System.out.println("testing GitHub");
 
         String html = "<html><head><title>First parse</title></head>"
                 + "<body><p>Parsed HTML into a doc.</p></body></html>";
