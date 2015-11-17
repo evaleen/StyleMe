@@ -25,6 +25,9 @@
         <module name="StyleMe" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="StyleMe" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 
