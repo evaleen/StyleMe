@@ -9,6 +9,7 @@ public class StyleScraper {
         WebsiteParser websiteParser = new WebsiteParser();
         try {
             websiteParser.parseWebsites("src/main/resources/fashionWebsites/websiteUrls.txt");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
