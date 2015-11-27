@@ -11,13 +11,15 @@ import java.net.URL;
 
 /**
  * @author Eibhlin McGeady
+ * This class parses each HTML clothing shop page and extracts images and link to individual clotihng pages.
  */
 public class WebsiteParser {
 
-    //Read from file with urls
-    //Parse each html from url
-    //Store in resources/fashionWebsites/topshop
+    private ClothingDescriptionParser clothingDescriptionParser;
     final private String FILE_PATH = "src/main/resources/fashionWebsites/";
+    public WebsiteParser() {
+        clothingDescriptionParser = new ClothingDescriptionParser();
+    };
 
     public void parseWebsites(String websiteFile) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(websiteFile));
@@ -28,10 +30,11 @@ public class WebsiteParser {
             while (line != null) {
                 String[] splitLine = line.split("\\s+");
                 String site = splitLine[0];
+                String type = splitLine[1];
                 if(site.equals(prevSite)) number++;
                 else number = 0;
                 prevSite = site;
-                parse(splitLine[1], site, String.valueOf(number));
+                parse(splitLine[2], site, String.valueOf(number), type);
                 line = bufferedReader.readLine();
             }
         } finally {
@@ -39,14 +42,14 @@ public class WebsiteParser {
         }
     }
 
-    private void parse(String url, String site, String number) throws IOException {
+    private void parse(String url, String site, String number, String type) throws IOException {
         Document doc = Jsoup.connect(url)
                 .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36")
                 .timeout(100000)
                 .get();
         String text = doc.html();
         createWebsiteFile(text, site, number);
-        getClothingLinksAndImages(doc, site);
+        getClothingLinksAndImages(doc, site, type);
     }
 
     private void createWebsiteFile(String text, String site, String filename) {
@@ -60,6 +63,19 @@ public class WebsiteParser {
             try {
                 writer.close();
             } catch (Exception e) {}
+        }
+    }
+
+    private void getClothingLinksAndImages(Document doc, String site, String type) throws IOException {
+        if(site.equals("topshop")) {
+            getImages(doc, site);
+            getTopshopClothingLinks(doc, type);
+        } else if (site.equals("asos")) {
+            getImages(doc, site);
+            getAsosClothingLinks(doc, type);
+        }
+        else if (site.equals("motel")) {
+            getMotelImagesAndLinks(doc, type);
         }
     }
 
@@ -91,20 +107,7 @@ public class WebsiteParser {
         }
     }
 
-    private void getClothingLinksAndImages(Document doc, String site) throws IOException {
-        if(site.equals("topshop")) {
-            getImages(doc, site);
-            getTopshopClothingLinks(doc);
-        } else if (site.equals("asos")) {
-            getImages(doc, site);
-            getAsosClothingLinks(doc);
-        }
-        else if (site.equals("motel")) {
-            getMotelImagesAndLinks(doc);
-        }
-    }
-
-    private void getMotelImagesAndLinks(Document doc) throws IOException {
+    private void getMotelImagesAndLinks(Document doc, String type) throws IOException {
         Elements list = doc.getElementsByClass("xProductImage");
         for(Element el : list) {
             Element link = el.child(0);
@@ -113,39 +116,39 @@ public class WebsiteParser {
             String src = img.absUrl("src");
             if(src.equals("")) src = img.absUrl("pagespeed_high_res_src");
             String title = img.attr("alt");
-            getLink(url, "motel", title);
+            System.out.println(title);
+            getLink(url, "motel", title, type);
             getImage(src, "motel", title);
         }
     }
 
-
-
-    private void getTopshopClothingLinks(Document doc) throws IOException {
+    private void getTopshopClothingLinks(Document doc, String type) throws IOException {
         Elements list = doc.getElementsByClass("product_description");
         for(Element el : list) {
             Element link = el.child(0);
             String url = link.absUrl("href");
             String title = link.attr("title");
-            getLink(url, "topshop", title);
+            System.out.println(title);
+            getLink(url, "topshop", title, type);
         }
     }
 
-    private void getAsosClothingLinks(Document doc) throws IOException {
+    private void getAsosClothingLinks(Document doc, String type) throws IOException {
         Elements list = doc.getElementsByClass("desc");
         for(Element link : list) {
             String url = link.absUrl("href");
             String title = link.text();
-            getLink(url, "asos", title);
+            System.out.println(title);
+            getLink(url, "asos", title, type);
         }
     }
 
-    private void getLink(String url, String site, String title) throws IOException {
+    private void getLink(String url, String site, String title, String type) throws IOException {
         Document clothingDesc = Jsoup.connect(url)
                 .timeout(100000)
                 .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36")
                 .get();
-        String text = clothingDesc.html();
-        createWebsiteFile(text, site, title);
+        clothingDescriptionParser.getDescription(clothingDesc, site, title, type);
     }
 
 }

@@ -1,42 +1,40 @@
-motel http://www.motelrocks.com/categories/CLOTHING/DRESSES/
-motel http://www.motelrocks.com/categories/CLOTHING/PLAYSUITS/
-motel http://www.motelrocks.com/categories/CLOTHING/TOPS/
-motel http://www.motelrocks.com/categories/CLOTHING/T-Shirts/
-motel http://www.motelrocks.com/categories/CLOTHING/SKIRTS/
-motel http://www.motelrocks.com/categories/CLOTHING/COATS-N-JACKETS/
-motel http://www.motelrocks.com/categories/CLOTHING/KNITWEAR/
-motel http://www.motelrocks.com/categories/CLOTHING/SHORTS/
-motel http://www.motelrocks.com/categories/CLOTHING/TROUSERS/
-motel http://www.motelrocks.com/categories/CLOTHING/SWIMWEAR/
-motel http://www.motelrocks.com/categories/CLOTHING/Basics/
-motel http://www.motelrocks.com/categories/CLOTHING/JEANS/
-motel http://www.motelrocks.com/categories/CLOTHING/ACCESSORIES/
-topshop http://eu.topshop.com/en/tseu/category/clothing-485092/dresses-485107
-topshop http://eu.topshop.com/en/tseu/category/clothing-485092/tops-485108
-topshop http://eu.topshop.com/en/tseu/category/clothing-485092/jackets-4680205
-topshop http://eu.topshop.com/en/tseu/category/clothing-485092/coats-4680355
-topshop http://eu.topshop.com/en/tseu/category/clothing-485092/knitwear-485109
-topshop http://eu.topshop.com/en/tseu/category/clothing-485092/denim-485562
-topshop http://eu.topshop.com/en/tseu/category/clothing-485092/jeans-485111
-topshop http://eu.topshop.com/en/tseu/category/clothing-485092/trousers-485112
-topshop http://eu.topshop.com/en/tseu/category/clothing-485092/shorts-485113
-topshop http://eu.topshop.com/en/tseu/category/clothing-485092/skirts-485114
-topshop http://eu.topshop.com/en/tseu/category/clothing-485092/suits-and-co-ords-485505
-topshop http://eu.topshop.com/en/tseu/category/clothing-485092/swimwear-485118
-topshop http://eu.topshop.com/en/tseu/category/clothing-485092/playsuits-and-jumpsuits-2281908
-topshop http://eu.topshop.com/en/tseu/category/clothing-485092/going-out-485603
-topshop http://eu.topshop.com/en/tseu/category/clothing-485092/office-sartorialist-3204781
-asos http://www.asos.com/women/blazers/cat/pgecategory.aspx?cid=11896&via=top&CTARef=ww|Clothing|Blazers
-asos http://www.asos.com/women/co-ords/cat/pgecategory.aspx?cid=19632&via=top&CTARef=ww|Clothing|CoOrds
-asos http://www.asos.com/women/coats-jackets/cat/pgecategory.aspx?cid=2641&via=top&CTARef=ww|Clothing|CoatsJackets
-asos http://www.asos.com/denim/cat/pgecategory.aspx?cid=17014&via=top&CTARef=ww|Clothing|Denim
-asos http://www.asos.com/women/dresses/cat/pgecategory.aspx?cid=8799&via=top&CTARef=ww|Clothing|Dresses
-asos http://www.asos.com/womens-designer/designer-view-all/cat/pgecategory.aspx?cid=15210&via=top&CTARef=ww|Clothing|Designer
-asos http://www.asos.com/women/hoodies-sweatshirts/cat/pgecategory.aspx?cid=11321&via=top&CTARef=ww|Clothing|HoodiesSweatshirts
-asos http://www.asos.com/women/jeans/cat/pgecategory.aspx?cid=3630&via=top&CTARef=ww|Clothing|Jeans
-asos http://www.asos.com/women/jumpers-cardigans/cat/pgecategory.aspx?cid=2637&via=top&CTARef=ww|Clothing|JumpersCardigans
-asos http://www.asos.com/women/jumpsuits-playsuits/cat/pgecategory.aspx?cid=7618&via=top&CTARef=ww|Clothing|JumpsuitsPlaysuits
-asos http://www.asos.com/women/tops/shirts-blouses/cat/pgecategory.aspx?cid=11318&wt.ac=ww%7cnav%7cshirtsblouses&via=top&CTARef=ww|Clothing|ShirtsBlouses
-asos http://www.asos.com/women/skirts/cat/pgecategory.aspx?cid=2639&via=top&CTARef=ww|Clothing|Skirts
-asos http://www.asos.com/women/swimwear-beachwear/cat/pgecategory.aspx?cid=2238&via=top&CTARef=ww|Clothing|SwimwearBeachwear
-asos http://www.asos.com/women/trousers-leggings/cat/pgecategory.aspx?cid=2640&via=top&CTARef=ww|Clothing|TrousersLeggings
+motel dresses http://www.motelrocks.com/categories/CLOTHING/DRESSES/
+motel playsuits http://www.motelrocks.com/categories/CLOTHING/PLAYSUITS/
+motel tops http://www.motelrocks.com/categories/CLOTHING/TOPS/
+motel tops http://www.motelrocks.com/categories/CLOTHING/T-Shirts/
+motel skirts http://www.motelrocks.com/categories/CLOTHING/SKIRTS/
+motel jackets http://www.motelrocks.com/categories/CLOTHING/COATS-N-JACKETS/
+motel knitwear http://www.motelrocks.com/categories/CLOTHING/KNITWEAR/
+motel shorts http://www.motelrocks.com/categories/CLOTHING/SHORTS/
+motel trousers http://www.motelrocks.com/categories/CLOTHING/TROUSERS/
+motel swimwear http://www.motelrocks.com/categories/CLOTHING/SWIMWEAR/
+motel basics http://www.motelrocks.com/categories/CLOTHING/Basics/
+motel jeans http://www.motelrocks.com/categories/CLOTHING/JEANS/
+motel accessories http://www.motelrocks.com/categories/CLOTHING/ACCESSORIES/
+topshop dresses http://eu.topshop.com/en/tseu/category/clothing-485092/dresses-485107
+topshop tops http://eu.topshop.com/en/tseu/category/clothing-485092/tops-485108
+topshop jackets http://eu.topshop.com/en/tseu/category/clothing-485092/jackets-4680205
+topshop jackets http://eu.topshop.com/en/tseu/category/clothing-485092/coats-4680355
+topshop knitwear http://eu.topshop.com/en/tseu/category/clothing-485092/knitwear-485109
+topshop denim http://eu.topshop.com/en/tseu/category/clothing-485092/denim-485562
+topshop jeans http://eu.topshop.com/en/tseu/category/clothing-485092/jeans-485111
+topshop trousers http://eu.topshop.com/en/tseu/category/clothing-485092/trousers-485112
+topshop shorts http://eu.topshop.com/en/tseu/category/clothing-485092/shorts-485113
+topshop skirts http://eu.topshop.com/en/tseu/category/clothing-485092/skirts-485114
+topshop suits http://eu.topshop.com/en/tseu/category/clothing-485092/suits-and-co-ords-485505
+topshop swimwear http://eu.topshop.com/en/tseu/category/clothing-485092/swimwear-485118
+topshop playsuits http://eu.topshop.com/en/tseu/category/clothing-485092/playsuits-and-jumpsuits-2281908
+topshop party http://eu.topshop.com/en/tseu/category/clothing-485092/going-out-485603
+topshop office http://eu.topshop.com/en/tseu/category/clothing-485092/office-sartorialist-3204781
+asos jackets http://www.asos.com/women/blazers/cat/pgecategory.aspx?cid=11896&via=top&CTARef=ww|Clothing|Blazers
+asos jackets http://www.asos.com/women/coats-jackets/cat/pgecategory.aspx?cid=2641&via=top&CTARef=ww|Clothing|CoatsJackets
+asos denim http://www.asos.com/denim/cat/pgecategory.aspx?cid=17014&via=top&CTARef=ww|Clothing|Denim
+asos dresses http://www.asos.com/women/dresses/cat/pgecategory.aspx?cid=8799&via=top&CTARef=ww|Clothing|Dresses
+asos sport http://www.asos.com/women/hoodies-sweatshirts/cat/pgecategory.aspx?cid=11321&via=top&CTARef=ww|Clothing|HoodiesSweatshirts
+asos jeans http://www.asos.com/women/jeans/cat/pgecategory.aspx?cid=3630&via=top&CTARef=ww|Clothing|Jeans
+asos knitwear http://www.asos.com/women/jumpers-cardigans/cat/pgecategory.aspx?cid=2637&via=top&CTARef=ww|Clothing|JumpersCardigans
+asos playsuits http://www.asos.com/women/jumpsuits-playsuits/cat/pgecategory.aspx?cid=7618&via=top&CTARef=ww|Clothing|JumpsuitsPlaysuits
+asos tops http://www.asos.com/women/tops/shirts-blouses/cat/pgecategory.aspx?cid=11318&wt.ac=ww%7cnav%7cshirtsblouses&via=top&CTARef=ww|Clothing|ShirtsBlouses
+asos skirts http://www.asos.com/women/skirts/cat/pgecategory.aspx?cid=2639&via=top&CTARef=ww|Clothing|Skirts
+asos swimwear http://www.asos.com/women/swimwear-beachwear/cat/pgecategory.aspx?cid=2238&via=top&CTARef=ww|Clothing|SwimwearBeachwear
+asos trousers http://www.asos.com/women/trousers-leggings/cat/pgecategory.aspx?cid=2640&via=top&CTARef=ww|Clothing|TrousersLeggings
