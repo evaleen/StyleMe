@@ -108,14 +108,14 @@ public class WebsiteParser {
     }
 
     private void getMotelImagesAndLinks(Document doc, String type) throws IOException {
-        Elements list = doc.getElementsByClass("xProductImage");
+        Elements list = doc.getElementsByClass("catproddiv");
         for(Element el : list) {
-            Element link = el.child(0);
+            Element link =  el.getElementsByClass("xProductImage").get(0).child(0);
             String url = link.absUrl("href");
             Element img = link.child(0);
             String src = img.absUrl("src");
             if(src.equals("")) src = img.absUrl("pagespeed_high_res_src");
-            String title = img.attr("alt");
+            String title = el.getElementsByClass("xProductDetails").get(0).text();
             System.out.println(title);
             getLink(url, "motel", title, type);
             getImage(src, "motel", title);
@@ -134,12 +134,15 @@ public class WebsiteParser {
     }
 
     private void getAsosClothingLinks(Document doc, String type) throws IOException {
+        Elements outOfStock = doc.getElementsByClass("outofstock-msg");
+        if(outOfStock.isEmpty()) {
         Elements list = doc.getElementsByClass("desc");
-        for(Element link : list) {
-            String url = link.absUrl("href");
-            String title = link.text();
-            System.out.println(title);
-            getLink(url, "asos", title, type);
+            for(Element link : list) {
+                String url = link.absUrl("href");
+                String title = link.text();
+                System.out.println(title);
+                getLink(url, "asos", title, type);
+            }
         }
     }
 

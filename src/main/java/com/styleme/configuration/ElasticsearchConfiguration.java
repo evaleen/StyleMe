@@ -45,8 +45,9 @@ public class ElasticsearchConfiguration {
                                                 "\"index\": \"not_analyzed\"\n" +
                                             "}\n" +
                                         "}\n" +
-                                    "},\n" +
-                                "}";
+                                    "}\n" +
+                                "}\n" +
+                            "}";
         this.clothingMapping = "{\n" +
                                     "\"properties\": {\n" +
                                         "\"name\": {\n" +
@@ -94,7 +95,8 @@ public class ElasticsearchConfiguration {
                                                 "}\n" +
                                             "}\n" +
                                         "}\n" +
-                                    "}";
+                                    "}\n" +
+                                "}";
 
     }
 

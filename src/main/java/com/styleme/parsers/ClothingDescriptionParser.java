@@ -48,10 +48,12 @@ public class ClothingDescriptionParser {
         //get colours
         Set<String> colours = new HashSet<>();
         Element colourDiv = document.getElementById("colourswatch");
-        for(Element child : colourDiv.children()) {
-            String colour = child.attr("alt");
-            if(colour.equals("")) colour = "multi";
-            colours.add(colour);
+        if(colourDiv != null) {
+            for(Element child : colourDiv.children()) {
+                String colour = child.attr("alt");
+                if(colour.equals("")) colour = "multi";
+                colours.add(colour);
+            }
         }
         //put into ES
         insertClothingItemIntoES("motel", title, type, description, price, colours);

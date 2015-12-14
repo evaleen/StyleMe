@@ -1,7 +1,7 @@
 package com.styleme.factories;
 
 import org.elasticsearch.client.Client;
-import org.elasticsearch.common.settings.Settings;
+import org.elasticsearch.common.settings.ImmutableSettings;
 import org.elasticsearch.node.Node;
 
 import static org.elasticsearch.node.NodeBuilder.nodeBuilder;
@@ -30,7 +30,8 @@ public class ElasticsearchClientFactory {
     }
 
     private static void createElasticsearchClient() {
-        elasticsearchNode = nodeBuilder().clusterName(clusterName).client(true).settings(Settings.settingsBuilder().put("http.enabled", false)).node();
-        elasticsearchClient = elasticsearchNode.client();
+        ImmutableSettings.Builder elasticsearchSettings = ImmutableSettings.settingsBuilder();
+        elasticsearchNode = nodeBuilder().clusterName(clusterName).client(true).settings(elasticsearchSettings).node();
+                elasticsearchClient = elasticsearchNode.client();
     }
 }

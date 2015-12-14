@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 
 /*
  *
- * @author Conor Hughes
+ * @author Eibhlin McGeady
  *
  * Maps JSON objects
  */

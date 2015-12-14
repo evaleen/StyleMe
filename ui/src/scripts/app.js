@@ -16,14 +16,10 @@ var app = angular
     .config(function($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/home.html',
-                controller: 'MainCtrl'
+                templateUrl: 'views/search.html',
+                controller: 'SearchCtrl'
             })
-            .when('/loading', {
-                templateUrl: 'views/loading.html',
-                controller: 'LoadingCtrl'
-            })
-            .when('/results', {
+            .when('/results/:details', {
                 templateUrl: 'views/results.html',
                 controller: 'ResultsCtrl'
             })

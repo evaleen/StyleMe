@@ -1,7 +1,9 @@
 package com.styleme.submitters;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.styleme.factories.ElasticsearchClientFactory;
+import com.styleme.factories.JSONObjectMapperFactory;
 import com.styleme.pojos.Clothing;
 import com.styleme.pojos.Style;
 import org.elasticsearch.action.index.IndexResponse;
@@ -17,12 +19,14 @@ import org.elasticsearch.client.Client;
 public class ElasticsearchSubmitter {
 
     private Client elasticsearchClient;
+    private ObjectMapper objectMapper;
     private String fashionIndex = "fashion";
     private String styleType = "styles";
     private String sitesIndex = "sites";
 
     public ElasticsearchSubmitter() {
         this(ElasticsearchClientFactory.getClient());
+        objectMapper = new ObjectMapper();
     }
 
     public ElasticsearchSubmitter(Client elasticsearchClient) {
@@ -32,7 +36,7 @@ public class ElasticsearchSubmitter {
     public void postStyle(Style style) {
         try {
             IndexResponse response = elasticsearchClient.prepareIndex(fashionIndex, styleType, style.getStyle())
-                    .setSource(style)
+                    .setSource(objectMapper.writeValueAsString(style))
                     .execute()
                     .actionGet();
         } catch (Exception e) {
@@ -43,7 +47,7 @@ public class ElasticsearchSubmitter {
     public void postClothing(String type, Clothing clothing) {
         try {
             IndexResponse response = elasticsearchClient.prepareIndex(sitesIndex, type, clothing.getId())
-                    .setSource(clothing)
+                    .setSource(objectMapper.writeValueAsString(clothing))
                     .execute()
                     .actionGet();
         } catch (Exception e) {
