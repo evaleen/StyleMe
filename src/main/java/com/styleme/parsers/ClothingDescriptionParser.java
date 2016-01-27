@@ -27,17 +27,17 @@ public class ClothingDescriptionParser {
     }
 
 
-    public void getDescription(Document document, String site, String title, String type) throws IOException {
+    public void getDescription(String url, String image, Document document, String site, String title, String type) throws IOException {
         if(site.equals("topshop")) {
-            getTopshopDescription(document, title, type);
+            getTopshopDescription(url, image, document, title, type);
         } else if(site.equals("asos")) {
-            getAsosDescription(document, title, type);
+            getAsosDescription(url, image, document, title, type);
         } else if(site.equals("motel")) {
-            getMotelDescription(document, title, type);
+            getMotelDescription(url, image, document, title, type);
         }
     }
 
-    private void getMotelDescription(Document document, String title, String type) {
+    private void getMotelDescription(String url, String image, Document document, String title, String type) {
         //get description
         Element details = document.getElementById("Details");
         Element span = details.child(1);
@@ -45,6 +45,8 @@ public class ClothingDescriptionParser {
         //get price
         Elements prices = document.getElementsByClass("ProductPrice");
         String price = prices.first().text();
+        String currency = getCurrency(price);
+        double priceNum = convertPrice(price);
         //get colours
         Set<String> colours = new HashSet<>();
         Element colourDiv = document.getElementById("colourswatch");
@@ -56,11 +58,11 @@ public class ClothingDescriptionParser {
             }
         }
         //put into ES
-        insertClothingItemIntoES("motel", title, type, description, price, colours);
+        insertClothingItemIntoES("motel", title, type, url, image, description, priceNum, currency, colours);
 
     }
 
-    private void getAsosDescription(Document document, String type, String title) {
+    private void getAsosDescription(String url, String image, Document document, String title, String type) {
         //get description
         Elements descDiv = document.getElementsByClass("product-description");
         String description = descDiv.first().text();
@@ -76,11 +78,13 @@ public class ClothingDescriptionParser {
         //get price
         Elements priceDiv = document.getElementsByClass("product_price_details");
         String price = priceDiv.first().text();
+        String currency = getCurrency(price);
+        double priceNum = convertPrice(price);
         //put into ES
-        insertClothingItemIntoES("asos", title, type, description, price, colours);
+        insertClothingItemIntoES("asos", title, type, url, image, description, priceNum, currency, colours);
     }
 
-    public void getTopshopDescription(Document document, String type, String title) {
+    public void getTopshopDescription(String url, String image, Document document, String title, String type) {
         //get description
         String description = document.getElementsByClass("product_description").text();
         //get colours
@@ -91,13 +95,31 @@ public class ClothingDescriptionParser {
         //get price
         String price = document.getElementsByClass("product_price").text();
         price = price.replace("Price:", "").replaceAll("\\s+","");
+        String currency = getCurrency(price);
+        double priceNum = convertPrice(price);
         //put into ES
-        insertClothingItemIntoES("topshop", title, type, description, price, colours);
+        insertClothingItemIntoES("topshop", title, type, url, image, description, priceNum, currency, colours);
     }
 
-    private void insertClothingItemIntoES(String site, String title, String type, String description, String price, Set<String> colours) {
-        Clothing item = new Clothing(title, type, description, price, colours);
+    private void insertClothingItemIntoES(String site, String title, String type, String url, String image, String description, double price, String currency, Set<String> colours) {
+        Clothing item = new Clothing(convertToId(title), title, type, description, price, currency, url, image, colours);
         elasticsearchSubmitter.postClothing(site, item);
+    }
+
+    private String convertToId(String title) {
+        return title.replaceAll(" ", "_");
+    }
+
+    private String getCurrency(String price) {
+        if(price.contains("£")) return "GBP";
+        else if (price.contains("€")) return "EUR";
+        else if (price.contains("$")) return "USD";
+        else return "";
+    }
+
+    private double convertPrice(String price) {
+        price = price.replaceAll("[^0-9.]", "");
+        return Double.parseDouble(price);
     }
 
 }

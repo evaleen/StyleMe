@@ -21,7 +21,6 @@ topshop jeans http://eu.topshop.com/en/tseu/category/clothing-485092/jeans-48511
 topshop trousers http://eu.topshop.com/en/tseu/category/clothing-485092/trousers-485112
 topshop shorts http://eu.topshop.com/en/tseu/category/clothing-485092/shorts-485113
 topshop skirts http://eu.topshop.com/en/tseu/category/clothing-485092/skirts-485114
-topshop suits http://eu.topshop.com/en/tseu/category/clothing-485092/suits-and-co-ords-485505
 topshop swimwear http://eu.topshop.com/en/tseu/category/clothing-485092/swimwear-485118
 topshop playsuits http://eu.topshop.com/en/tseu/category/clothing-485092/playsuits-and-jumpsuits-2281908
 topshop party http://eu.topshop.com/en/tseu/category/clothing-485092/going-out-485603
@@ -36,5 +35,5 @@ asos knitwear http://www.asos.com/women/jumpers-cardigans/cat/pgecategory.aspx?c
 asos playsuits http://www.asos.com/women/jumpsuits-playsuits/cat/pgecategory.aspx?cid=7618&via=top&CTARef=ww|Clothing|JumpsuitsPlaysuits
 asos tops http://www.asos.com/women/tops/shirts-blouses/cat/pgecategory.aspx?cid=11318&wt.ac=ww%7cnav%7cshirtsblouses&via=top&CTARef=ww|Clothing|ShirtsBlouses
 asos skirts http://www.asos.com/women/skirts/cat/pgecategory.aspx?cid=2639&via=top&CTARef=ww|Clothing|Skirts
-asos swimwear http://www.asos.com/women/swimwear-beachwear/cat/pgecategory.aspx?cid=2238&via=top&CTARef=ww|Clothing|SwimwearBeachwear
 asos trousers http://www.asos.com/women/trousers-leggings/cat/pgecategory.aspx?cid=2640&via=top&CTARef=ww|Clothing|TrousersLeggings
+asos swimwear http://www.asos.com/women/swimwear-beachwear/cat/pgecategory.aspx?cid=2238&via=top&CTARef=ww|Clothing|SwimwearBeachwear

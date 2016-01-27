@@ -18,10 +18,20 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>com.styleme.scraper.StyleScraper</mainClass>
+                  <mainClass>com.styleme.StyleMeServerLauncher</mainClass>
                 </transformer>
                 <transformer />
               </transformers>
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>META-INF/*.SF</exclude>
+                    <exclude>META-INF/*.DSA</exclude>
+                    <exclude>META-INF/*.RSA</exclude>
+                  </excludes>
+                </filter>
+              </filters>
             </configuration>
           </execution>
         </executions>

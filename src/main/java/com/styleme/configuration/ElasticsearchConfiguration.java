@@ -77,6 +77,24 @@ public class ElasticsearchConfiguration {
                                                 "}\n" +
                                             "}\n" +
                                         "},\n" +
+                                        "\"url\": {\n" +
+                                            "\"type\": \"string\",\n" +
+                                            "\"fields\": {\n" +
+                                                "\"raw\": {\n" +
+                                                    "\"type\": \"string\",\n" +
+                                                    "\"index\": \"not_analyzed\"\n" +
+                                                "}\n" +
+                                            "}\n" +
+                                        "},\n" +
+                                        "\"image\": {\n" +
+                                            "\"type\": \"string\",\n" +
+                                            "\"fields\": {\n" +
+                                                "\"raw\": {\n" +
+                                                    "\"type\": \"string\",\n" +
+                                                    "\"index\": \"not_analyzed\"\n" +
+                                                "}\n" +
+                                            "}\n" +
+                                        "},\n" +
                                         "\"colour\": {\n" +
                                             "\"type\": \"string\",\n" +
                                             "\"fields\": {\n" +
@@ -86,8 +104,17 @@ public class ElasticsearchConfiguration {
                                                 "}\n" +
                                             "}\n" +
                                         "},\n" +
-                                        "\"price\": {\n" +
+                                        "\"currency\": {\n" +
                                             "\"type\": \"string\",\n" +
+                                            "\"fields\": {\n" +
+                                                "\"raw\": {\n" +
+                                                    "\"type\": \"string\",\n" +
+                                                    "\"index\": \"not_analyzed\"\n" +
+                                                "}\n" +
+                                            "}\n" +
+                                        "},\n" +
+                                        "\"price\": {\n" +
+                                            "\"type\": \"float\",\n" +
                                             "\"fields\": {\n" +
                                                 "\"raw\": {\n" +
                                                     "\"type\": \"string\",\n" +
