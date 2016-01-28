@@ -60,27 +60,18 @@ public class ElasticsearchClothingRetriever {
     private List<Clothing> getClothing(List<String> types, List<String> colours, List<String> range) throws IOException {
         SearchRequestBuilder searchRequest = elasticsearchClient.prepareSearch(elasticsearchConfiguration.getSitesIndex())
             .setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setSize(1000);
+        BoolQueryBuilder qb = boolQuery();
+        double min = Double.parseDouble(range.get(0));
+        double max = Double.parseDouble(range.get(1));
+        searchRequest.setPostFilter(FilterBuilders.rangeFilter("price").from(min).to(max));
         if(!types.get(0).equals("null")) {
-//            for (String type :types) {
-//                searchRequest.setQuery(QueryBuilders.boolQuery().should(QueryBuilders.matchQuery("type", type)));
-//            }
             String[] typesArray = types.toArray(new String[types.size()]);
-            BoolQueryBuilder qb = boolQuery();
             searchRequest.setQuery(qb.must(termsQuery("type", typesArray)).minimumShouldMatch("1"));
         }
         if (!colours.get(0).equals("null")) {
-//            for (String colour : colours) {
-//                searchRequest.setQuery(QueryBuilders.boolQuery().should(QueryBuilders.matchQuery("colours", colour)));
-//            }
             String[] coloursArray = colours.toArray(new String[colours.size()]);
-            BoolQueryBuilder qb = boolQuery();
             searchRequest.setQuery(qb.must(termsQuery("colours", coloursArray)).minimumShouldMatch("1"));
         }
-
-        double min = Double.parseDouble(range.get(0));
-        double max = Double.parseDouble(range.get(1));
-        searchRequest.setQuery(QueryBuilders.rangeQuery("price").lte(max).gte(min));
-
         SearchResponse response = searchRequest.execute().actionGet();
         return ElasticsearchResponseParser.searchResponseToClothingList(response, objectReader);
     }

@@ -7,10 +7,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  *  @author Eibhlin McGeady
@@ -21,8 +18,10 @@ public class ClothingDescriptionParser {
 
 
     private ElasticsearchSubmitter elasticsearchSubmitter;
+    private HashSet<String> setColours;
     public ClothingDescriptionParser() {
         elasticsearchSubmitter = new ElasticsearchSubmitter();
+        setColours = getColours();
 
     }
 
@@ -48,13 +47,12 @@ public class ClothingDescriptionParser {
         String currency = getCurrency(price);
         double priceNum = convertPrice(price);
         //get colours
-        Set<String> colours = new HashSet<>();
+        HashSet<String> colours = getColoursFromTitle(title);
         Element colourDiv = document.getElementById("colourswatch");
         if(colourDiv != null) {
             for(Element child : colourDiv.children()) {
                 String colour = child.attr("alt");
-                if(colour.equals("")) colour = "multi";
-                colours.add(colour);
+                if(!colour.equals("")) colours.add(colour);
             }
         }
         //put into ES
@@ -63,6 +61,7 @@ public class ClothingDescriptionParser {
     }
 
     private void getAsosDescription(String url, String image, Document document, String title, String type) {
+        System.out.println(title);
         //get description
         Elements descDiv = document.getElementsByClass("product-description");
         String description = descDiv.first().text();
@@ -118,8 +117,38 @@ public class ClothingDescriptionParser {
     }
 
     private double convertPrice(String price) {
+        price = price.replaceAll(",", ".");
         price = price.replaceAll("[^0-9.]", "");
-        return Double.parseDouble(price);
+        System.out.println(price);
+        double num = 0.00;
+        try {
+            num = Double.parseDouble(price);
+        } catch(NumberFormatException e) {
+            Scanner sc = new Scanner(System.in);
+            num = Double.parseDouble(sc.nextLine());
+        }
+        return num;
     }
 
+    private HashSet<String> getColoursFromTitle(String title) {
+        HashSet<String> colours = new HashSet<>();
+        for(String colour : setColours) {
+            if(title.toLowerCase().contains(colour)) {
+                colours.add(colour);
+            } else if(title.toLowerCase().contains("ivory")) {
+                colours.add("cream");
+            } else if (title.contains("lilac") || title.contains("violet") || title.contains("indigo")) {
+                colours.add("purple");
+            } else if (title.contains("maroon") || title.contains("burgundy")) {
+                colours.add("wine");
+            }
+        }
+        if(colours.isEmpty()) colours.add("multi");
+        return colours;
+    }
+
+    public HashSet<String> getColours() {
+        return new HashSet<>(Arrays.asList("black", "white", "red", "orange", "silver", "gold", "wine", "khaki", "navy",
+                "yellow", "green", "blue", "purple", "pink", "multi", "brown", "beige", "grey", "cream"));
+    }
 }

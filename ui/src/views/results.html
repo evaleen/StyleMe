@@ -2,7 +2,10 @@
   <div class="title">
     <h1>Style Me!</h1>
   </div>
-  <div ng-show="empty" class="empty">
+  <div class="loading text-center modal fade" id="loadingDialog" tabindex="-1" role="dialog">
+    <img id="loading" class="loading-gif" src="images/loading.gif">
+  </div>
+  <div ng-show="isEmpty(clothingList)" class="empty">
     Sorry, no clothes match this search!
   </div>
   <!--div ng-hide="empty" class="row" ng-repeat="rows in clothingList">
@@ -84,6 +87,7 @@
                   </tr>
                 </table>
               </div>
+              <br><br>
               <button type="button" class="btn btn-lg button modal-btn" ng-click="open(clothing.url)">
                 Link to Item
               </button>
@@ -93,7 +97,7 @@
       </div>
     </div>
   </div>
-  <div class = "returnBtn">
+  <div class = "returnBtn" ng-show="loaded">
     <button type="button" ng-click="goSearch()" class="btn btn-lg button">
       Back To Search
     </button>
