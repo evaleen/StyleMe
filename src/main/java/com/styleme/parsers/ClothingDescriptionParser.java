@@ -11,8 +11,10 @@ import java.util.*;
 
 /**
  *  @author Eibhlin McGeady
- *  This class parses the clothing HTML page,
+ *
+ *  Parses the clothing HTML page,
  *  extracts the relvant information and puts it into Elasticsearch
+ *
  */
 public class ClothingDescriptionParser {
 
@@ -105,18 +107,18 @@ public class ClothingDescriptionParser {
         elasticsearchSubmitter.postClothing(site, item);
     }
 
-    private String convertToId(String title) {
+    public String convertToId(String title) {
         return title.replaceAll(" ", "_");
     }
 
-    private String getCurrency(String price) {
+    public String getCurrency(String price) {
         if(price.contains("£")) return "GBP";
         else if (price.contains("€")) return "EUR";
         else if (price.contains("$")) return "USD";
         else return "";
     }
 
-    private double convertPrice(String price) {
+    public double convertPrice(String price) {
         price = price.replaceAll(",", ".");
         price = price.replaceAll("[^0-9.]", "");
         System.out.println(price);
@@ -130,7 +132,7 @@ public class ClothingDescriptionParser {
         return num;
     }
 
-    private HashSet<String> getColoursFromTitle(String title) {
+    public HashSet<String> getColoursFromTitle(String title) {
         HashSet<String> colours = new HashSet<>();
         for(String colour : setColours) {
             if(title.toLowerCase().contains(colour)) {
@@ -147,7 +149,7 @@ public class ClothingDescriptionParser {
         return colours;
     }
 
-    public HashSet<String> getColours() {
+    private HashSet<String> getColours() {
         return new HashSet<>(Arrays.asList("black", "white", "red", "orange", "silver", "gold", "wine", "khaki", "navy",
                 "yellow", "green", "blue", "purple", "pink", "multi", "brown", "beige", "grey", "cream"));
     }

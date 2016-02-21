@@ -22,6 +22,8 @@ import static org.elasticsearch.index.query.QueryBuilders.termsQuery;
 
 /**
  * @author Eibhlin McGeady
+ *
+ * Retrieved clothing JSON objects from Elasticsearch
  */
 public class ElasticsearchClothingRetriever {
 

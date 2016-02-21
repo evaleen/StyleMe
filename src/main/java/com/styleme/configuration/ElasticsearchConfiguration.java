@@ -4,7 +4,7 @@ package com.styleme.configuration;
  *
  * @author Eibhlin McGeady
  *
- * Sets up ES database
+ * Information requirend for setting up the elasticsearch database
  */
 public class ElasticsearchConfiguration {
 

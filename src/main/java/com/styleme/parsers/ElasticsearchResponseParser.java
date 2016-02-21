@@ -14,6 +14,9 @@ import java.util.List;
 
 /**
  * @author Eibhlin McGeady
+ *
+ * Parses the search response from an Elasticsearch get query.
+ *
  */
 public class ElasticsearchResponseParser {
 

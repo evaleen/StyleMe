@@ -11,7 +11,7 @@ import java.util.Set;
  *
  * @author Eibhlin McGeady
  *
- * Encapsulates media object
+ * Encapsulates a Clothing object
  */
 public class Clothing implements Comparable<Clothing> {
 

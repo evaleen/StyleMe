@@ -17,7 +17,7 @@ import java.util.Map;
  *
  * @author Eibhlin McGeady
  *
- *  * Sets up ES index with mapping
+ *  * Sets up Elasticsearch index with mapping
  */
 public class ElasticsearchSetup {
 

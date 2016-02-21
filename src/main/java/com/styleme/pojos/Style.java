@@ -11,7 +11,7 @@ import java.util.Set;
  *
  * @author Eibhlin McGeady
  *
- * Encapsulates media object
+ * Encapsulates a Style Object
  */
 public class Style implements Comparable<Style> {
 
@@ -25,8 +25,7 @@ public class Style implements Comparable<Style> {
         this.terms = terms;
     }
 
-    public Style() {
-    }
+    public Style() {}
 
     @Override
     public int compareTo(Style style) {
