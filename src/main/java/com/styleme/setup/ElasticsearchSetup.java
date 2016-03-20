@@ -8,16 +8,13 @@ import org.elasticsearch.client.Client;
 import org.elasticsearch.cluster.ClusterState;
 import org.elasticsearch.cluster.metadata.IndexMetaData;
 import org.elasticsearch.cluster.metadata.MappingMetaData;
-import org.json.JSONException;
 
-import java.io.IOException;
 import java.util.Map;
 
 /*
- *
  * @author Eibhlin McGeady
  *
- *  * Sets up Elasticsearch index with mapping
+ * Sets up Elasticsearch index with mapping
  */
 public class ElasticsearchSetup {
 
@@ -33,11 +30,10 @@ public class ElasticsearchSetup {
         this.elasticsearchConfiguration = elasticsearchConfiguration;
     }
 
-    public void setup() throws IOException, JSONException {
+    public void setup() {
         IndicesExistsResponse indicesExistsResponseFashion = elasticsearchClient.admin().indices().prepareExists(elasticsearchConfiguration.getFashionIndex()).execute().actionGet();
         IndicesExistsResponse indicesExistsResponseSites = elasticsearchClient.admin().indices().prepareExists(elasticsearchConfiguration.getSitesIndex()).execute().actionGet();
         IndicesExistsResponse indicesExistsResponseMappings = elasticsearchClient.admin().indices().prepareExists(elasticsearchConfiguration.getMappingsIndex()).execute().actionGet();
-
 
         if(!indicesExistsResponseFashion.isExists()){
             elasticsearchClient.admin().indices().prepareCreate(elasticsearchConfiguration.getFashionIndex()).execute().actionGet();
@@ -86,7 +82,7 @@ public class ElasticsearchSetup {
         return false;
     }
 
-    private void createMapping() throws IOException, JSONException {
+    private void createMapping() {
         String clothingMapping = elasticsearchConfiguration.getClothingMapping();
         String styleMapping = elasticsearchConfiguration.getStyleMapping();
         elasticsearchClient.admin().indices()

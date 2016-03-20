@@ -21,6 +21,7 @@ before
 being
 below
 between
+bit
 both
 but
 by
@@ -88,6 +89,13 @@ its
 itself
 just
 let's
+like
+liked
+ll
+love
+loved
+loves
+m
 make
 me
 more
@@ -112,6 +120,8 @@ ourselves
 out
 over
 own
+re
+s
 same
 shan't
 she
@@ -145,7 +155,11 @@ those
 through
 to
 too
+trend
+trending
+trends
 under
+unlike
 until
 up
 very

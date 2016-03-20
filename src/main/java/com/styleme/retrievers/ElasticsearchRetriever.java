@@ -1,12 +1,12 @@
 package com.styleme.retrievers;
 
-import com.fasterxml.jackson.databind.ObjectReader;
 import com.styleme.configuration.ElasticsearchConfiguration;
 import com.styleme.factories.ElasticsearchClientFactory;
 import com.styleme.factories.JSONObjectMapperFactory;
 import com.styleme.parsers.ElasticsearchResponseParser;
 import com.styleme.pojos.Clothing;
 import com.styleme.pojos.Style;
+import com.styleme.selectors.StyleSelector;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
@@ -14,7 +14,6 @@ import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.index.query.*;
 
-import java.io.IOException;
 import java.util.List;
 
 import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
@@ -25,41 +24,38 @@ import static org.elasticsearch.index.query.QueryBuilders.termsQuery;
  *
  * Retrieved clothing JSON objects from Elasticsearch
  */
-public class ElasticsearchClothingRetriever {
+public class ElasticsearchRetriever {
 
     private Client elasticsearchClient;
-    private ObjectReader objectReader;
     private ElasticsearchConfiguration elasticsearchConfiguration;
+    private StyleSelector styleSelector;
 
-    public ElasticsearchClothingRetriever() {
-        this(ElasticsearchClientFactory.getClient(), JSONObjectMapperFactory.getObjectReader(Clothing.class), new ElasticsearchConfiguration());
+    public ElasticsearchRetriever() {
+        this(ElasticsearchClientFactory.getClient(), new ElasticsearchConfiguration(), new StyleSelector());
     }
 
-    public ElasticsearchClothingRetriever(Client elasticsearchClient, ObjectReader objectReader, ElasticsearchConfiguration elasticsearchConfiguration) {
+    public ElasticsearchRetriever(Client elasticsearchClient, ElasticsearchConfiguration elasticsearchConfiguration, StyleSelector styleSelector) {
         this.elasticsearchClient = elasticsearchClient;
-        this.objectReader = objectReader;
         this.elasticsearchConfiguration = elasticsearchConfiguration;
+        this.styleSelector = styleSelector;
     }
 
-    public List<Clothing> getSearch(String styleName, List<String> types, List<String> colours, List<String> range) throws IOException {
-        //get style info
-        //Style style = getStyle(styleName);
-        //get clothing info
+    public List<Clothing> getSearch(String styleName, List<String> types, List<String> colours, List<String> range) {
+        Style style = getStyle(styleName);
         List<Clothing> clothing = getClothing(types, colours, range);
-        //compare style to clothing and return clothing with style
-        //return styleSelector.getClothingforStyle(style, clothing);
-        return clothing;
+        List<Clothing> clothes = styleSelector.getClothingForStyle(style, clothing);
+        System.out.println(clothes);
+        return clothes;
     }
 
-    private Style getStyle(String style) throws IOException {
+    public Style getStyle(String style) {
         GetResponse getResponse = elasticsearchClient.prepareGet(elasticsearchConfiguration.getFashionIndex(), elasticsearchConfiguration.getStyleType(), style)
                 .execute()
                 .actionGet();
-        return ElasticsearchResponseParser.getResponseToStyle(getResponse, objectReader);
-
+        return ElasticsearchResponseParser.getResponseToStyle(getResponse, JSONObjectMapperFactory.getObjectReader(Style.class));
     }
 
-    private List<Clothing> getClothing(List<String> types, List<String> colours, List<String> range) throws IOException {
+    private List<Clothing> getClothing(List<String> types, List<String> colours, List<String> range){
         SearchRequestBuilder searchRequest = elasticsearchClient.prepareSearch(elasticsearchConfiguration.getSitesIndex())
             .setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setSize(1000);
         BoolQueryBuilder qb = boolQuery();
@@ -75,6 +71,6 @@ public class ElasticsearchClothingRetriever {
             searchRequest.setQuery(qb.must(termsQuery("colours", coloursArray)).minimumShouldMatch("1"));
         }
         SearchResponse response = searchRequest.execute().actionGet();
-        return ElasticsearchResponseParser.searchResponseToClothingList(response, objectReader);
+        return ElasticsearchResponseParser.searchResponseToClothingList(response, JSONObjectMapperFactory.getObjectReader(Clothing.class));
     }
 }

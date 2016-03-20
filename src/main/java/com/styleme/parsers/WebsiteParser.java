@@ -6,8 +6,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.*;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 /**
  * @author Eibhlin McGeady
@@ -24,42 +22,48 @@ public class WebsiteParser {
         clothingDescriptionParser = new ClothingDescriptionParser();
     }
 
-    public void parseWebsites(String websiteFile) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(websiteFile));
-        String line;
+    public void parseWebsites(String websiteFile) {
+        BufferedReader bufferedReader;
         try {
+            bufferedReader = new BufferedReader(new FileReader(websiteFile));
+            String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] splitLine = line.split("\\s+");
                 String site = splitLine[0];
                 String type = splitLine[1];
                 parse(splitLine[2], site, type);
-
             }
-        } finally {
             bufferedReader.close();
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found " + websiteFile);
+        } catch (IOException e) {
+            System.err.println("IO error reading from file" + websiteFile);
         }
     }
 
-    private void parse(String url, String site, String type) throws IOException {
-        Document doc = Jsoup.connect(url)
-                .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36")
-                .timeout(100000)
-                .get();
-        getClothingLinksAndImages(doc, site, type);
-    }
-
-    private void getClothingLinksAndImages(Document doc, String site, String type) throws IOException {
-        if(site.equals("topshop")) {
-            getTopshopClothingImagesAndLinks(doc, type);
-        } else if (site.equals("asos")) {
-            getAsosClothingImagesAndLinks(doc, type);
-        }
-        else if (site.equals("motel")) {
-           getMotelImagesAndLinks(doc, type);
+    private void parse(String url, String site, String type) {
+        try {
+            Document doc = Jsoup.connect(url)
+                    .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36")
+                    .timeout(100000)
+                    .get();
+            getClothingLinksAndImages(doc, site, type);
+        } catch (IOException e) {
+            System.err.println("Error connecting to url " + url);
         }
     }
 
-    private void getMotelImagesAndLinks(Document doc, String type) throws IOException {
+    private void getClothingLinksAndImages(Document doc, String site, String type) {
+        switch (site) {
+            case "topshop": getTopshopClothingImagesAndLinks(doc, type);
+                            break;
+            case "asos":    getAsosClothingImagesAndLinks(doc, type);
+                            break;
+            case "motel":   getMotelImagesAndLinks(doc, type);
+        }
+    }
+
+    private void getMotelImagesAndLinks(Document doc, String type) {
         Elements list = doc.getElementsByClass("catproddiv");
         for(Element el : list) {
             Element link =  el.getElementsByClass("xProductImage").get(0).child(0);
@@ -72,7 +76,7 @@ public class WebsiteParser {
         }
     }
 
-    private void getTopshopClothingImagesAndLinks(Document doc, String type) throws IOException {
+    private void getTopshopClothingImagesAndLinks(Document doc, String type) {
         Elements list = doc.getElementsByClass("product_image");
         for(Element el : list) {
             Element link = el.child(0);
@@ -84,7 +88,7 @@ public class WebsiteParser {
         }
     }
 
-    private void getAsosClothingImagesAndLinks(Document doc, String type) throws IOException {
+    private void getAsosClothingImagesAndLinks(Document doc, String type) {
         Elements outOfStock = doc.getElementsByClass("outofstock-msg");
         if(outOfStock.isEmpty()) {
         Elements list = doc.getElementsByClass("productImageLink");
@@ -98,12 +102,16 @@ public class WebsiteParser {
         }
     }
 
-    private void getLink(String url, String image, String site, String title, String type) throws IOException {
-        Document clothingDesc = Jsoup.connect(url)
-                .timeout(100000)
-                .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36")
-                .get();
-        clothingDescriptionParser.getDescription(url, image, clothingDesc, site, title, type);
+    private void getLink(String url, String image, String site, String title, String type) {
+        try {
+            Document clothingDesc = Jsoup.connect(url)
+                    .timeout(100000)
+                    .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36")
+                    .get();
+            clothingDescriptionParser.getDescription(url, image, clothingDesc, site, title, type);
+        } catch (IOException e) {
+            System.err.println("Error connecting to url " + url);
+        }
     }
 
 }

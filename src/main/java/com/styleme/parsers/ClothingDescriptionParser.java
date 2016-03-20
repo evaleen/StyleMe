@@ -6,7 +6,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.*;
 import java.util.*;
 
 /**
@@ -20,21 +19,24 @@ public class ClothingDescriptionParser {
 
 
     private ElasticsearchSubmitter elasticsearchSubmitter;
+    private SentenceParser sentenceParser;
     private HashSet<String> setColours;
+
     public ClothingDescriptionParser() {
         elasticsearchSubmitter = new ElasticsearchSubmitter();
+        sentenceParser = new SentenceParser();
         setColours = getColours();
 
     }
 
 
-    public void getDescription(String url, String image, Document document, String site, String title, String type) throws IOException {
-        if(site.equals("topshop")) {
-            getTopshopDescription(url, image, document, title, type);
-        } else if(site.equals("asos")) {
-            getAsosDescription(url, image, document, title, type);
-        } else if(site.equals("motel")) {
-            getMotelDescription(url, image, document, title, type);
+    public void getDescription(String url, String image, Document document, String site, String title, String type) {
+        switch (site) {
+            case "topshop" : getTopshopDescription(url, image, document, title, type);
+                             break;
+            case "asos"    : getAsosDescription(url, image, document, title, type);
+                             break;
+            case "motel"   : getMotelDescription(url, image, document, title, type);
         }
     }
 
@@ -103,6 +105,7 @@ public class ClothingDescriptionParser {
     }
 
     private void insertClothingItemIntoES(String site, String title, String type, String url, String image, String description, double price, String currency, Set<String> colours) {
+        description = sentenceParser.removeStopWordsAndPunctuation(description);
         Clothing item = new Clothing(convertToId(title), title, type, description, price, currency, url, image, colours);
         elasticsearchSubmitter.postClothing(site, item);
     }

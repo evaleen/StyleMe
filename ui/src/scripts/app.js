@@ -11,13 +11,15 @@
 var app = angular
     .module('styleMeApp', ['ngResource',
         'ngRoute',
-        'ngAria'
+        'ngAria',
+        'ngTagsInput',
+        'rzModule'
     ])
     .config(function($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/search.html',
-                controller: 'SearchCtrl'
+                templateUrl: 'views/SearchInput.html',
+                controller: 'SearchInputCtrl'
             })
             .when('/results/:details', {
                 templateUrl: 'views/results.html',

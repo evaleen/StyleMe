@@ -20,16 +20,31 @@ import java.util.List;
  */
 public class ElasticsearchResponseParser {
 
-    public static Style getResponseToStyle(GetResponse getResponse, ObjectReader objectReader) throws IOException {
-        Style style = objectReader.readValue(getResponse.getSourceAsString());
+    public static Style getResponseToStyle(GetResponse getResponse, ObjectReader objectReader){
+        Style style = null;
+        try {
+            String source = getResponse.getSourceAsString();
+            if(source != null) {
+                style = objectReader.readValue(source);
+            }
+        } catch (Exception e) {
+            System.err.println("IO Exception error");
+            System.out.println(e);
+        }
         return style;
     }
 
-    public static List<Clothing> searchResponseToClothingList(SearchResponse response, ObjectReader objectReader) throws IOException {
-        MappingIterator<Clothing> deserializedValues = objectReader.readValues(searchResponseToString(response));
-        List<Clothing> desrializedValueList = Lists.newArrayList(deserializedValues);
-        deserializedValues.close();
-        return desrializedValueList;
+    public static List<Clothing> searchResponseToClothingList(SearchResponse response, ObjectReader objectReader) {
+        try {
+            MappingIterator<Clothing> deserializedValues = objectReader.readValues(searchResponseToString(response));
+            List<Clothing> desrializedValueList = Lists.newArrayList(deserializedValues);
+            deserializedValues.close();
+            return desrializedValueList;
+        } catch (IOException e) {
+            System.err.println("Error converting search response to Clothing list");
+            e.printStackTrace();
+            return null;
+        }
     }
 
     private static String searchResponseToString(SearchResponse response) {

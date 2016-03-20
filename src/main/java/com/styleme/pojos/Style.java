@@ -49,5 +49,8 @@ public class Style implements Comparable<Style> {
         this.terms = new HashSet<>(terms);
     }
 
+    public void addTerms(Set<String> list) {
+        terms.addAll(list);
+    }
 }
 

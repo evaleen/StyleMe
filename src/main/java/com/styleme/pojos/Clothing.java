@@ -25,7 +25,9 @@ public class Clothing implements Comparable<Clothing> {
     private String image;
     private Set<String> colours;
 
-
+    public Clothing(String id) {
+        this.id = id;
+    }
 
     @JsonCreator
     public Clothing(@JsonProperty("id") String id,@JsonProperty("name") String name, @JsonProperty("type") String type, @JsonProperty("description") String description,

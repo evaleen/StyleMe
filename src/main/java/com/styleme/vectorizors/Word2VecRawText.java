@@ -1,6 +1,8 @@
 package com.styleme.vectorizors;
 
+import com.styleme.submitters.StyleWordVectorsSubmitter;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
+import org.deeplearning4j.models.embeddings.wordvectors.WordVectors;
 import org.deeplearning4j.models.word2vec.Word2Vec;
 import org.deeplearning4j.text.sentenceiterator.BasicLineIterator;
 import org.deeplearning4j.text.sentenceiterator.SentenceIterator;
@@ -12,59 +14,64 @@ import org.slf4j.LoggerFactory;
 
 import org.canova.api.util.ClassPathResource;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author Eibhlin McGeady
  *
- * Takes in a raw text file and vectorizes the terms in the text
+ * Takes in a raw text file containing style/fashion blog sentences
+ * vectorizes the terms in the text
+ *
  */
 public class Word2VecRawText {
 
     private static Logger log = LoggerFactory.getLogger(Word2VecRawText.class);
+    private StyleWordVectorsSubmitter styleWordVectorsSubmitter;
+    
+    public Word2VecRawText() {
+        styleWordVectorsSubmitter = new StyleWordVectorsSubmitter();
+    }
 
-    public void vectorize(String filename) throws Exception {
+    public void vectorize(String fileName, String styleFileName){
+        try {
+            File file = new ClassPathResource(fileName).getFile();
 
-        log.info("Load & Vectorize Sentences....");
-        // Strip white space before and after for each line
-        SentenceIterator iter = new BasicLineIterator(filename);
-        // Split on white spaces in the line to get words
-        TokenizerFactory t = new DefaultTokenizerFactory();
-        t.setTokenPreProcessor(new CommonPreprocessor());
+            log.info("Load & Vectorize Sentences....");
+            SentenceIterator iter = new BasicLineIterator(file);
+            TokenizerFactory t = new DefaultTokenizerFactory();
+            t.setTokenPreProcessor(new CommonPreprocessor());
 
-        log.info("Building model....");
-        Word2Vec vec = new Word2Vec.Builder()
-                .minWordFrequency(5)
-                .iterations(1)
-                .layerSize(100)
-                .seed(42)
-                .windowSize(5)
-                .iterate(iter)
-                .tokenizerFactory(t)
-                .build();
+            log.info("Building model....");
+            Word2Vec vec = new Word2Vec.Builder()
+                    .minWordFrequency(5)
+                    .iterations(1)
+                    .layerSize(100)
+                    .seed(42)
+                    .windowSize(5)
+                    .iterate(iter)
+                    .tokenizerFactory(t)
+                    .build();
 
-        log.info("Fitting Word2Vec model....");
-        vec.fit();
+            log.info("Fitting Word2Vec model....");
+            vec.fit();
 
-        log.info("Writing word vectors to text file....");
+            // Write word vectors
+            WordVectorSerializer.writeWordVectors(vec, "src/main/resources/vectorized_words.txt");
 
-        // Write word vectors
-        WordVectorSerializer.writeWordVectors(vec, "pathToWriteto.txt");
+            //Word2Vec vec = WordVectorSerializer.loadFullModel("src/main/resources/vectorized_words.txt");
 
-        log.info("Closest Words:");
-        Collection<String> lst = vec.wordsNearest("style", 10);
-        System.out.println("style" + lst);
-        lst = vec.wordsNearest("punk", 10);
-        System.out.println("punk" + lst);
-        lst = vec.wordsNearest("gothic", 10);
-        System.out.println("gothic" + lst);
-        lst = vec.wordsNearest("preppy", 10);
-        System.out.println("preppy" + lst);
-        lst = vec.wordsNearest("leather", 10);
-        System.out.println("leather" + lst);
+            styleWordVectorsSubmitter.getStylesAndPostToElasticsearch(vec, styleFileName);
+
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("Error writing vectors to vectorized_words.txt");
+            e.printStackTrace();
+        }
     }
 }
+

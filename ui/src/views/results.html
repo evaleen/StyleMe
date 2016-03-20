@@ -1,6 +1,8 @@
 <div class="results" ng-init="init()">
   <div class="title">
-    <img class="logo" src="images/logo.jpg">
+    <a ng-href="/">
+      <img class="logo" src="images/logo.png">
+    </a>
   </div>
   <div class="loading text-center modal fade" id="loadingDialog" tabindex="-1" role="dialog">
     <img id="loading" class="loading-gif" src="images/loading.gif">
@@ -54,43 +56,45 @@
     </div>
   </div-->
   <!-- Display the list of results -->
-  <div class="clothing-list" ng-repeat="clothing in clothingList | limitTo:resultLimit">
-    <div class="clothing-item">
-      <a class="modal-link" data-toggle="modal" data-target="#viewClothing{{$index}}">
-      <img class="picture" ng-src="{{clothing.image}}">
-      <span class="item-name">{{clothing.name}} - {{clothing.price}} {{clothing.currency}}</span>
-      </a>
-      <div class="modal fade" id="viewClothing{{$index}}" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              {{clothing.name}}
-              <button type="button" class="close" data-dismiss="modal">
-                <span>&times;</span>
-                <span class="sr-only">Close</span>
-              </button>
-            </div>
-            <div class="clearfix modal-body">
-              <div class=modal-image>
-                <img class="picture" ng-src="{{clothing.image}}">
+  <div class="clothing-display">
+    <div class="clothing-list" ng-repeat="clothing in clothingList | limitTo:resultLimit">
+      <div class="clothing-item">
+        <a class="modal-link" data-toggle="modal" data-target="#viewClothing{{$index}}">
+          <img class="picture" ng-src="{{clothing.image}}">
+          <span class="item-name">{{clothing.name}} - {{clothing.price}} {{clothing.currency}}</span>
+        </a>
+        <div class="modal fade" id="viewClothing{{$index}}" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                {{clothing.name}}
+                <button type="button" class="close" data-dismiss="modal">
+                  <span>&times;</span>
+                  <span class="sr-only">Close</span>
+                </button>
               </div>
-              <div class=modal-details>
-                <table class="clothing-table">
-                  <tr>
-                    <td> <b> Colours: </b> {{getListAsString(clothing.colours)}} </td>
-                  </tr>
-                  <tr>
-                    <td> <b> Price: </b> {{clothing.price}} </td>
-                  </tr>
-                  <tr>
-                    <td> <b> Description: </b> {{clothing.description}}</td>
-                  </tr>
-                </table>
+              <div class="clearfix modal-body">
+                <div class=modal-image>
+                  <img class="picture" ng-src="{{clothing.image}}">
+                </div>
+                <div class=modal-details>
+                  <table class="clothing-table">
+                    <tr>
+                      <td> <b> Colours: </b> {{getListAsString(clothing.colours)}} </td>
+                    </tr>
+                    <tr>
+                      <td> <b> Price: </b> {{clothing.price}} </td>
+                    </tr>
+                    <tr>
+                      <td> <b> Description: </b> {{clothing.description}}</td>
+                    </tr>
+                  </table>
+                </div>
+                <br><br>
+                <button type="button" class="btn btn-lg button modal-btn" ng-click="open(clothing.url)">
+                  Link to Item
+                </button>
               </div>
-              <br><br>
-              <button type="button" class="btn btn-lg button modal-btn" ng-click="open(clothing.url)">
-                Link to Item
-              </button>
             </div>
           </div>
         </div>

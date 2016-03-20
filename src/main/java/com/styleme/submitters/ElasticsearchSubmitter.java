@@ -3,7 +3,6 @@ package com.styleme.submitters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.styleme.factories.ElasticsearchClientFactory;
-import com.styleme.factories.JSONObjectMapperFactory;
 import com.styleme.pojos.Clothing;
 import com.styleme.pojos.Style;
 import org.elasticsearch.action.index.IndexResponse;
@@ -40,7 +39,7 @@ public class ElasticsearchSubmitter {
                     .execute()
                     .actionGet();
         } catch (Exception e) {
-            System.out.println(e);
+            System.err.println("Failed to post " + style.getStyle());
         }
     }
 
@@ -51,9 +50,8 @@ public class ElasticsearchSubmitter {
                     .execute()
                     .actionGet();
         } catch (Exception e) {
-            System.out.println(e);
+            System.err.println("Failed to post " + clothing.getName());
         }
     }
-
 }
 
