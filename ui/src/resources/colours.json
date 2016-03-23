@@ -1,0 +1,52 @@
+[{
+  "name": "Black",
+  "image": "colours/black.png"
+}, {
+  "name": "White",
+  "image": "colours/white.png"
+}, {
+  "name": "Red",
+  "image": "colours/red.png"
+}, {
+  "name": "Orange",
+  "image": "colours/orange.png"
+}, {
+  "name": "Yellow",
+  "image": "colours/yellow.png"
+}, {
+  "name": "Green",
+  "image": "colours/green.png"
+}, {
+  "name": "Blue",
+  "image": "colours/blue.png"
+}, {
+  "name": "Purple",
+  "image": "colours/purple.png"
+}, {
+  "name": "Pink",
+  "image": "colours/pink.png"
+}, {
+  "name": "Multi",
+  "image": "colours/multi.png"
+}, {
+  "name": "Brown",
+  "image": "colours/brown.png"
+}, {
+  "name": "Beige",
+  "image": "colours/beige.png"
+}, {
+  "name": "Grey",
+  "image": "colours/grey.png"
+}, {
+  "name": "Cream",
+  "image": "colours/cream.png"
+}, {
+  "name": "Maroon",
+  "image": "colours/maroon.png"
+}, {
+  "name": "Metallic",
+  "image": "colours/metallic.png"
+}, {
+  "name": "Navy",
+  "image": "colours/navy.png"
+}]

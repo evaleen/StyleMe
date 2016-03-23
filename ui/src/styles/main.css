@@ -1,0 +1,293 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #CECFCE;
+  font-family:'Quicksand', sans-serif;
+  font-weight: 400;
+}
+b {
+  font-weight: 900;
+}
+
+a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: #B58AA5;
+}
+.header {
+  height: 100vh;
+  max-height: 800px;
+}
+.header h1 {
+  font-family:'Quicksand', sans-serif;
+  font-size: 90px;
+  font-weight: bold;
+  margin: 25px 0 0 0;
+}
+
+.logo {
+  width: 15%;
+  height: 15%;
+  background-color: #CECFCE;
+  margin-bottom: -5%;
+  padding-top: 2%;
+}
+
+.title {
+  font-family:'Quicksand', sans-serif;
+  font-weight: bold;
+  color: #84596b;
+  margin-bottom: 0;
+  padding: 2% 0%;
+  text-align: center;
+  margin: auto;
+}
+
+.search {
+  padding-bottom: 4%;
+}
+
+.button:hover {
+  color: #84596b;
+  border: 2px solid #84596b;
+}
+
+.selectedStyle  {
+  background-color: #84596b;
+  color: #fff;
+}
+
+.selectedStyle:hover {
+  background-color: #84596b;
+  color: #fff;
+}
+
+.button:focus .unselected {
+  background-color: #fff;
+  color: #000;
+}
+
+.user-input,.styles, .types, .price, .colours, .submitBtn {
+  text-align: center;
+  color: #000;
+  background-color: #CECFCE;
+  width: 90%;
+  margin:auto;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+.styles h1, .types h1, .price h1, .colours h1 {
+  text-align: center;
+  font-family:'Quicksand', sans-serif;
+  font-size: 30px;
+  color: #84596b;
+}
+
+.styles ul{
+  list-style: none;
+  margin-right: 3%;
+}
+
+.styles li{
+  margin-top: 2%;
+  margin-right: 1%;
+  margin-left: 1%;
+  display: inline-block;
+}
+
+.list {
+  margin-left: 15%;
+}
+
+.list ul li{
+  width: 33%;
+  float: left;
+  text-align: left;
+  list-style-type: none;
+}
+
+
+.picture { max-width: 200px; max-length: 300px; }
+.clothing-list { color: #000000 !important; }
+.clothing-display {  padding-top: 10%; }
+.clothing-item {
+  width: 30%;
+  padding-left: 5%;
+  float: left;
+  text-align: center;
+  list-style-type: none;
+  color: #000000 !important;
+  padding-bottom: 10%;
+}
+
+
+.span3 {
+  width: 100%;
+
+}
+
+.item-name {
+  display: block;
+}
+
+a.modal-link {
+  color: #000;
+}
+
+a.modal-link:hover {
+  color: #84596b;
+}
+
+.modal-dialog {
+  border:2px solid #84596b;
+}
+
+.close span {
+  color: #84596b;
+}
+
+a.link {
+  color:#000 !important;
+}
+
+a.link:hover {
+  color: #84596b;
+  border:2px solid #84596b;
+}
+
+.modal-image {
+  float: left;
+  margin-right: 20px;
+}
+.modal-details {
+  overflow: hidden;
+}
+
+img.loading-gif {
+  padding-top: 15%;
+}
+
+.loading {
+  background-color: #fff;
+}
+
+.returnBtn {
+   padding-bottom: 80px;
+   text-align:center;
+   margin-left: 40%;
+   margin-right: 40%;
+}
+
+.empty {
+  text-align: center;
+  padding-bottom: 10%;
+  padding-top: 5%;
+}
+
+.user-input {
+  text-align: center;
+  background-color: #CECFCE;
+  width: 90%;
+  margin:auto;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  font-family:'Quicksand', sans-serif;
+  font-size: 30px;
+  color: #84596b;
+}
+
+.line {
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.line2 {
+  postion: relative;
+  padding-bottom: 30%;
+}
+
+#left {
+  float: left;
+  width: 49%;
+  padding-left: 14%;
+  padding-right: 5%;
+}
+
+#left, #right {
+  overflow: hidden;
+  font-size: 30px;
+  position: relative;
+  padding-bottom: 30%;
+}
+
+#right {
+  padding-left: 5%;
+  width: 35%;
+}
+
+#in {
+  float:left;
+}
+
+.price_range{
+  width: 75%;
+  padding-left: 25%;
+  font-size: 30px;
+  postion: absolute;
+  margin-top: -55%;
+  float: left;
+}
+
+.price_range_text {
+  padding-bottom:2%;
+}
+
+.submitBtn {
+  postion: absolute;
+  margin-top: -43%;
+  float: left;
+  padding-left: 10%;
+}
+
+.tag-template .left-panel {
+  float: left;
+}
+.tag-template .left-panel img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-top: -4px;
+}
+.tag-template .right-panel {
+  float: left;
+  margin-left: 5px;
+}
+.autocomplete-template .left-panel {
+  float: left;
+}
+.autocomplete-template .left-panel img {
+  width: 48px;
+  height: 48px;
+  vertical-align: middle;
+}
+.autocomplete-template .right-panel {
+  float: left;
+  margin-left: 5px;
+  margin-top: 7px;
+}
+.autocomplete-template .right-panel span:first-child {
+  font-size: 16px;
+}
+.autocomplete-template .right-panel span:nth-child(2) {
+  font-size: 14px;
+  color: gray;
+}
+.autocomplete-template .right-panel span:last-child {
+  display: block;
+  font-size: 14px;
+  font-style: italic;
+}
