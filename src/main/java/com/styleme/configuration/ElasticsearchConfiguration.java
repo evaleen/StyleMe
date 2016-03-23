@@ -13,8 +13,10 @@ public class ElasticsearchConfiguration {
     private String mappingsIndex;
     private String styleType;
     private String topshopType;
-    private String asosType;
+    private String newLookType;
     private String motelType;
+    private String missguidedType;
+    private String nastyGalType;
     private String styleMapping;
     private String clothingMapping;
 
@@ -24,8 +26,10 @@ public class ElasticsearchConfiguration {
         this.mappingsIndex = "mappings";
         this.styleType = "styles";
         this.topshopType = "topshop";
-        this.asosType = "asos";
+        this.newLookType = "newLook";
         this.motelType = "motel";
+        this.missguidedType = "missguided";
+        this.nastyGalType = "nastygal";
         this.styleMapping = "{\n" +
                                 "\"properties\": {\n" +
                                     "\"style\": {\n" +
@@ -137,9 +141,13 @@ public class ElasticsearchConfiguration {
 
     public String getTopshopType() { return this.topshopType; }
 
-    public String getAsosType() { return this.asosType; }
+    public String getNewLookType() { return this.newLookType; }
 
     public String getMotelType() { return this.motelType; }
+
+    public String getMissguidedType() {return this.missguidedType; }
+
+    public String getNastyGalType() {return this.nastyGalType; }
 
     public String getStyleMapping() { return this.styleMapping; }
 

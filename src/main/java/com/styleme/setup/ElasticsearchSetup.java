@@ -46,7 +46,7 @@ public class ElasticsearchSetup {
         if (indicesExistsResponseMappings.isExists()) {
             if (!isMappingSet()) {
                 System.out.println("No mapping found");
-                deleteIndex();
+                deleteMappingsIndex();
                 createMapping();
             } else {
                 System.out.println("Everything created");
@@ -57,10 +57,17 @@ public class ElasticsearchSetup {
 
     }
 
-    private void deleteIndex() {
+    private void deleteMappingsIndex() {
         DeleteIndexRequestBuilder deleteIndexRequestBuilder = elasticsearchClient.admin().indices().prepareDelete(elasticsearchConfiguration.getMappingsIndex());
         deleteIndexRequestBuilder.execute().actionGet();
         System.out.println("Index deleted");
+    }
+
+    public void refreshWebsitesIndex() {
+        DeleteIndexRequestBuilder deleteIndexRequestBuilder = elasticsearchClient.admin().indices().prepareDelete(elasticsearchConfiguration.getSitesIndex());
+        deleteIndexRequestBuilder.execute().actionGet();
+        System.out.println("Index deleted");
+        setup();
     }
 
     private boolean isMappingSet() {
@@ -87,8 +94,10 @@ public class ElasticsearchSetup {
         String styleMapping = elasticsearchConfiguration.getStyleMapping();
         elasticsearchClient.admin().indices()
                 .prepareCreate(elasticsearchConfiguration.getMappingsIndex())
-                .addMapping(elasticsearchConfiguration.getAsosType(), clothingMapping)
+                .addMapping(elasticsearchConfiguration.getNewLookType(), clothingMapping)
                 .addMapping(elasticsearchConfiguration.getMotelType(), clothingMapping)
+                .addMapping(elasticsearchConfiguration.getMissguidedType(), clothingMapping)
+                .addMapping(elasticsearchConfiguration.getNastyGalType(), clothingMapping)
                 .addMapping(elasticsearchConfiguration.getTopshopType(), clothingMapping)
                 .addMapping(elasticsearchConfiguration.getStyleType(), styleMapping)
                 .execute().actionGet();

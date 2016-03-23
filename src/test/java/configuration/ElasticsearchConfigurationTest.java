@@ -20,7 +20,7 @@ public class ElasticsearchConfigurationTest {
     private String mappingsIndex;
     private String styleType;
     private String topshopType;
-    private String asosType;
+    private String newLookType;
     private String motelType;
     private String styleMapping;
     private String clothingMapping;
@@ -33,7 +33,7 @@ public class ElasticsearchConfigurationTest {
         mappingsIndex = "mappings";
         styleType = "styles";
         topshopType = "topshop";
-        asosType = "asos";
+        newLookType = "newLook";
         motelType = "motel";
         styleMapping = "{\n" +
                 "\"properties\": {\n" +
@@ -156,8 +156,8 @@ public class ElasticsearchConfigurationTest {
     }
 
     @Test
-    public void getAsosTypeTest() {
-        assertEquals(asosType, elasticsearchConfiguration.getAsosType());
+    public void getBoohooTypeTest() {
+        assertEquals(newLookType, elasticsearchConfiguration.getNewLookType());
     }
 
     @Test

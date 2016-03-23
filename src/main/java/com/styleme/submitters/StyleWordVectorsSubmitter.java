@@ -45,10 +45,8 @@ public class StyleWordVectorsSubmitter {
     private void postToElasticsearch(String styleName, Set<String> list) {
         Style style = elasticsearchRetriever.getStyle(styleName);
         if(style == null) {
-            System.out.println("Style not there ");
             style = new Style(styleName, list);
         } else {
-            System.out.println("Style is there ");
             style.addTerms(list);
         }
         elasticsearchSubmitter.postStyle(style);

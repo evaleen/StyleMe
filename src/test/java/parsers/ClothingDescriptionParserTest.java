@@ -57,12 +57,6 @@ public class ClothingDescriptionParserTest {
         assertEquals(convertedPrice, output);
     }
 
-    @Test
-    public void getColoursFromTitleTest() {
-        Set<String> output = clothingDescriptionParser.getColoursFromTitle(title);
-        assertEquals(colours, output);
-    }
-
     @After
     public void tearDown() {}
 }

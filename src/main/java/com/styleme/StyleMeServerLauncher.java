@@ -3,6 +3,7 @@ import com.styleme.configuration.StyleMeServerConfiguration;
 import com.styleme.endpoints.StyleSearchEndpoints;
 import com.styleme.jobs.WebsiteParserJob;
 import com.styleme.parsers.ArticleParser;
+import com.styleme.parsers.WebsiteParser;
 import com.styleme.setup.ElasticsearchSetup;
 import com.styleme.vectorizors.GloveVectorization;
 import com.styleme.vectorizors.Word2VecRawText;

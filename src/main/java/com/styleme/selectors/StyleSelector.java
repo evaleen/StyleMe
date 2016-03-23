@@ -1,5 +1,6 @@
 package com.styleme.selectors;
 
+import com.styleme.parsers.SentenceParser;
 import com.styleme.pojos.Clothing;
 import com.styleme.pojos.Style;
 
@@ -10,8 +11,10 @@ import java.util.*;
  */
 public class StyleSelector {
 
+    private SentenceParser sentenceParser;
 
     public StyleSelector() {
+        sentenceParser = new SentenceParser();
     }
 
     public List<Clothing> getClothingForStyle(Style style, List<Clothing> clothing) {
@@ -19,6 +22,7 @@ public class StyleSelector {
         Set<Clothing> items;
         for(Clothing item : clothing) {
             String description = item.getName() + " " + item.getDescription();
+            description = sentenceParser.removeStopWordsAndPunctuation(description);
             int score = getRelevanceScore(description, style.getTerms());
             if(scores.containsKey(score)) {
                 items = scores.get(score);
@@ -40,7 +44,6 @@ public class StyleSelector {
         }
         return score;
     }
-
 
     public List<Clothing> getSortedClothesList(TreeMap<Integer, Set<Clothing>> scores) {
         List<Clothing> sortedClothes = new ArrayList<>();

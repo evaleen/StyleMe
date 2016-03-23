@@ -1,10 +1,10 @@
 package com.styleme.parsers;
 
+import com.styleme.factories.ColoursFactory;
 import com.styleme.pojos.Clothing;
 import com.styleme.submitters.ElasticsearchSubmitter;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.util.*;
 
@@ -19,93 +19,101 @@ public class ClothingDescriptionParser {
 
 
     private ElasticsearchSubmitter elasticsearchSubmitter;
-    private SentenceParser sentenceParser;
-    private HashSet<String> setColours;
+    private ColoursFactory coloursFactory;
 
     public ClothingDescriptionParser() {
         elasticsearchSubmitter = new ElasticsearchSubmitter();
-        sentenceParser = new SentenceParser();
-        setColours = getColours();
-
+        coloursFactory = new ColoursFactory();
     }
-
 
     public void getDescription(String url, String image, Document document, String site, String title, String type) {
         switch (site) {
-            case "topshop" : getTopshopDescription(url, image, document, title, type);
-                             break;
-            case "asos"    : getAsosDescription(url, image, document, title, type);
-                             break;
-            case "motel"   : getMotelDescription(url, image, document, title, type);
+            case "topshop" :   getTopshopDescription(url, image, document, title, type);
+                               break;
+            case "newlook" :   getNewLookDescription(url, image, document, title, type);
+                               break;
+            case "motel"   :   getMotelDescription(url, image, document, title, type);
+                               break;
+            case "missguided": getMissguidedDescription(url, image, document, title, type);
+                               break;
+            case "nastygal":   getNastyGalDescription(url, image, document, title, type);
+        }
+    }
+
+    private void getNastyGalDescription(String url, String image, Document document, String title, String type) {
+        try {
+            String description = document.select("div.product-description").first().text();
+            String price = document.select("span.current-price").first().text();
+            String currency = getCurrency(price);
+            double priceNum = convertPrice(price);
+            String colour = document.getElementsByAttributeValue("property", "og:color").first().attr("content");
+            Set<String> colours = coloursFactory.getColoursFromDetails(title + " " + description + " " + colour);
+            insertClothingItemIntoES("nastygal", title, type, url, image, description, priceNum, currency, colours);
+        } catch (NullPointerException e) {
+            System.err.println("Error extracting information from " + url);
+        }
+    }
+
+    private void getMissguidedDescription(String url, String image, Document document, String title, String type) {
+        try {
+            Element detailsDiv = document.select("div.product-essential__description").first();
+            String description = detailsDiv.text();
+            String price = document.select("span.price").first().text();
+            String currency = getCurrency(price);
+            double priceNum = convertPrice(price);
+            Set<String> colours = coloursFactory.getColoursFromDetails(title + " " + description);
+            insertClothingItemIntoES("missguided", title, type, url, image, description, priceNum, currency, colours);
+        } catch (NullPointerException e) {
+            System.err.println("Error extracting information from " + url);
         }
     }
 
     private void getMotelDescription(String url, String image, Document document, String title, String type) {
-        //get description
-        Element details = document.getElementById("Details");
-        Element span = details.child(1);
-        String description = span.text();
-        //get price
-        Elements prices = document.getElementsByClass("ProductPrice");
-        String price = prices.first().text();
-        String currency = getCurrency(price);
-        double priceNum = convertPrice(price);
-        //get colours
-        HashSet<String> colours = getColoursFromTitle(title);
-        Element colourDiv = document.getElementById("colourswatch");
-        if(colourDiv != null) {
-            for(Element child : colourDiv.children()) {
-                String colour = child.attr("alt");
-                if(!colour.equals("")) colours.add(colour);
-            }
+        try {
+            String description = document.getElementById("Details").child(1).text();
+            String price = document.getElementsByClass("ProductPrice").first().text();
+            String currency = getCurrency(price);
+            double priceNum = convertPrice(price);
+            Set<String> colours = coloursFactory.getColoursFromDetails(title + " " + description);
+            insertClothingItemIntoES("motel", title, type, url, image, description, priceNum, currency, colours);
+        } catch (NullPointerException e) {
+            System.err.println("Error extracting information from " + url);
         }
-        //put into ES
-        insertClothingItemIntoES("motel", title, type, url, image, description, priceNum, currency, colours);
-
     }
 
-    private void getAsosDescription(String url, String image, Document document, String title, String type) {
-        System.out.println(title);
-        //get description
-        Elements descDiv = document.getElementsByClass("product-description");
-        String description = descDiv.first().text();
-        //get colours
-        Elements coloursOptions = document.getElementById("ctl00_ContentMainPage_ctlSeparateProduct_drpdwnColour").children();
-        Set<String> colours = new HashSet<>();
-        for(Element el : coloursOptions) {
-            String colour = el.attr("value");
-            if(!colour.equals("-1") && !colour.equals("")) {
-                colours.add(colour);
+    private void getNewLookDescription(String url, String image, Document document, String title, String type) {
+        try {
+            String description = document.select("div.information-section").first().text();
+            Element priceSpan = document.getElementsByClass("salePrice").first();
+            if (priceSpan == null) {
+                priceSpan = document.getElementsByClass("productPrice").first();
             }
+            String price = priceSpan.text();
+            String currency = getCurrency(price);
+            double priceNum = convertPrice(price);
+            Set<String> colours = coloursFactory.getColoursFromDetails(title + " " + description);
+            insertClothingItemIntoES("newlook", title, type, url, image, description, priceNum, currency, colours);
+        } catch (NullPointerException e) {
+            System.err.println("Error extracting information from " + url);
         }
-        //get price
-        Elements priceDiv = document.getElementsByClass("product_price_details");
-        String price = priceDiv.first().text();
-        String currency = getCurrency(price);
-        double priceNum = convertPrice(price);
-        //put into ES
-        insertClothingItemIntoES("asos", title, type, url, image, description, priceNum, currency, colours);
     }
 
     public void getTopshopDescription(String url, String image, Document document, String title, String type) {
-        //get description
-        String description = document.getElementsByClass("product_description").text();
-        //get colours
-        Set<String> colours = new HashSet<>();
-        String colour = document.getElementsByClass("product_colour").text();
-        colour = colour.replace("Colour:", "").replaceAll("\\s+","");
-        colours.add(colour);
-        //get price
-        String price = document.getElementsByClass("product_price").text();
-        price = price.replace("Price:", "").replaceAll("\\s+","");
-        String currency = getCurrency(price);
-        double priceNum = convertPrice(price);
-        //put into ES
-        insertClothingItemIntoES("topshop", title, type, url, image, description, priceNum, currency, colours);
+        try {
+            String description = document.getElementById("productInfo").select("p").text();
+            String colour = document.getElementsByClass("product_colour").text();
+            Set<String> colours = coloursFactory.getColoursFromDetails(colour);
+            String price = document.getElementsByClass("product_price").text();
+            price = price.replace("Price:", "").replaceAll("\\s+","");
+            String currency = getCurrency(price);
+            double priceNum = convertPrice(price);
+            insertClothingItemIntoES("topshop", title, type, url, image, description, priceNum, currency, colours);
+        } catch (NullPointerException e) {
+            System.err.println("Error extracting information from " + url);
+        }
     }
 
     private void insertClothingItemIntoES(String site, String title, String type, String url, String image, String description, double price, String currency, Set<String> colours) {
-        description = sentenceParser.removeStopWordsAndPunctuation(description);
         Clothing item = new Clothing(convertToId(title), title, type, description, price, currency, url, image, colours);
         elasticsearchSubmitter.postClothing(site, item);
     }
@@ -124,36 +132,12 @@ public class ClothingDescriptionParser {
     public double convertPrice(String price) {
         price = price.replaceAll(",", ".");
         price = price.replaceAll("[^0-9.]", "");
-        System.out.println(price);
-        double num = 0.00;
+        double num =0.0;
         try {
             num = Double.parseDouble(price);
         } catch(NumberFormatException e) {
-            Scanner sc = new Scanner(System.in);
-            num = Double.parseDouble(sc.nextLine());
+            System.err.println("Error converting price" + price);
         }
         return num;
-    }
-
-    public HashSet<String> getColoursFromTitle(String title) {
-        HashSet<String> colours = new HashSet<>();
-        for(String colour : setColours) {
-            if(title.toLowerCase().contains(colour)) {
-                colours.add(colour);
-            } else if(title.toLowerCase().contains("ivory")) {
-                colours.add("cream");
-            } else if (title.contains("lilac") || title.contains("violet") || title.contains("indigo")) {
-                colours.add("purple");
-            } else if (title.contains("maroon") || title.contains("burgundy")) {
-                colours.add("wine");
-            }
-        }
-        if(colours.isEmpty()) colours.add("multi");
-        return colours;
-    }
-
-    private HashSet<String> getColours() {
-        return new HashSet<>(Arrays.asList("black", "white", "red", "orange", "silver", "gold", "wine", "khaki", "navy",
-                "yellow", "green", "blue", "purple", "pink", "multi", "brown", "beige", "grey", "cream"));
     }
 }

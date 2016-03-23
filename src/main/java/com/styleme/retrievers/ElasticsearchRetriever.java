@@ -42,7 +42,9 @@ public class ElasticsearchRetriever {
 
     public List<Clothing> getSearch(String styleName, List<String> types, List<String> colours, List<String> range) {
         Style style = getStyle(styleName);
+        System.out.println(style.toString());
         List<Clothing> clothing = getClothing(types, colours, range);
+        System.out.println(clothing.size());
         List<Clothing> clothes = styleSelector.getClothingForStyle(style, clothing);
         System.out.println(clothes);
         return clothes;
@@ -57,16 +59,16 @@ public class ElasticsearchRetriever {
 
     private List<Clothing> getClothing(List<String> types, List<String> colours, List<String> range){
         SearchRequestBuilder searchRequest = elasticsearchClient.prepareSearch(elasticsearchConfiguration.getSitesIndex())
-            .setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setSize(1000);
+            .setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setSize(10000);
         BoolQueryBuilder qb = boolQuery();
         double min = Double.parseDouble(range.get(0));
         double max = Double.parseDouble(range.get(1));
         searchRequest.setPostFilter(FilterBuilders.rangeFilter("price").from(min).to(max));
-        if(!types.get(0).equals("null")) {
+        if(!types.get(0).equals("")) {
             String[] typesArray = types.toArray(new String[types.size()]);
             searchRequest.setQuery(qb.must(termsQuery("type", typesArray)).minimumShouldMatch("1"));
         }
-        if (!colours.get(0).equals("null")) {
+        if (!colours.get(0).equals("")) {
             String[] coloursArray = colours.toArray(new String[colours.size()]);
             searchRequest.setQuery(qb.must(termsQuery("colours", coloursArray)).minimumShouldMatch("1"));
         }
