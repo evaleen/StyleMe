@@ -19,8 +19,10 @@ public class WebsiteParserJob implements Job {
 
     public void execute(JobExecutionContext context) throws JobExecutionException {
 
-        elasticsearchSetup.refreshWebsitesIndex();
-        websiteParser.parseWebsites("src/main/resources/fashionWebsites/websiteUrls.txt");
+        elasticsearchSetup.refreshWebsitesIndex("womens");
+        websiteParser.parseWebsites("src/main/resources/womensWebsiteUrls.txt", "womens");
+        elasticsearchSetup.refreshWebsitesIndex("mens");
+        websiteParser.parseWebsites("src/main/resources/mensWebsiteUrls.txt", "mens");
 
     }
 

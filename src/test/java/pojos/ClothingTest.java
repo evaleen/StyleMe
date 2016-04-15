@@ -25,6 +25,8 @@ public class ClothingTest {
     private String url;
     private String image;
     private Set<String> colours;
+    private Set<String> terms;
+    private int score;
 
     @Before
     public void setUp() {
@@ -39,6 +41,9 @@ public class ClothingTest {
         image = "www.asos.ie/image/black/dress";
         colours = new HashSet<>();
         colours.add("black");
+        terms = new HashSet<>();
+        terms.add("funky");
+        score = 2;
 
     }
 
@@ -94,6 +99,26 @@ public class ClothingTest {
     public void setGetColoursTest() {
         clothing.setColours(colours);
         assertEquals(clothing.getColours(), colours);
+    }
+
+    @Test
+    public void setGetTermsTest() {
+        clothing.setTerms(terms);
+        assertEquals(clothing.getTerms(), terms);
+    }
+
+    @Test
+    public void addGetTermsTest() {
+        clothing.setTerms(terms);
+        clothing.addTerm("chic");
+        terms.add("chic");
+        assertEquals(clothing.getTerms(), terms);
+    }
+
+    @Test
+    public void setGetScoreTest() {
+        clothing.setScore(score);
+        assertEquals(clothing.getScore(), score);
     }
 
     @After

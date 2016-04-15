@@ -10,100 +10,58 @@
   <div ng-show="isEmpty(clothingList)" class="empty">
     Sorry, no clothes match this search!
   </div>
-  <!--div ng-hide="empty" class="row" ng-repeat="rows in clothingList">
-    <div class="span3" ng-repeat="clothing in rows">
-      <div class="clothing-item">
-        <a class="modal-link" data-toggle="modal" data-target="#viewClothing{{$index}}">
-        <img class="picture" ng-src="{{clothing.image}}">
-        <span class="item-name">{{clothing.name}} - {{clothing.price}} {{clothing.currency}}</span>
-        </a>
-        <div class="modal fade" id="viewClothing{{$index}}" tabindex="-1" role="dialog">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                {{clothing.name}}
-                <button type="button" class="close" data-dismiss="modal">
-                  <span>&times;</span>
-                  <span class="sr-only">Close</span>
-                </button>
-              </div>
-              <div class="clearfix modal-body">
-                <div class=modal-image>
-                  <img class="picture" ng-src="{{clothing.image}}">
-                </div>
-                <div class=modal-details>
-                  <table class="clothing-table">
-                    <tr>
-                      <td> <b> Colours: </b> {{getListAsString(clothing.colours)}} </td>
-                    </tr>
-                    <tr>
-                      <td> <b> Price: </b> {{clothing.price}} </td>
-                    </tr>
-                    <tr>
-                      <td> <b> Description: </b> {{clothing.description}}</td>
-                    </tr>
-                  </table>
-                </div>
-                <br><br>
-                <button type="button" class="btn btn-lg button modal-btn" ng-click="open(clothing.url)">
-                  Link to Item
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div-->
-  <!-- Display the list of results -->
   <div class="clothing-display">
     <div class="clothing-list" ng-repeat="clothing in clothingList | limitTo:resultLimit">
       <div class="clothing-item">
         <a class="modal-link" data-toggle="modal" data-target="#viewClothing{{$index}}">
-          <img class="picture" ng-src="{{clothing.image}}">
+          <img class="clothing-image result-image" ng-src="{{clothing.image}}">
           <span class="item-name">{{clothing.name}} - {{clothing.price}} {{clothing.currency}}</span>
         </a>
-        <div class="modal fade" id="viewClothing{{$index}}" tabindex="-1" role="dialog">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                {{clothing.name}}
-                <button type="button" class="close" data-dismiss="modal">
-                  <span>&times;</span>
-                  <span class="sr-only">Close</span>
-                </button>
+        <img class="loveHateBtn" id="love{{$index}}" data-toggle="tooltipLove" title="Rate it!" ng-click="incrementTerms(clothing.terms, $index)" ng-src="images/love.png"></img>
+        <img class="loveHateBtn" id="dislike{{$index}}" data-toggle="tooltipHate" title="Hate it!" ng-click="decrementTerms(clothing.terms, $index)" ng-src="images/dislike.png"></img>
+      </div>
+      <div class="modal fade" id="viewClothing{{$index}}" tabindex="-1" role="dialog">
+        <div class="modal-dialog" >
+          <div class="modal-content">
+            <div class="modal-header">
+              {{clothing.name}}
+              <button type="button" id="close" class="close" data-dismiss="modal">
+                <span>&times;</span>
+                <span class="sr-only">Close</span>
+              </button>
+            </div>
+            <div class="clearfix modal-body">
+              <div class=modal-image>
+                <img class="clothing-image-modal" ng-src="{{clothing.image}}">
               </div>
-              <div class="clearfix modal-body">
-                <div class=modal-image>
-                  <img class="picture" ng-src="{{clothing.image}}">
-                </div>
-                <div class=modal-details>
-                  <table class="clothing-table">
-                    <tr>
-                      <td> <b> Colours: </b> {{getListAsString(clothing.colours)}} </td>
-                    </tr>
-                    <tr>
-                      <td> <b> Price: </b> {{clothing.price}} </td>
-                    </tr>
-                    <tr>
-                      <td> <b> Description: </b> {{clothing.description}}</td>
-                    </tr>
-                  </table>
-                </div>
-                <br><br>
-                <button type="button" class="btn btn-lg button modal-btn" ng-click="open(clothing.url)">
-                  Link to Item
-                </button>
+              <div class=modal-details>
+                <table class="clothing-table">
+                  <tr>
+                    <td> <b> Colours: </b> {{getListAsString(clothing.colours)}} </td>
+                  </tr>
+                  <tr>
+                    <td> <b> Price: </b> {{clothing.price}} {{clothing.currency}} </td>
+                  </tr>
+                  <tr>
+                    <td> <b> Description: </b> {{clothing.description}}</td>
+                  </tr>
+                </table>
               </div>
+              <br><br>
+              <button type="button" class="btn btn-lg button modal-btn" ng-click="open(clothing.url)">
+                Link to Item
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="loadMoreBtn" ng-show="loaded" ng-hide="empty">
+    <button ng-click="loadMore()" ng-show="moreResults" type="button" class="btn btn-lg button">Load More</button>
+  </div>
   <div class = "returnBtn" ng-show="loaded">
-    <button type="button" ng-click="goSearch()" class="btn btn-lg button">
-      Back To Search
+    <button type="button" ng-click="goSearch()" class="btn btn-lg button">Back To Search
     </button>
   </div>
 </div>

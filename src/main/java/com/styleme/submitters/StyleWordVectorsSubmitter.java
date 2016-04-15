@@ -47,7 +47,7 @@ public class StyleWordVectorsSubmitter {
         if(style == null) {
             style = new Style(styleName, list);
         } else {
-            style.addTerms(list);
+            style.addTermsFromSet(list);
         }
         elasticsearchSubmitter.postStyle(style);
     }

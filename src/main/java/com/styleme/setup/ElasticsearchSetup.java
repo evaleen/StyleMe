@@ -32,7 +32,8 @@ public class ElasticsearchSetup {
 
     public void setup() {
         IndicesExistsResponse indicesExistsResponseFashion = elasticsearchClient.admin().indices().prepareExists(elasticsearchConfiguration.getFashionIndex()).execute().actionGet();
-        IndicesExistsResponse indicesExistsResponseSites = elasticsearchClient.admin().indices().prepareExists(elasticsearchConfiguration.getSitesIndex()).execute().actionGet();
+        IndicesExistsResponse indicesExistsResponseSites = elasticsearchClient.admin().indices().prepareExists(elasticsearchConfiguration.getSitesIndex("womens")).execute().actionGet();
+        IndicesExistsResponse indicesExistsResponseMensSites = elasticsearchClient.admin().indices().prepareExists(elasticsearchConfiguration.getSitesIndex("mens")).execute().actionGet();
         IndicesExistsResponse indicesExistsResponseMappings = elasticsearchClient.admin().indices().prepareExists(elasticsearchConfiguration.getMappingsIndex()).execute().actionGet();
 
         if(!indicesExistsResponseFashion.isExists()){
@@ -40,8 +41,12 @@ public class ElasticsearchSetup {
             System.out.println("Fashion index created");
         }
         if(!indicesExistsResponseSites.isExists()){
-            elasticsearchClient.admin().indices().prepareCreate(elasticsearchConfiguration.getSitesIndex()).execute().actionGet();
+            elasticsearchClient.admin().indices().prepareCreate(elasticsearchConfiguration.getSitesIndex("womens")).execute().actionGet();
             System.out.println("Websites index created");
+        }
+        if(!indicesExistsResponseMensSites.isExists()){
+            elasticsearchClient.admin().indices().prepareCreate(elasticsearchConfiguration.getSitesIndex("mens")).execute().actionGet();
+            System.out.println("Mens Websites index created");
         }
         if (indicesExistsResponseMappings.isExists()) {
             if (!isMappingSet()) {
@@ -63,8 +68,8 @@ public class ElasticsearchSetup {
         System.out.println("Index deleted");
     }
 
-    public void refreshWebsitesIndex() {
-        DeleteIndexRequestBuilder deleteIndexRequestBuilder = elasticsearchClient.admin().indices().prepareDelete(elasticsearchConfiguration.getSitesIndex());
+    public void refreshWebsitesIndex(String gender) {
+        DeleteIndexRequestBuilder deleteIndexRequestBuilder = elasticsearchClient.admin().indices().prepareDelete(elasticsearchConfiguration.getSitesIndex(gender));
         deleteIndexRequestBuilder.execute().actionGet();
         System.out.println("Index deleted");
         setup();

@@ -24,9 +24,12 @@ public class Clothing implements Comparable<Clothing> {
     private String url;
     private String image;
     private Set<String> colours;
+    private Set<String> terms;
+    private int score;
 
     public Clothing(String id) {
         this.id = id;
+        terms = new HashSet<>();
     }
 
     @JsonCreator
@@ -42,6 +45,8 @@ public class Clothing implements Comparable<Clothing> {
         this.url = url;
         this.image = image;
         this.colours = colours;
+        this.terms = new HashSet<>();
+        this.score = 0;
     }
 
     public Clothing() {}
@@ -103,7 +108,15 @@ public class Clothing implements Comparable<Clothing> {
         return colours;
     }
 
-    public void setColours(Set<String> colours) {
-        this.colours = new HashSet<>(colours);
-    }
+    public void setColours(Set<String> colours) { this.colours = new HashSet<>(colours); }
+
+    public Set<String> getTerms() { return this.terms; }
+
+    public void setTerms(Set<String> terms) { this.terms = terms; }
+
+    public void addTerm(String term) { this.terms.add(term); }
+
+    public void setScore(int score) { this.score = score; }
+
+    public int getScore() { return this.score; }
 }

@@ -7,6 +7,7 @@ import com.styleme.pojos.Style;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.common.collect.Lists;
+import org.elasticsearch.common.jackson.core.type.TypeReference;
 import org.elasticsearch.search.SearchHit;
 
 import java.io.IOException;
@@ -26,10 +27,11 @@ public class ElasticsearchResponseParser {
             String source = getResponse.getSourceAsString();
             if(source != null) {
                 style = objectReader.readValue(source);
+                style = objectReader.readValue(source);
             }
         } catch (Exception e) {
-            System.err.println("IO Exception error");
-            System.out.println(e);
+            System.err.println("Exception error");
+            e.printStackTrace();
         }
         return style;
     }

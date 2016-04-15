@@ -9,15 +9,10 @@ import org.deeplearning4j.text.sentenceiterator.SentenceIterator;
 import org.deeplearning4j.text.tokenization.tokenizer.preprocessor.CommonPreprocessor;
 import org.deeplearning4j.text.tokenization.tokenizerfactory.DefaultTokenizerFactory;
 import org.deeplearning4j.text.tokenization.tokenizerfactory.TokenizerFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import org.canova.api.util.ClassPathResource;
 
 import java.io.*;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
 
 /**
  * @author Eibhlin McGeady
@@ -28,7 +23,6 @@ import java.util.Set;
  */
 public class Word2VecRawText {
 
-    private static Logger log = LoggerFactory.getLogger(Word2VecRawText.class);
     private StyleWordVectorsSubmitter styleWordVectorsSubmitter;
     
     public Word2VecRawText() {
@@ -39,12 +33,10 @@ public class Word2VecRawText {
         try {
             File file = new ClassPathResource(fileName).getFile();
 
-            log.info("Load & Vectorize Sentences....");
             SentenceIterator iter = new BasicLineIterator(file);
             TokenizerFactory t = new DefaultTokenizerFactory();
             t.setTokenPreProcessor(new CommonPreprocessor());
 
-            log.info("Building model....");
             Word2Vec vec = new Word2Vec.Builder()
                     .minWordFrequency(5)
                     .iterations(1)
@@ -55,7 +47,6 @@ public class Word2VecRawText {
                     .tokenizerFactory(t)
                     .build();
 
-            log.info("Fitting Word2Vec model....");
             vec.fit();
 
             // Write word vectors

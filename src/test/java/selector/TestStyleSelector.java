@@ -1,13 +1,14 @@
 package selector;
 
 import com.styleme.pojos.Clothing;
+import com.styleme.pojos.Style;
 import com.styleme.selectors.StyleSelector;
-import junit.framework.Assert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.*;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Eibhlin McGeady
@@ -16,41 +17,66 @@ public class TestStyleSelector {
 
     private StyleSelector styleSelector;
 
+    private Style style;
     private List<Clothing> clothingList;
-    private TreeMap<Integer, Set<Clothing>> clothingScores;
+    private List<Clothing> topThree;
+    private List<String> incTerms;
+    private List<String> decTerms;
+    private List<Clothing> returnedList;
 
     @Before
     public void setUp(){
+        style = new Style();
+        style.setStyle("preppy");
+        Set<Map<String, Integer>> terms = new HashSet<>();
+        Map<String, Integer> term1 = new HashMap<>();
+        Map<String, Integer> term2 = new HashMap<>();
+        term1.put("fresh", 1);
+        term2.put("uni", 1);
+        terms.add(term1);
+        terms.add(term2);
+        style.setTerms(terms);
         styleSelector = new StyleSelector();
+
         Clothing clothing1 = new Clothing("1");
+        clothing1.setName("clothing 1"); clothing1.setDescription("fresh uni preppy");
         Clothing clothing2 = new Clothing("2");
+        clothing2.setName("clothing 2"); clothing2.setDescription("preppy");
         Clothing clothing3 = new Clothing("3");
+        clothing3.setName("clothing 3"); clothing3.setDescription("fresh uni");
         Clothing clothing4 = new Clothing("4");
-        clothingScores = new TreeMap<>();
-        Set<Clothing> set1 = new HashSet<>();
-        Set<Clothing> set2 = new HashSet<>();
-        Set<Clothing> set3 = new HashSet<>();
-        Set<Clothing> set4 = new HashSet<>();
-        set1.add(clothing1);
-        set2.add(clothing2);
-        set3.add(clothing3);
-        set4.add(clothing4);
-        clothingScores.put(1232, set4);
-        clothingScores.put(555, set3);
-        clothingScores.put(343, set2);
-        clothingScores.put(132, set1);
+        clothing4.setName("clothing 4"); clothing4.setDescription("fresh summer young");
+
         clothingList = new ArrayList<>();
         clothingList.add(clothing1); clothingList.add(clothing2);
         clothingList.add(clothing3); clothingList.add(clothing4);
+
+        topThree = new ArrayList<>();
+        topThree.add(clothing1); topThree.add(clothing2); topThree.add(clothing3);
+
+        incTerms = Arrays.asList("fresh", "summer", "young");
+        decTerms = Arrays.asList("uni");
+
+        returnedList = new ArrayList<>();
+        returnedList.add(clothing1); returnedList.add(clothing4);
+        returnedList.add(clothing2); returnedList.add(clothing3);
+    }
+
+
+    @Test
+    public void getClothingSuggestionsForStyleTest() {
+        List<Clothing> suggestedClothing = styleSelector.getClothingSuggestionsForStyle(style, clothingList);
+        assertEquals(suggestedClothing, topThree);
+
+
     }
 
     @Test
-    public void testOrderClothingItems() {
-       List<Clothing> result = styleSelector.getSortedClothesList(clothingScores);
-        Assert.assertEquals(clothingList.get(0).getId(), result.get(0).getId());
-        Assert.assertEquals(clothingList.get(1).getId(), result.get(1).getId());
-        Assert.assertEquals(clothingList.get(2).getId(), result.get(2).getId());
-        Assert.assertEquals(clothingList.get(3).getId(), result.get(3).getId());
+    public void getClothingWithUpdatedScoresTest() {
+        styleSelector.getClothingSuggestionsForStyle(style, clothingList);
+        List<Clothing> returnedClothing = styleSelector.getClothingWithUpdatedScores(incTerms, decTerms);
+        assertEquals(returnedClothing, returnedList);
+
     }
 
     @After

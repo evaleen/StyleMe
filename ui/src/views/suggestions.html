@@ -1,0 +1,40 @@
+<div class="results" ng-init="init()">
+  <div class="title">
+    <a ng-href="/">
+      <img class="logo" src="images/logo.png">
+    </a>
+  </div>
+  <div class="loading text-center modal fade" id="loadingDialog" tabindex="-1" role="dialog">
+    <img id="loading" class="loading-gif" src="images/loading.gif">
+  </div>
+  <div ng-show="empty" class="empty">
+    Sorry, no clothes match this search!
+  </div>
+  <div class="description" ng-hide="empty">
+    To help improve your search, select if you want items more or less similar to these!
+  </div>
+  <div class="clothing-display">
+    <div class="clothing-list" ng-repeat="clothing in clothingList | limitTo:resultLimit">
+      <div class="clothing-item">
+          <img class="clothing-image" ng-src="{{clothing.image}}">
+          <span class="item-name">{{clothing.name}}</span>
+        <button class="btn btn-sm moreLessLikeBtn button" id="incTerms{{$index}}" ng-click="moreLike(clothing.terms, $index)">
+          More Like This!
+        </button>
+        <button class="btn btn-sm moreLessLikeBtn button" id="decTerms{{$index}}" ng-click="lessLike(clothing.terms, $index)">
+          Less Like This!
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class = "continueBtn" ng-hide="empty">
+    <button type="button" ng-click="continue()" class="btn btn-lg button">
+      Continue
+    </button>
+  </div>
+  <div class = "returnBtn" ng-show="empty">
+    <button type="button" ng-click="returnToSearch()" class="btn btn-lg button">
+      Continue
+    </button>
+  </div>
+</div>

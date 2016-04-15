@@ -2,9 +2,9 @@ package com.styleme.endpoints;
 
 import java.util.List;
 
-import com.styleme.configuration.ElasticsearchConfiguration;
 import com.styleme.pojos.Clothing;
 import com.styleme.retrievers.ElasticsearchRetriever;
+import com.styleme.updaters.StyleTermUpdater;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -20,22 +20,45 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class StyleSearchEndpoints {
 
-    private ElasticsearchRetriever elasticsearchClothingRetriever;
+    private ElasticsearchRetriever elasticsearchRetriever;
+    private StyleTermUpdater styleTermUpdater;
 
     public StyleSearchEndpoints() {
-        this(new ElasticsearchRetriever(), new ElasticsearchConfiguration());
+        this(new ElasticsearchRetriever(), new StyleTermUpdater());
     }
 
-    public StyleSearchEndpoints(ElasticsearchRetriever elasticsearchClothingRetriever, ElasticsearchConfiguration elasticsearchConfiguration) {
-        this.elasticsearchClothingRetriever = elasticsearchClothingRetriever;
+    public StyleSearchEndpoints(ElasticsearchRetriever elasticsearchRetriever, StyleTermUpdater styleTermUpdater) {
+        this.elasticsearchRetriever = elasticsearchRetriever;
+        this.styleTermUpdater = styleTermUpdater;
+    }
+
+    @Path("/clothesSuggestions")
+    @GET()
+    @Consumes(MediaType.APPLICATION_JSON)
+    public List<Clothing> getClothingSuggestions(@QueryParam("gender") String gender, @QueryParam("style") String style, @QueryParam("types") List<String> types, @QueryParam("colours") List<String> colours,
+                                      @QueryParam("range") List<String> range) {
+        return elasticsearchRetriever.getSearchSuggestions(gender, style, types, colours, range);
     }
 
     @Path("/clothes")
     @GET()
     @Consumes(MediaType.APPLICATION_JSON)
-    public List<Clothing> getClothing(@QueryParam("style") String style, @QueryParam("types") List<String> types, @QueryParam("colours") List<String> colours,
-                                      @QueryParam("range") List<String> range) {
-        return elasticsearchClothingRetriever.getSearch(style, types, colours, range);
+    public List<Clothing> getClothing(@QueryParam("incTerms") List<String> incTerms, @QueryParam("decTerms") List<String> decTerms) {
+        return elasticsearchRetriever.getSearch(incTerms, decTerms);
+    }
+
+    @Path("/incrementTerms")
+    @POST()
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void incrementTerms(@QueryParam("style") String style, @QueryParam("terms") List<String> terms) {
+        styleTermUpdater.incrementStyleTerms(style, terms);
+    }
+
+    @Path("/decrementTerms")
+    @POST()
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void decrementTerms(@QueryParam("style") String style, @QueryParam("terms") List<String> terms) {
+        styleTermUpdater.decrementTerms(style, terms);
     }
 
 }

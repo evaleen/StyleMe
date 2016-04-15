@@ -2,7 +2,47 @@
 
 angular.module('styleMeApp').service('Attributes', function() {
 
-  this.getStyles = function() {
+  this.getMensStyles = function() {
+    return [{
+      name: "Preppy",
+      selected: false
+    }, {
+      name: "Punk",
+      selected: false
+    }, {
+      name: "Bohemian",
+      selected: false
+    }, {
+      name: "Vintage",
+      selected: false
+    }, {
+      name: "Retro",
+      selected: false
+    }, {
+      name: "Grunge",
+      selected: false
+    }, {
+      name: "Sophisticated",
+      selected: false
+    }, {
+      name: "Sporty",
+      selected: false
+    }, {
+      name: "Gothic",
+      selected: false
+    }, {
+      name: "Minimalist",
+      selected: false
+    }, {
+      name: "Funky",
+      selected: false
+    }, {
+      name: "Casual",
+      selected: false
+    }];
+  };
+
+  this.getWomensStyles = function() {
     return [{
       name: "Preppy",
       selected: false
@@ -38,9 +78,6 @@ angular.module('styleMeApp').service('Attributes', function() {
       selected: false
     }, {
       name: "Glamorous",
-      selected: false
-    }, {
-      name: "Avant-Garde",
       selected: false
     }, {
       name: "Feminine",

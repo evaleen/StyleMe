@@ -34,7 +34,7 @@ a:hover, a:focus, a:active {
   height: 15%;
   background-color: #CECFCE;
   margin-bottom: -5%;
-  padding-top: 2%;
+  margin-top: 2%;
 }
 
 .title {
@@ -48,10 +48,10 @@ a:hover, a:focus, a:active {
 }
 
 .search {
-  padding-bottom: 4%;
+  position: relative;
 }
 
-.button:hover {
+.button:hover, .selectedBtn  {
   color: #84596b;
   border: 2px solid #84596b;
 }
@@ -66,7 +66,7 @@ a:hover, a:focus, a:active {
   color: #fff;
 }
 
-.button:focus .unselected {
+.button:focus, button:active, .unselected {
   background-color: #fff;
   color: #000;
 }
@@ -77,8 +77,7 @@ a:hover, a:focus, a:active {
   background-color: #CECFCE;
   width: 90%;
   margin:auto;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding: 5% 0%;
 }
 .styles h1, .types h1, .price h1, .colours h1 {
   text-align: center;
@@ -111,7 +110,14 @@ a:hover, a:focus, a:active {
 }
 
 
-.picture { max-width: 200px; max-length: 300px; }
+.clothing-image, .clothing-image-modal {
+    width: 200px;
+    height: 300px;
+    border: solid 2px #84596b;
+}
+.result-image:hover {
+    border-color: #ffffff;
+}
 .clothing-list { color: #000000 !important; }
 .clothing-display {  padding-top: 10%; }
 .clothing-item {
@@ -121,13 +127,12 @@ a:hover, a:focus, a:active {
   text-align: center;
   list-style-type: none;
   color: #000000 !important;
-  padding-bottom: 10%;
+  font-size: 17px;
+  height: 500px;
 }
-
 
 .span3 {
   width: 100%;
-
 }
 
 .item-name {
@@ -144,6 +149,11 @@ a.modal-link:hover {
 
 .modal-dialog {
   border:2px solid #84596b;
+  z-index: 1040;
+}
+
+.modal-btn {
+  margin-left: 15%;
 }
 
 .close span {
@@ -168,14 +178,15 @@ a.link:hover {
 }
 
 img.loading-gif {
-  padding-top: 15%;
+  margin-top: 15%;
+  border: solid 2px #84596b;
 }
 
 .loading {
-  background-color: #fff;
+  background-color: #CECFCE;
 }
 
-.returnBtn {
+.returnBtn, .loadMoreBtn, .continueBtn {
    padding-bottom: 80px;
    text-align:center;
    margin-left: 40%;
@@ -189,15 +200,49 @@ img.loading-gif {
 }
 
 .user-input {
-  text-align: center;
-  background-color: #CECFCE;
-  width: 90%;
-  margin:auto;
-  padding-top: 5%;
-  padding-bottom: 5%;
   font-family:'Quicksand', sans-serif;
   font-size: 30px;
   color: #84596b;
+}
+
+.description {
+  text-align: center;
+  font-family:'Quicksand', sans-serif;
+  font-size: 20px;
+  color: #000;
+  padding: 7% 5% 0% 5%;
+  margin-bottom: -6%;
+}
+
+.tabs {
+  padding-top: 10%;
+  border-bottom: 1px solid #84596b;
+}
+
+.nav-tabs > li {
+  float:none;
+  display:inline-block;
+  color: #84596b;
+  margin-bottom: -2px;
+
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  border: 1px solid #84596b;
+  border-bottom: none;
+  background-color: #CECFCE;
+  color: #84596b;
+}
+
+.nav-tabs > li > a, .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
+  background-color: #84596b;
+  color: #ffffff;
+  border-style: none;
+  border-width: 0;
+}
+
+.nav-tabs {
+    text-align:center;
 }
 
 .line {
@@ -233,7 +278,7 @@ img.loading-gif {
   float:left;
 }
 
-.price_range{
+.range_submit{
   width: 75%;
   padding-left: 25%;
   font-size: 30px;
@@ -248,9 +293,76 @@ img.loading-gif {
 
 .submitBtn {
   postion: absolute;
-  margin-top: -43%;
+  margin-top: 10%;
   float: left;
   padding-left: 10%;
+}
+
+.loveHateBtn {
+  height: 12%;
+}
+
+.loveHateBtn:hover {
+  height: 14%;
+}
+
+.moreLessLikeBtn {
+  color: #84596B;
+}
+
+.footer {
+  position: absolute;
+  z-index: 1;
+  height: 300px;
+  width: 100%;
+  margin-top: -300px;
+  background-color:  #84596b;
+  color: #ffffff;
+  text-align: center;
+  font-size: 150%;
+}
+
+.footer_desc1 {
+  float: left;
+  width: 50%;
+  text-align: center;
+  font-size: 90%;
+  padding-top: 4%;
+}
+
+.footer_desc2 {
+  text-align: right;
+  padding-bottom: 12%;
+  position: relative;
+  padding-top: 2%;
+
+}
+
+.contact {
+  text-align: right;
+  position: absolute;
+  bottom: 0px;
+  right: 1%
+}
+
+@media (max-width: 1000px) {
+  .footer { margin-top: 0px; }
+  .price_range_text { font-size: 80%; }
+  .logo { width: 20%; height: 20%; }
+}
+@media (max-width: 891px) { .moreLessLikeBtn { margin-bottom: 5%; width: 100%;} }
+@media (max-width: 800px) { .returnBtn { margin-left: 36%; } .loadMoreBtn { margin-left: 36% } }
+@media (max-width: 700px) { .clothing-image { width: 100%; height: 40%; } .loadMoreBtn { margin-left: 39% } }
+@media (max-width: 590px) { .continueBtn { margin-left: 30%; } }
+@media (max-width: 550px) { .returnBtn { margin-left: 30%; } .loadMoreBtn { margin-left: 34% } }
+@media (max-width: 539px) { .loveHteBtn { width: 45%;} }
+@media (max-width: 450px) { .logo { width: 50%; height: 50%; padding-top: 10%; } .loadMoreBtn { margin-left: 35% } }
+@media (max-width: 439px) { .loading-gif { width: 70%; height: 50% } }
+@media (max-width: 360px) {
+  .submitBtn { padding-left: 0%; }
+  .moreLessLikeBtn { font-size: 50%; }
+  .returnBtn { margin-left: 20%; }
+  .loadMoreBtn { margin-left: 27% }
 }
 
 .tag-template .left-panel {

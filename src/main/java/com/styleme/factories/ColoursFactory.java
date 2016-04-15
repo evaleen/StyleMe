@@ -64,7 +64,6 @@ public class ColoursFactory {
         return Arrays.asList("yellow", "mustard", "honey", "lemon", "gold");
     }
 
-
     private List<String> getGreenShades() {
         return Arrays.asList("green", "khaki", "teal", "mint", "turquoise", "lime", "olive");
     }
@@ -102,16 +101,15 @@ public class ColoursFactory {
     }
     
     private List<String> getMaroonShades() {
-        return Arrays.asList("wine", "burgundy", "oxblood");
+        return Arrays.asList("maroon", "wine", "burgundy", "oxblood");
     }
-
     
     private List<String> getCreamShades() {
-        return Arrays.asList("oatmeal", "ivory");
+        return Arrays.asList("cream", "oatmeal", "ivory");
     }
 
     private List<String> getMultiPatterns() {
-        return Arrays.asList("monochrome", "zebra", "floral", "aztec", "paisley", "polka", "stripe");
+        return Arrays.asList("multi", "monochrome", "zebra", "floral", "aztec", "paisley", "polka", "stripe");
     }
 
 }

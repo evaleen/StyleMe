@@ -10,6 +10,7 @@ public class ElasticsearchConfiguration {
 
     private String fashionIndex;
     private String sitesIndex;
+    private String mensSitesIndex;
     private String mappingsIndex;
     private String styleType;
     private String topshopType;
@@ -23,6 +24,7 @@ public class ElasticsearchConfiguration {
     public ElasticsearchConfiguration() {
         this.fashionIndex = "fashion";
         this.sitesIndex = "sites";
+        this.mensSitesIndex = "mens_sites";
         this.mappingsIndex = "mappings";
         this.styleType = "styles";
         this.topshopType = "topshop";
@@ -41,12 +43,14 @@ public class ElasticsearchConfiguration {
                                             "}\n" +
                                         "}\n" +
                                     "},\n" +
-                                    "\"terms\": {\n" +
-                                        "\"type\": \"string\",\n" +
-                                        "\"fields\": {\n" +
-                                            "\"raw\": {\n" +
-                                                "\"type\": \"string\",\n" +
-                                                "\"index\": \"not_analyzed\"\n" +
+                                "\"terms\": {\n" +
+                                    "\"type\": \"nested\",\n" +
+                                        "\"properties\": {\n" +
+                                            "\"name\": {\n" +
+                                                "\"type\": \"string\"\n" +
+                                            "},\n" +
+                                            "\"score\": {\n" +
+                                                "\"type\": \"number\"\n" +
                                             "}\n" +
                                         "}\n" +
                                     "}\n" +
@@ -133,7 +137,10 @@ public class ElasticsearchConfiguration {
 
     public String getFashionIndex() { return this.fashionIndex; }
 
-    public String getSitesIndex() { return this.sitesIndex; }
+    public String getSitesIndex(String gender) {
+        if(gender.equals("womens")) return this.sitesIndex;
+        else return this.mensSitesIndex;
+    }
 
     public String getMappingsIndex() { return this.mappingsIndex; }
 

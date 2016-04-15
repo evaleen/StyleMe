@@ -22,15 +22,14 @@ import java.io.*;
  * www.zanita.com - zanita
  * www.brooketestoni.com - brooke
  * Extracts article content and stores it in a file
+ *
  */
 public class ArticleParser {
 
     private SentenceParser sentenceParser;
-    //private Porter porter;
 
     public ArticleParser() {
         sentenceParser  = new SentenceParser();
-        //porter = new Porter();
     }
 
     public ArticleParser(SentenceParser sentenceParser) {
@@ -50,7 +49,6 @@ public class ArticleParser {
                 String[] url = line.split(" ");
                 String articles = getDocAndParse(url[0], url[1]);
                 articles = sentenceParser.removeStopWordsAndPunctuation(articles);
-                //articles = porter.stripAffixes(articles);
                 writer.write(articles + "\n");
 
             }

@@ -17,6 +17,7 @@ public class ElasticsearchConfigurationTest {
 
     private String fashionIndex;
     private String sitesIndex;
+    private String mensSitesIndex;
     private String mappingsIndex;
     private String styleType;
     private String topshopType;
@@ -30,6 +31,7 @@ public class ElasticsearchConfigurationTest {
         elasticsearchConfiguration = new ElasticsearchConfiguration();
         fashionIndex = "fashion";
         sitesIndex = "sites";
+        mensSitesIndex = "mensSites";
         mappingsIndex = "mappings";
         styleType = "styles";
         topshopType = "topshop";
@@ -47,11 +49,13 @@ public class ElasticsearchConfigurationTest {
                 "}\n" +
                 "},\n" +
                 "\"terms\": {\n" +
-                "\"type\": \"string\",\n" +
-                "\"fields\": {\n" +
-                "\"raw\": {\n" +
-                "\"type\": \"string\",\n" +
-                "\"index\": \"not_analyzed\"\n" +
+                "\"type\": \"nested\",\n" +
+                "\"properties\": {\n" +
+                "\"name\": {\n" +
+                "\"type\": \"string\"\n" +
+                "},\n" +
+                "\"score\": {\n" +
+                "\"type\": \"number\"\n" +
                 "}\n" +
                 "}\n" +
                 "}\n" +
@@ -136,8 +140,18 @@ public class ElasticsearchConfigurationTest {
     }
 
     @Test
-    public void getSitesIndexTest() {
-        assertEquals(sitesIndex, elasticsearchConfiguration.getSitesIndex());
+    public void getFashionIndexTest() {
+        assertEquals(fashionIndex, elasticsearchConfiguration.getFashionIndex());
+    }
+
+    @Test
+    public void getWomensSitesIndexTest() {
+        assertEquals(sitesIndex, elasticsearchConfiguration.getSitesIndex("womens"));
+    }
+
+    @Test
+    public void getMensSitesIndexTest() {
+        assertEquals(sitesIndex, elasticsearchConfiguration.getSitesIndex("mens"));
     }
 
     @Test

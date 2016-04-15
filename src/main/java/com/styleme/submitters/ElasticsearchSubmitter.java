@@ -2,12 +2,12 @@ package com.styleme.submitters;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.styleme.configuration.ElasticsearchConfiguration;
 import com.styleme.factories.ElasticsearchClientFactory;
 import com.styleme.pojos.Clothing;
 import com.styleme.pojos.Style;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.Client;
-
 
 /**
  *
@@ -20,23 +20,26 @@ import org.elasticsearch.client.Client;
 public class ElasticsearchSubmitter {
 
     private Client elasticsearchClient;
+    private ElasticsearchConfiguration elasticsearchConfiguration;
     private ObjectMapper objectMapper;
-    private String fashionIndex = "fashion";
-    private String styleType = "styles";
-    private String sitesIndex = "sites";
+//    private String fashionIndex = "fashion";
+//    private String styleType = "styles";
+//    private String sitesIndex = "sites";
 
     public ElasticsearchSubmitter() {
         this(ElasticsearchClientFactory.getClient());
+        elasticsearchConfiguration = new ElasticsearchConfiguration();
         objectMapper = new ObjectMapper();
     }
 
     public ElasticsearchSubmitter(Client elasticsearchClient) {
         this.elasticsearchClient = elasticsearchClient;
+        elasticsearchConfiguration = new ElasticsearchConfiguration();
     }
 
     public void postStyle(Style style) {
         try {
-            IndexResponse response = elasticsearchClient.prepareIndex(fashionIndex, styleType, style.getStyle())
+            IndexResponse response = elasticsearchClient.prepareIndex(elasticsearchConfiguration.getFashionIndex(), elasticsearchConfiguration.getStyleType(), style.getStyle())
                     .setSource(objectMapper.writeValueAsString(style))
                     .execute()
                     .actionGet();
@@ -45,9 +48,9 @@ public class ElasticsearchSubmitter {
         }
     }
 
-    public void postClothing(String type, Clothing clothing) {
+    public void postClothing(String type, Clothing clothing, String gender) {
         try {
-            IndexResponse response = elasticsearchClient.prepareIndex(sitesIndex, type, clothing.getId())
+            IndexResponse response = elasticsearchClient.prepareIndex(elasticsearchConfiguration.getSitesIndex(gender), type, clothing.getId())
                     .setSource(objectMapper.writeValueAsString(clothing))
                     .execute()
                     .actionGet();

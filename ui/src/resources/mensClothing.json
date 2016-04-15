@@ -1,0 +1,31 @@
+[{
+  "name": "Tops",
+  "image": "clothing/top.png"
+}, {
+  "name": "Shorts",
+  "image": "clothing/shorts.png"
+}, {
+  "name": "Jackets",
+  "image": "clothing/jacket.png"
+}, {
+  "name": "Denim",
+  "image": "clothing/denim.png"
+}, {
+  "name": "Knitwear",
+  "image": "clothing/knitwear.png"
+}, {
+  "name": "Trousers",
+  "image": "clothing/trousers.png"
+}, {
+  "name": "Swimwear",
+  "image": "clothing/swimwear.png"
+}, {
+  "name": "Suits",
+  "image": "clothing/jackets.png"
+}, {
+  "name": "Shirts",
+  "image": "clothing/tops.png"
+}, {
+  "name": "Jumpers",
+  "image": "clothing/tops.png"
+}]

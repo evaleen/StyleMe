@@ -40,14 +40,14 @@ public class ElasticsearchRetriever {
         this.styleSelector = styleSelector;
     }
 
-    public List<Clothing> getSearch(String styleName, List<String> types, List<String> colours, List<String> range) {
+    public List<Clothing> getSearch(List<String> incTerms, List<String> decTerms) {
+        return styleSelector.getClothingWithUpdatedScores(incTerms, decTerms);
+    }
+
+    public List<Clothing> getSearchSuggestions(String gender, String styleName, List<String> types, List<String> colours, List<String> range) {
         Style style = getStyle(styleName);
-        System.out.println(style.toString());
-        List<Clothing> clothing = getClothing(types, colours, range);
-        System.out.println(clothing.size());
-        List<Clothing> clothes = styleSelector.getClothingForStyle(style, clothing);
-        System.out.println(clothes);
-        return clothes;
+        List<Clothing> clothing = getClothing(gender, types, colours, range);
+        return styleSelector.getClothingSuggestionsForStyle(style, clothing);
     }
 
     public Style getStyle(String style) {
@@ -57,8 +57,8 @@ public class ElasticsearchRetriever {
         return ElasticsearchResponseParser.getResponseToStyle(getResponse, JSONObjectMapperFactory.getObjectReader(Style.class));
     }
 
-    private List<Clothing> getClothing(List<String> types, List<String> colours, List<String> range){
-        SearchRequestBuilder searchRequest = elasticsearchClient.prepareSearch(elasticsearchConfiguration.getSitesIndex())
+    private List<Clothing> getClothing(String gender, List<String> types, List<String> colours, List<String> range){
+        SearchRequestBuilder searchRequest = elasticsearchClient.prepareSearch(elasticsearchConfiguration.getSitesIndex(gender))
             .setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setSize(10000);
         BoolQueryBuilder qb = boolQuery();
         double min = Double.parseDouble(range.get(0));

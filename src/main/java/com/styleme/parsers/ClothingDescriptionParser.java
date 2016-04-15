@@ -26,21 +26,21 @@ public class ClothingDescriptionParser {
         coloursFactory = new ColoursFactory();
     }
 
-    public void getDescription(String url, String image, Document document, String site, String title, String type) {
+    public void getDescription(String url, String image, Document document, String site, String title, String type, String gender) {
         switch (site) {
-            case "topshop" :   getTopshopDescription(url, image, document, title, type);
+            case "topshop" :   getTopshopDescription(url, image, document, title, type, gender);
                                break;
-            case "newlook" :   getNewLookDescription(url, image, document, title, type);
+            case "newlook" :   getNewLookDescription(url, image, document, title, type, gender);
                                break;
-            case "motel"   :   getMotelDescription(url, image, document, title, type);
+            case "motel"   :   getMotelDescription(url, image, document, title, type, gender);
                                break;
-            case "missguided": getMissguidedDescription(url, image, document, title, type);
+            case "missguided": getMissguidedDescription(url, image, document, title, type, gender);
                                break;
-            case "nastygal":   getNastyGalDescription(url, image, document, title, type);
+            case "nastygal":   getNastyGalDescription(url, image, document, title, type, gender);
         }
     }
 
-    private void getNastyGalDescription(String url, String image, Document document, String title, String type) {
+    private void getNastyGalDescription(String url, String image, Document document, String title, String type, String gender) {
         try {
             String description = document.select("div.product-description").first().text();
             String price = document.select("span.current-price").first().text();
@@ -48,13 +48,14 @@ public class ClothingDescriptionParser {
             double priceNum = convertPrice(price);
             String colour = document.getElementsByAttributeValue("property", "og:color").first().attr("content");
             Set<String> colours = coloursFactory.getColoursFromDetails(title + " " + description + " " + colour);
-            insertClothingItemIntoES("nastygal", title, type, url, image, description, priceNum, currency, colours);
+            insertClothingItemIntoES("nastygal", title, type, gender, url, image, description, priceNum, currency, colours);
         } catch (NullPointerException e) {
             System.err.println("Error extracting information from " + url);
+            System.err.println(e.getMessage());
         }
     }
 
-    private void getMissguidedDescription(String url, String image, Document document, String title, String type) {
+    private void getMissguidedDescription(String url, String image, Document document, String title, String type, String gender) {
         try {
             Element detailsDiv = document.select("div.product-essential__description").first();
             String description = detailsDiv.text();
@@ -62,26 +63,28 @@ public class ClothingDescriptionParser {
             String currency = getCurrency(price);
             double priceNum = convertPrice(price);
             Set<String> colours = coloursFactory.getColoursFromDetails(title + " " + description);
-            insertClothingItemIntoES("missguided", title, type, url, image, description, priceNum, currency, colours);
+            insertClothingItemIntoES("missguided", title, type, gender, url, image, description, priceNum, currency, colours);
         } catch (NullPointerException e) {
             System.err.println("Error extracting information from " + url);
+            System.err.println(e.getMessage());
         }
     }
 
-    private void getMotelDescription(String url, String image, Document document, String title, String type) {
+    private void getMotelDescription(String url, String image, Document document, String title, String type, String gender) {
         try {
             String description = document.getElementById("Details").child(1).text();
             String price = document.getElementsByClass("ProductPrice").first().text();
             String currency = getCurrency(price);
             double priceNum = convertPrice(price);
             Set<String> colours = coloursFactory.getColoursFromDetails(title + " " + description);
-            insertClothingItemIntoES("motel", title, type, url, image, description, priceNum, currency, colours);
+            insertClothingItemIntoES("motel", title, type, gender, url, image, description, priceNum, currency, colours);
         } catch (NullPointerException e) {
             System.err.println("Error extracting information from " + url);
+            System.err.println(e.getMessage());
         }
     }
 
-    private void getNewLookDescription(String url, String image, Document document, String title, String type) {
+    private void getNewLookDescription(String url, String image, Document document, String title, String type, String gender) {
         try {
             String description = document.select("div.information-section").first().text();
             Element priceSpan = document.getElementsByClass("salePrice").first();
@@ -92,13 +95,14 @@ public class ClothingDescriptionParser {
             String currency = getCurrency(price);
             double priceNum = convertPrice(price);
             Set<String> colours = coloursFactory.getColoursFromDetails(title + " " + description);
-            insertClothingItemIntoES("newlook", title, type, url, image, description, priceNum, currency, colours);
+            insertClothingItemIntoES("newlook", title, type, gender, url, image, description, priceNum, currency, colours);
         } catch (NullPointerException e) {
             System.err.println("Error extracting information from " + url);
+            System.err.println(e.getMessage());
         }
     }
 
-    public void getTopshopDescription(String url, String image, Document document, String title, String type) {
+    private void getTopshopDescription(String url, String image, Document document, String title, String type, String gender) {
         try {
             String description = document.getElementById("productInfo").select("p").text();
             String colour = document.getElementsByClass("product_colour").text();
@@ -107,15 +111,16 @@ public class ClothingDescriptionParser {
             price = price.replace("Price:", "").replaceAll("\\s+","");
             String currency = getCurrency(price);
             double priceNum = convertPrice(price);
-            insertClothingItemIntoES("topshop", title, type, url, image, description, priceNum, currency, colours);
+            insertClothingItemIntoES("topshop", title, type, gender, url, image, description, priceNum, currency, colours);
         } catch (NullPointerException e) {
             System.err.println("Error extracting information from " + url);
+            System.err.println(e.getMessage());
         }
     }
 
-    private void insertClothingItemIntoES(String site, String title, String type, String url, String image, String description, double price, String currency, Set<String> colours) {
+    private void insertClothingItemIntoES(String site, String title, String type, String gender, String url, String image, String description, double price, String currency, Set<String> colours) {
         Clothing item = new Clothing(convertToId(title), title, type, description, price, currency, url, image, colours);
-        elasticsearchSubmitter.postClothing(site, item);
+        elasticsearchSubmitter.postClothing(site, item, gender);
     }
 
     public String convertToId(String title) {
@@ -132,11 +137,17 @@ public class ClothingDescriptionParser {
     public double convertPrice(String price) {
         price = price.replaceAll(",", ".");
         price = price.replaceAll("[^0-9.]", "");
+        int index = price.indexOf('.');
+        if ( index >-1 ) price = price.substring(0, index+2);
         double num =0.0;
         try {
             num = Double.parseDouble(price);
         } catch(NumberFormatException e) {
+            System.out.println(price);
+            Scanner in = new Scanner(System.in);
             System.err.println("Error converting price" + price);
+
+            num = in.nextDouble();
         }
         return num;
     }

@@ -21,6 +21,10 @@ var app = angular
                 templateUrl: 'views/SearchInput.html',
                 controller: 'SearchInputCtrl'
             })
+            .when('/suggestions/:details', {
+                templateUrl: 'views/suggestions.html',
+                controller: 'SuggestionsCtrl'
+            })
             .when('/results/:details', {
                 templateUrl: 'views/results.html',
                 controller: 'ResultsCtrl'

@@ -1,7 +1,6 @@
 package parsers;
 
 import com.styleme.parsers.ClothingDescriptionParser;
-import junit.framework.Assert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,7 +21,6 @@ public class ClothingDescriptionParserTest {
     private String price;
     private String currency;
     private double convertedPrice;
-    private String colour;
     Set<String> colours;
 
     @Before
@@ -33,7 +31,7 @@ public class ClothingDescriptionParserTest {
         price = "£25.00";
         currency = "GBP";
         convertedPrice = 25.00;
-        colour = "black";
+        String colour = "black";
         colours = new HashSet<>();
         colours.add(colour);
 

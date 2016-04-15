@@ -3,8 +3,7 @@ package com.styleme.pojos;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 
 /**
@@ -16,20 +15,28 @@ import java.util.Set;
 public class Style implements Comparable<Style> {
 
     private String style;
-    private Set<String> terms;
+    private Set<Map<String, Integer>> terms;
 
 
     @JsonCreator
-    public Style(@JsonProperty("style") String style, @JsonProperty("terms") Set<String> terms) {
+    public Style(@JsonProperty("style") String style, @JsonProperty("terms") ArrayList<HashMap<String, Integer>> terms) {
         this.style = style;
-        this.terms = terms;
+        this.terms = new HashSet<Map<String, Integer>>(terms);
     }
 
-    public Style() {}
+    public Style(String style, Set<String> terms) {
+        this.style = style;
+        this.terms = new HashSet<>();
+        addTermsFromSet(terms);
+    }
+
+    public Style() {
+        this.terms = new HashSet<>();
+    }
 
     @Override
     public int compareTo(Style style) {
-        return this.style.compareTo(style.getStyle());
+        return style.getStyle().compareTo(this.style);
     }
 
     public String getStyle() {
@@ -41,16 +48,20 @@ public class Style implements Comparable<Style> {
     }
 
 
-    public Set<String> getTerms() {
+    public Set<Map<String, Integer>> getTerms() {
         return terms;
     }
 
-    public void setTerms(Set<String> terms) {
-        this.terms = new HashSet<>(terms);
+    public void addTermsFromSet(Set<String> terms) {
+        for(String name : terms) {
+            Map<String, Integer> term = new HashMap<>();
+            term.put(name, 1);
+            this.terms.add(term);
+        }
     }
 
-    public void addTerms(Set<String> list) {
-        terms.addAll(list);
+    public void setTerms(Set<Map<String, Integer>> terms) {
+        this.terms = terms;
     }
 }
 

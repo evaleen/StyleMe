@@ -3,6 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>StyleMe</groupId>
   <artifactId>StyleMe</artifactId>
+  <name>StyleMe</name>
   <version>0.1.0</version>
   <build>
     <plugins>
@@ -44,7 +45,37 @@
           <target>1.7</target>
         </configuration>
       </plugin>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>com.styleme.StyleMeServerLauncher</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.nd4j</groupId>
+        <artifactId>nd4j-x86</artifactId>
+        <version>${nd4j.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <properties>
+    <canova.version>0.0.0.14</canova.version>
+    <nd4j.version>0.4-rc3.8</nd4j.version>
+    <elasticsearch.version>1.7.1</elasticsearch.version>
+    <jdk.version>1.7</jdk.version>
+    <jackson.version>2.5.1</jackson.version>
+    <lucene.version>5.2.1</lucene.version>
+    <randomizedtesting-runner.version>2.1.16</randomizedtesting-runner.version>
+    <dl4j.version>0.4-rc3.8</dl4j.version>
+  </properties>
 </project>
 
