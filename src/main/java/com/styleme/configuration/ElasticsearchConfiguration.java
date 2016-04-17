@@ -18,6 +18,8 @@ public class ElasticsearchConfiguration {
     private String motelType;
     private String missguidedType;
     private String nastyGalType;
+    private String riverIslandType;
+    private String boohooType;
     private String styleMapping;
     private String clothingMapping;
 
@@ -32,6 +34,8 @@ public class ElasticsearchConfiguration {
         this.motelType = "motel";
         this.missguidedType = "missguided";
         this.nastyGalType = "nastygal";
+        this.riverIslandType = "riverisland";
+        this.boohooType = "boohoo";
         this.styleMapping = "{\n" +
                                 "\"properties\": {\n" +
                                     "\"style\": {\n" +
@@ -155,6 +159,10 @@ public class ElasticsearchConfiguration {
     public String getMissguidedType() {return this.missguidedType; }
 
     public String getNastyGalType() {return this.nastyGalType; }
+
+    public String getRiverIslandType() {return this.riverIslandType; }
+
+    public String getBoohooType() {return this.boohooType; }
 
     public String getStyleMapping() { return this.styleMapping; }
 

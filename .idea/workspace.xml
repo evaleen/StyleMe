@@ -6,69 +6,24 @@
     </artifacts-to-build>
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/styleme/parsers/ClothingDescriptionParser.java" line="130" mnemonic="4" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/styleme/parsers/ClothingDescriptionParser.java" line="151" mnemonic="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0bddd4f3-2c53-49d4-b17c-499329cb0f62" name="Default" comment="Updated WebsiteParser&#10;Added Mens section&#10;Added tests&#10;Added Suggestions Page&#10;Added Inc/Dec style terms&#10;Added style selector">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/images/dislike.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/images/dislike_inverted.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/images/love.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/images/love_inverted.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/factories/ColoursFactoryTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/scripts/factories/DecrementStyleTerms.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/setup/ElasticsearchSetupTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/scripts/factories/GetClothesSuggestions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/scripts/factories/IncrementStyleTerms.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/scripts/services/ParseService.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/endpoints/StyleSearchEndpointsTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/styleme/updaters/StyleTermUpdater.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/resources/mensClothing.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/mensWebsiteUrls.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/views/suggestions.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/scripts/controllers/suggestions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/resources/womensClothing.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/womensWebsiteUrls.txt" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_15_0_GA.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/styleme/stemmer/Porter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/websiteUrls.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/resources/clothing.json" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/styleme/parsers/ArticleParser.java" afterPath="$PROJECT_DIR$/src/main/java/com/styleme/parsers/ArticleParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/styleme/pojos/Clothing.java" afterPath="$PROJECT_DIR$/src/main/java/com/styleme/pojos/Clothing.java" />
+    <list default="true" id="0bddd4f3-2c53-49d4-b17c-499329cb0f62" name="Default" comment="Updates meanswear section&#10;Fixed some css bugs">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/styleme/parsers/ClothingDescriptionParser.java" afterPath="$PROJECT_DIR$/src/main/java/com/styleme/parsers/ClothingDescriptionParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/parsers/ClothingDescriptionParserTest.java" afterPath="$PROJECT_DIR$/src/test/java/parsers/ClothingDescriptionParserTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/pojos/ClothingTest.java" afterPath="$PROJECT_DIR$/src/test/java/pojos/ClothingTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/styleme/factories/ColoursFactory.java" afterPath="$PROJECT_DIR$/src/main/java/com/styleme/factories/ColoursFactory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/styleme/configuration/ElasticsearchConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/com/styleme/configuration/ElasticsearchConfiguration.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/configuration/ElasticsearchConfigurationTest.java" afterPath="$PROJECT_DIR$/src/test/java/configuration/ElasticsearchConfigurationTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/styleme/parsers/ElasticsearchResponseParser.java" afterPath="$PROJECT_DIR$/src/main/java/com/styleme/parsers/ElasticsearchResponseParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/styleme/retrievers/ElasticsearchRetriever.java" afterPath="$PROJECT_DIR$/src/main/java/com/styleme/retrievers/ElasticsearchRetriever.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/styleme/setup/ElasticsearchSetup.java" afterPath="$PROJECT_DIR$/src/main/java/com/styleme/setup/ElasticsearchSetup.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/styleme/submitters/ElasticsearchSubmitter.java" afterPath="$PROJECT_DIR$/src/main/java/com/styleme/submitters/ElasticsearchSubmitter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/styleme/factories/JSONObjectMapperFactory.java" afterPath="$PROJECT_DIR$/src/main/java/com/styleme/factories/JSONObjectMapperFactory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/views/SearchInput.html" afterPath="$PROJECT_DIR$/ui/src/views/SearchInput.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/parsers/SentenceParserTest.java" afterPath="$PROJECT_DIR$/src/test/java/parsers/SentenceParserTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/styleme/pojos/Style.java" afterPath="$PROJECT_DIR$/src/main/java/com/styleme/pojos/Style.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StyleMe.iml" afterPath="$PROJECT_DIR$/StyleMe.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/styleme/endpoints/StyleSearchEndpoints.java" afterPath="$PROJECT_DIR$/src/main/java/com/styleme/endpoints/StyleSearchEndpoints.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/styleme/selectors/StyleSelector.java" afterPath="$PROJECT_DIR$/src/main/java/com/styleme/selectors/StyleSelector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/pojos/StyleTest.java" afterPath="$PROJECT_DIR$/src/test/java/pojos/StyleTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/styleme/submitters/StyleWordVectorsSubmitter.java" afterPath="$PROJECT_DIR$/src/main/java/com/styleme/submitters/StyleWordVectorsSubmitter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/selector/TestStyleSelector.java" afterPath="$PROJECT_DIR$/src/test/java/selector/TestStyleSelector.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/styleme/parsers/WebsiteParser.java" afterPath="$PROJECT_DIR$/src/main/java/com/styleme/parsers/WebsiteParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/styleme/jobs/WebsiteParserJob.java" afterPath="$PROJECT_DIR$/src/main/java/com/styleme/jobs/WebsiteParserJob.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/styleme/vectorizors/Word2VecRawText.java" afterPath="$PROJECT_DIR$/src/main/java/com/styleme/vectorizors/Word2VecRawText.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/scripts/app.js" afterPath="$PROJECT_DIR$/ui/src/scripts/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/scripts/services/attributes.js" afterPath="$PROJECT_DIR$/ui/src/scripts/services/attributes.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/scripts/configuration.js" afterPath="$PROJECT_DIR$/ui/src/scripts/configuration.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/scripts/factories/getClothes.js" afterPath="$PROJECT_DIR$/ui/src/scripts/factories/getClothes.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/index.html" afterPath="$PROJECT_DIR$/ui/src/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/styles/main.css" afterPath="$PROJECT_DIR$/ui/src/styles/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/resources/mensClothing.json" afterPath="$PROJECT_DIR$/ui/src/resources/mensClothing.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mensWebsiteUrls.txt" afterPath="$PROJECT_DIR$/src/main/resources/mensWebsiteUrls.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/views/results.html" afterPath="$PROJECT_DIR$/ui/src/views/results.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/scripts/controllers/results.js" afterPath="$PROJECT_DIR$/ui/src/scripts/controllers/results.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/scripts/controllers/searchInput.js" afterPath="$PROJECT_DIR$/ui/src/scripts/controllers/searchInput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/vectorized_words.txt" afterPath="$PROJECT_DIR$/src/main/resources/vectorized_words.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/womensWebsiteUrls.txt" afterPath="$PROJECT_DIR$/src/main/resources/womensWebsiteUrls.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="e5294361-e5b2-4a7a-ae09-6b8599db18d7" name="New changelist" comment="Removed glove.6B.300d.txt" />
@@ -134,19 +89,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="StyleMeServerLauncher.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="StyleMeServerLauncher.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/styleme/StyleMeServerLauncher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="0" selection-start="1500" selection-end="1500" vertical-scroll-proportion="0.2890995" vertical-offset="254" max-vertical-offset="1020">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WebsiteParserJob.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/styleme/jobs/WebsiteParserJob.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="55" selection-start="883" selection-end="883" vertical-scroll-proportion="0.0" vertical-offset="111" max-vertical-offset="435">
+            <state line="60" column="0" selection-start="2411" selection-end="2411" vertical-scroll-proportion="0.0" vertical-offset="426" max-vertical-offset="1020">
               <folding />
             </state>
           </provider>
@@ -155,7 +101,7 @@
       <file leaf-file-name="ClothingDescriptionParser.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/styleme/parsers/ClothingDescriptionParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="144" column="42" selection-start="7201" selection-end="7201" vertical-scroll-proportion="0.0" vertical-offset="1812" max-vertical-offset="2295">
+            <state line="54" column="12" selection-start="2311" selection-end="2311" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="2610">
               <folding />
             </state>
           </provider>
@@ -164,7 +110,25 @@
       <file leaf-file-name="WebsiteParser.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/styleme/parsers/WebsiteParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="136" column="44" selection-start="6046" selection-end="6046" vertical-scroll-proportion="0.0" vertical-offset="1902" max-vertical-offset="2385">
+            <state line="78" column="72" selection-start="3430" selection-end="3430" vertical-scroll-proportion="0.0" vertical-offset="885" max-vertical-offset="2625">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchInput.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ui/src/views/SearchInput.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="8" selection-start="1049" selection-end="1049" vertical-scroll-proportion="0.21350762" vertical-offset="202" max-vertical-offset="1095">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bootstrap.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui/src/styles/bootstrap.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="98370">
               <folding />
             </state>
           </provider>
@@ -190,7 +154,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/styleme/vectorizors/Glove.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/styleme/vectorizors/GloveRewText.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/styleme/vetorizors/GloveRawText.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/styleme/vectorizor/GloveRawText.java" />
@@ -209,7 +172,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/styleme/submitters/StyleWordVectorsSubmitter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/styleme/pojos/ClothingTerms.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/styleme/pojos/ClothingScore.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/websiteUrls.txt" />
         <option value="$PROJECT_DIR$/src/main/java/com/styleme/vectorizors/Word2VecRawText.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/styleme/factories/ColoursFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/styleme/factories/JSONObjectMapperFactory.java" />
@@ -232,14 +194,16 @@
         <option value="$PROJECT_DIR$/src/main/java/com/styleme/setup/ElasticsearchSetup.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/styleme/submitters/ElasticsearchSubmitter.java" />
         <option value="$PROJECT_DIR$/src/test/java/endpoints/StyleSearchEndpointsTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/configuration/ElasticsearchConfigurationTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/parsers/ClothingDescriptionParserTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/parsers/SentenceParserTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/styleme/jobs/WebsiteParserJob.java" />
+        <option value="$PROJECT_DIR$/src/test/java/configuration/ElasticsearchConfigurationTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/styleme/parsers/ClothingDescriptionParser.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mensWebsiteUrls.txt" />
         <option value="$PROJECT_DIR$/src/main/java/com/styleme/configuration/ElasticsearchConfiguration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/styleme/jobs/WebsiteParserJob.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/styleme/parsers/ClothingDescriptionParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/styleme/parsers/WebsiteParser.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/websiteUrls.txt" />
+        <option value="$PROJECT_DIR$/src/main/resources/womensWebsiteUrls.txt" />
         <option value="$PROJECT_DIR$/src/main/java/com/styleme/StyleMeServerLauncher.java" />
       </list>
     </option>
@@ -315,7 +279,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="0" />
+    <option name="STATE" value="2" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -330,8 +294,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -360,19 +322,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="setup" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -386,15 +340,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -408,21 +362,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StyleMe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StyleMe" />
+              <option name="myItemId" value="ui" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -430,128 +370,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StyleMe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StyleMe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="META-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StyleMe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StyleMe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styleme" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StyleMe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StyleMe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styleme" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parsers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StyleMe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="StyleMe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styleme" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="configuration" />
+              <option name="myItemId" value="styles" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -581,12 +407,12 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.styleme.selectors" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.styleme" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/backend/src/main/java/com/styleme" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.styleme" />
     </key>
   </component>
   <component name="RunManager" selected="Application.StyleMeServerLauncher">
@@ -1054,9 +880,9 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.StyleMeServerLauncher" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.ElasticsearchSetupTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.TestStyleSelector" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.ElasticsearchConfigurationTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ElasticsearchConfigurationTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.ElasticsearchSetupTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.TestStyleSelector" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.ElasticsearchRetrieverTest" />
       </list>
     </recent_temporary>
@@ -1152,7 +978,9 @@
       <workItem from="1460450889638" duration="3089000" />
       <workItem from="1460561773167" duration="2919000" />
       <workItem from="1460718868447" duration="4518000" />
-      <workItem from="1460723862924" duration="6427000" />
+      <workItem from="1460723862924" duration="9714000" />
+      <workItem from="1460899477724" duration="494000" />
+      <workItem from="1460900686804" duration="5945000" />
     </task>
     <task id="LOCAL-00001" summary="Testing commits">
       <created>1445371015612</created>
@@ -1206,11 +1034,15 @@
       <created>1460738335829</created>
       <updated>1460738335829</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Updated WebsiteParser&#10;Added Mens section&#10;Added tests&#10;Added Suggestions Page&#10;Added Inc/Dec style terms&#10;Added style selector">
+      <created>1460740108041</created>
+      <updated>1460740108041</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="438274000" />
+    <option name="totallyTimeSpent" value="448000000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1237,7 +1069,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5449331" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5449331" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1251,7 +1083,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32761905" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31739962" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31548756" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32695985" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1267,7 +1099,7 @@
     </layout>
     <layout-to-restore>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32695985" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5449331" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -1289,10 +1121,10 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.108986616" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39961758" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31739962" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31548756" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.016679905" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.016679905" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -1320,7 +1152,8 @@
     <MESSAGE value="Updated UI" />
     <MESSAGE value="Updated WebsiteParser" />
     <MESSAGE value="Updated WebsiteParser&#10;Added Mens section&#10;Added tests&#10;Added Suggestions Page&#10;Added Inc/Dec style terms&#10;Added style selector" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated WebsiteParser&#10;Added Mens section&#10;Added tests&#10;Added Suggestions Page&#10;Added Inc/Dec style terms&#10;Added style selector" />
+    <MESSAGE value="Updates meanswear section&#10;Fixed some css bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updates meanswear section&#10;Fixed some css bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1330,21 +1163,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ui/src/scripts/configuration.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="2" selection-start="119" selection-end="119" vertical-scroll-proportion="0.09072581" vertical-offset="0" max-vertical-offset="496" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/scripts/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="4" selection-start="230" selection-end="230" vertical-scroll-proportion="0.45362905" vertical-offset="0" max-vertical-offset="570" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="18" selection-start="446" selection-end="446" vertical-scroll-proportion="0.35947713" vertical-offset="0" max-vertical-offset="675" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ui/src/views/search.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="6" selection-start="150" selection-end="150" vertical-scroll-proportion="-3.125" vertical-offset="0" max-vertical-offset="165" />
@@ -1386,11 +1204,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/style_sentences.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="17" selection-start="12964" selection-end="12964" vertical-scroll-proportion="-8.076923" vertical-offset="765" max-vertical-offset="1575" />
-      </provider>
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="17" selection-start="12964" selection-end="12964" vertical-scroll-proportion="-8.076923" vertical-offset="765" max-vertical-offset="1575" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/parsed_style_sentences.txt">
@@ -1502,83 +1320,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/styleme/retrievers/ElasticsearchRetriever.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="122" selection-start="2748" selection-end="2748" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1005">
-          <folding />
-        </state>
+        <state line="60" column="122" selection-start="2748" selection-end="2748" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1005" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/parsers/ClothingDescriptionParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="533" selection-end="533" vertical-scroll-proportion="0.7632743" vertical-offset="0" max-vertical-offset="990">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
+        <state line="23" column="0" selection-start="533" selection-end="533" vertical-scroll-proportion="0.7632743" vertical-offset="0" max-vertical-offset="990" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/endpoints/StyleSearchEndpointsTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="8" selection-start="1088" selection-end="1088" vertical-scroll-proportion="0.93166286" vertical-offset="161" max-vertical-offset="1185">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/configuration/ElasticsearchConfigurationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="151" column="9" selection-start="4843" selection-end="4843" vertical-scroll-proportion="0.79113925" vertical-offset="1800" max-vertical-offset="2910">
-          <folding />
-        </state>
+        <state line="38" column="8" selection-start="1088" selection-end="1088" vertical-scroll-proportion="0.93166286" vertical-offset="161" max-vertical-offset="1185" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/parsers/SentenceParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="4" selection-start="385" selection-end="385" vertical-scroll-proportion="0.33544305" vertical-offset="21" max-vertical-offset="555">
-          <folding />
-        </state>
+        <state line="19" column="4" selection-start="385" selection-end="385" vertical-scroll-proportion="0.33544305" vertical-offset="21" max-vertical-offset="555" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/styleme/submitters/ElasticsearchSubmitter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="33" selection-start="2067" selection-end="2067" vertical-scroll-proportion="0.7071583" vertical-offset="409" max-vertical-offset="930">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/womensWebsiteUrls.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="76" selection-start="9353" selection-end="9353" vertical-scroll-proportion="0.0" vertical-offset="1530" max-vertical-offset="2520">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mensWebsiteUrls.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="88" selection-start="3311" selection-end="3311" vertical-scroll-proportion="0.0" vertical-offset="64" max-vertical-offset="525">
-          <folding />
-        </state>
+        <state line="55" column="33" selection-start="2067" selection-end="2067" vertical-scroll-proportion="0.7071583" vertical-offset="409" max-vertical-offset="930" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/styleme/endpoints/StyleSearchEndpoints.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1410" selection-end="1410" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="945">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/styleme/configuration/ElasticsearchConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="36" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="2535">
-          <folding />
-        </state>
+        <state line="41" column="0" selection-start="1410" selection-end="1410" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="945" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/styleme/setup/ElasticsearchSetup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="36" selection-start="3388" selection-end="3408" vertical-scroll-proportion="0.0" vertical-offset="739" max-vertical-offset="1620">
-          <folding />
-        </state>
+        <state line="70" column="36" selection-start="3388" selection-end="3408" vertical-scroll-proportion="0.0" vertical-offset="739" max-vertical-offset="1620" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/styleme/configuration/StyleMeServerConfiguration.java">
@@ -1595,37 +1367,89 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/temp.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="380" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/styleme/jobs/WebsiteParserJob.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="55" selection-start="883" selection-end="883" vertical-scroll-proportion="0.0" vertical-offset="111" max-vertical-offset="435">
+        <state line="22" column="90" selection-start="628" selection-end="770" vertical-scroll-proportion="0.0" vertical-offset="111" max-vertical-offset="435">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/configuration/ElasticsearchConfigurationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="85" selection-end="85" vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="3210">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mensWebsiteUrls.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="0" selection-start="4886" selection-end="4886" vertical-scroll-proportion="0.89619374" vertical-offset="491" max-vertical-offset="840">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/styleme/configuration/ElasticsearchConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="162" column="34" selection-start="8097" selection-end="8097" vertical-scroll-proportion="0.40397352" vertical-offset="2308" max-vertical-offset="2655">
+          <folding>
+            <element signature="e#8101#8102#0" expanded="false" />
+            <element signature="e#8131#8132#0" expanded="false" />
+            <element signature="e#8168#8169#0" expanded="false" />
+            <element signature="e#8193#8194#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/womensWebsiteUrls.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="194" column="0" selection-start="16210" selection-end="16210" vertical-scroll-proportion="0.903537" vertical-offset="2629" max-vertical-offset="3000">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/styleme/parsers/ClothingDescriptionParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="42" selection-start="7201" selection-end="7201" vertical-scroll-proportion="0.0" vertical-offset="1812" max-vertical-offset="2295">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/temp.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="380">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/styleme/parsers/WebsiteParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="136" column="44" selection-start="6046" selection-end="6046" vertical-scroll-proportion="0.0" vertical-offset="1902" max-vertical-offset="2385">
+        <state line="54" column="12" selection-start="2311" selection-end="2311" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2610">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/styleme/StyleMeServerLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="1500" selection-end="1500" vertical-scroll-proportion="0.2890995" vertical-offset="254" max-vertical-offset="1020">
+        <state line="60" column="0" selection-start="2411" selection-end="2411" vertical-scroll-proportion="0.0" vertical-offset="426" max-vertical-offset="1020">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/styles/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="98370">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/styles/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-4.8490567" vertical-offset="1542" max-vertical-offset="1860">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/styleme/parsers/WebsiteParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="78" column="72" selection-start="3430" selection-end="3430" vertical-scroll-proportion="0.0" vertical-offset="885" max-vertical-offset="2625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/views/SearchInput.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="8" selection-start="1049" selection-end="1049" vertical-scroll-proportion="0.21350762" vertical-offset="202" max-vertical-offset="1095">
           <folding />
         </state>
       </provider>

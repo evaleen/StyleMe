@@ -12,11 +12,8 @@ angular.module('styleMeApp').controller('SearchInputCtrl', function($scope, $htt
     $scope.selectedMensStyle;
     $scope.WomensStyles = Attributes.getWomensStyles();
     $scope.MensStyles = Attributes.getMensStyles();
-    $scope.womensTypes = [];
-    $scope.womensColours = [];
-    $scope.mensTypes = [];
-    $scope.mensColours = [];
-    $scope.selectedStyle;
+    $scope.types = [];
+    $scope.colours = [];
   };
 
   $scope.selectWomensStyle = function(style) {
@@ -49,14 +46,22 @@ angular.module('styleMeApp').controller('SearchInputCtrl', function($scope, $htt
   };
 
   $(document).on('click', '#mensClick', function() {
-      $("#womensTab").removeClass("active");
-      $("#mensTab").addClass("active");
+      $scope.reset("#womensTab", "#mensTab");
   });
 
   $(document).on('click', '#womensClick', function() {
-      $("#mensTab").removeClass("active");
-      $("#womensTab").addClass("active");
+      $scope.reset("#mensTab", "#womensTab");
   });
+
+  $scope.reset = function (deactivateTab, activateTab) {
+    $(deactivateTab).removeClass("active");
+    $(activateTab).addClass("active");
+    setTimeout(function(){
+      $scope.$broadcast('reCalcViewDimensions');
+    }, 10);
+    $scope.types = [];
+    $scope.colours = [];
+  };
 
   $scope.submit = function(gender) {
     if(gender == 'mens' && !$scope.selectedMensStyle || gender == 'womens' && !$scope.selectedWomensStyle) {
@@ -72,4 +77,10 @@ angular.module('styleMeApp').controller('SearchInputCtrl', function($scope, $htt
       $location.path($scope.path);
     };
   };
+
+  $scope.showMessage = function() {
+    window.alert("Your message was sent!");
+  };
+
+
 });

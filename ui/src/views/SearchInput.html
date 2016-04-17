@@ -26,7 +26,7 @@
           <div class="container">
             <div class="line2">
               <div class="tags-ctn" id="left">
-                <tags-input ng-model="womensTypes" display-property="name" placeholder="Add a clothing type"
+                <tags-input ng-model="types" display-property="name" placeholder="Add a clothing type"
                   replace-spaces-with-dashes="false" template="tag-template" allow-leftover-text="false" add-on-blur="false" add-from-autocomplete-only="true">
                   <auto-complete source="loadTags($query, 'womensClothing.json')" min-length="0"
                   load-on-focus="true" load-on-empty="true" max-results-to-show="50" template="autocomplete-template">
@@ -35,7 +35,7 @@
             </div>
             <span id="in">in</span>
             <div class="tags-ctn" id="right">
-              <tags-input ng-model="womensColours" display-property="name" placeholder="Add a colour"
+              <tags-input ng-model="colours" display-property="name" placeholder="Add a colour"
                 replace-spaces-with-dashes="false" template="tag-template" add-from-autocomplete-only="true">
                 <auto-complete source="loadTags($query, 'colours.json')" min-length="0"
                   load-on-focus="true" load-on-empty=true max-results-to-show="50" template="autocomplete-template">
@@ -70,7 +70,7 @@
         <div class="container">
           <div class="line2">
             <div class="tags-ctn" id="left">
-              <tags-input ng-model="mensTypes" display-property="name" placeholder="Add a clothing type"
+              <tags-input ng-model="types" display-property="name" placeholder="Add a clothing type"
                 replace-spaces-with-dashes="false" template="tag-template" add-from-autocomplete-only="true">
                 <auto-complete source="loadTags($query, 'mensClothing.json')" min-length="0"
                 load-on-focus="true" max-results-to-show="50" template="autocomplete-template">
@@ -79,7 +79,7 @@
           </div>
           <span id="in">in</span>
           <div class="tags-ctn" id="right">
-            <tags-input ng-model="mensColours" display-property="name" placeholder="Add a colour"
+            <tags-input ng-model="colours" display-property="name" placeholder="Add a colour"
               replace-spaces-with-dashes="false" template="tag-template" add-from-autocomplete-only="true">
               <auto-complete source="loadTags($query, 'colours.json')" min-length="0"
                 load-on-focus="true" load-on-empty=true max-results-to-show="50" template="autocomplete-template">
@@ -103,7 +103,15 @@
     </div>
   </form>
   </div>
+
+
+
 </div>
+
+
+
+
+
 <script type="text/ng-template" id="tag-template">
   <div class="tag-template">
         <div class="left-panel">
@@ -125,6 +133,54 @@
         </div>
       </div>
       </script>
+  <div class="footer">
+      <div class="footer_desc2">
+        The clothing results are drawn from:
+        <table class="links">
+          <tr>
+          <td><a ng-href="http://www.motelrocks.com/">Motel</a></td>
+          <td><a ng-href="http://www.nastygal.com/">NastyGal</a></td>
+        </tr><tr>
+          <td><a ng-href="http://www.newlook.com/eu/">New Look</a></td>
+          <td><a ng-href="https://www.missguided.eu/">MissGuided</a></td>
+        </tr><tr>
+          <td><a ng-href="http://eu.topshop.com/?geoip=home">Topshop</a></td>
+          <td><a ng-href="http://eu.topman.com/?geoip=home">Topman</a></td>
+        </tr>
+      </table>
+    </div>
+      <div class="footer_desc3">
+        StyleMe is the Final Year Project of 4th year DCU Computer Applications student Eibhlín McGeady.<br>
+        <a class="contact" data-toggle="modal" data-target="#ContactModal">Get in touch!</a>
+        <div class="modal fade" id="ContactModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog" >
+            <div class="modal-content">
+              <div class="modal-header contactModalHeader">
+                Send a Message
+                <button type="button" id="close" class="close" data-dismiss="modal">
+                  <span>&times;</span>
+                  <span class="sr-only">Close</span>
+                </button>
+              </div>
+              <div class="clearfix modal-body">
+                <form class="form-horizontal ng-pristine ng-valid" role="form" action="resources/mail.php" method="post" id="contact_form">
+                  <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Name" name="name" id="name" title="Your Name" required>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="email" placeholder="Email" name="email" id="email" title="Your Email" required>
+                  </div>
+                  <div class="form-group">
+                    <textarea rows="4" cols="50" class="form-control" type="test" placeholder="Message" name="message" id="message" title="Your Message" required></textarea>
+                  </div>
+                  <button class="btn btn-send button sendBtn" value="submit" name="submit" ng-click="showMessage()">Send</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
 </div>
 <!--div class="footer">
   <div class="footer_desc1">

@@ -10,7 +10,7 @@ import java.io.*;
 /**
  * @author Eibhlin McGeady
  *
- * Parses each HTML online clothing websites NastyGal, NewLook, Missguided, MotelRocks & Topshop
+ * Parses each HTML online clothing websites NastyGal, NewLook, Missguided, MotelRocks, Topshop & River Island
  * Extracts a link to individual clothing pages, to the clothing items image
  * Extracts attribute information about each clothing item
  *
@@ -55,16 +55,32 @@ public class WebsiteParser {
 
     private void getClothingLinksAndImages(Document doc, String site, String type, String gender) {
         switch (site) {
-            case "topshop":    getTopshopClothingImagesAndLinks(doc, type, gender);
-                               break;
-            case "newlook":    getNewLookClothingImagesAndLinks(doc, type, gender);
-                               break;
-            case "motel":      getMotelImagesAndLinks(doc, type, gender);
-                               break;
-            case "missguided": getMissguidedClothingImagesAndLinks(doc, type, gender);
-                               break;
-            case "nastygal":   getNastyGalClothingImagesAndLinks(doc, type, gender);
+            case "topshop":     getTopshopClothingImagesAndLinks(doc, type, gender);
+                                break;
+            case "newlook":     getNewLookClothingImagesAndLinks(doc, type, gender);
+                                break;
+            case "motel":       getMotelImagesAndLinks(doc, type, gender);
+                                break;
+            case "missguided":  getMissguidedClothingImagesAndLinks(doc, type, gender);
+                                break;
+            case "nastygal":    getNastyGalClothingImagesAndLinks(doc, type, gender);
+                                break;
+            case "riverisland": getRiverIslandClothingImagesAndLinks(doc, type, gender);
        }
+    }
+
+    private void getRiverIslandClothingImagesAndLinks(Document doc, String type, String gender) {
+        try {
+            Elements list = doc.getElementsByClass("products-listing").get(0).children();
+            for (Element el : list) {
+                String url = el.select("a").first().absUrl("href");
+                String image = el.select("img.productlisting-image").first().absUrl("src");
+                String title = el.select("img.productlisting-image").first().attr("alt");
+                getLink(url, image, "riverisland", title, type, gender);
+            }
+        } catch (NullPointerException e) {
+            System.err.println("Error extracting information from River Island site" + "\n" + e.getMessage());
+        }
     }
 
     private void getNastyGalClothingImagesAndLinks(Document doc, String type, String gender) {

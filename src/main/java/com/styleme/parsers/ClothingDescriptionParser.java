@@ -28,16 +28,37 @@ public class ClothingDescriptionParser {
 
     public void getDescription(String url, String image, Document document, String site, String title, String type, String gender) {
         switch (site) {
-            case "topshop" :   getTopshopDescription(url, image, document, title, type, gender);
-                               break;
-            case "newlook" :   getNewLookDescription(url, image, document, title, type, gender);
-                               break;
-            case "motel"   :   getMotelDescription(url, image, document, title, type, gender);
-                               break;
-            case "missguided": getMissguidedDescription(url, image, document, title, type, gender);
-                               break;
-            case "nastygal":   getNastyGalDescription(url, image, document, title, type, gender);
+            case "topshop" :    getTopshopDescription(url, image, document, title, type, gender);
+                                break;
+            case "newlook" :    getNewLookDescription(url, image, document, title, type, gender);
+                                break;
+            case "motel"   :    getMotelDescription(url, image, document, title, type, gender);
+                                break;
+            case "missguided":  getMissguidedDescription(url, image, document, title, type, gender);
+                                break;
+            case "nastygal":    getNastyGalDescription(url, image, document, title, type, gender);
+                                break;
+            case "riverisland": getRiverIslandDescription(url, image, document, title, type, gender);
         }
+    }
+
+    private void getRiverIslandDescription(String url, String image, Document document, String title, String type, String gender) {
+        try {
+            String description = document.select("div.product__description").first().text();
+            System.out.println(description);
+            String price = document.select("div.price").first().text();
+            String currency = getCurrency(price);
+            double priceNum = convertPrice(price);
+            System.out.println(currency + " " + priceNum);
+            Set<String> colours = coloursFactory.getColoursFromDetails(title);
+            System.out.println(colours);
+            insertClothingItemIntoES("riverisland", title, type, gender, url, image, description, priceNum, currency, colours);
+        } catch (NullPointerException e) {
+            System.err.println("Error extracting information from " + url);
+            System.err.println(e.getMessage());
+        }
+
+
     }
 
     private void getNastyGalDescription(String url, String image, Document document, String title, String type, String gender) {

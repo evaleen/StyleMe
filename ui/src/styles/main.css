@@ -48,6 +48,7 @@ a:hover, a:focus, a:active {
 }
 
 .search {
+  min-height:100%;
   position: relative;
 }
 
@@ -66,7 +67,7 @@ a:hover, a:focus, a:active {
   color: #fff;
 }
 
-.button:focus, button:active, .unselected {
+.button:focus, button:active, .unselected, .sendBtn {
   background-color: #fff;
   color: #000;
 }
@@ -108,7 +109,6 @@ a:hover, a:focus, a:active {
   text-align: left;
   list-style-type: none;
 }
-
 
 .clothing-image, .clothing-image-modal {
     width: 200px;
@@ -207,10 +207,11 @@ img.loading-gif {
 
 .description {
   text-align: center;
+  width: 80%;
   font-family:'Quicksand', sans-serif;
   font-size: 20px;
   color: #000;
-  padding: 7% 5% 0% 5%;
+  padding: 7% 5% 0% 25%;
   margin-bottom: -6%;
 }
 
@@ -224,6 +225,7 @@ img.loading-gif {
   display:inline-block;
   color: #84596b;
   margin-bottom: -2px;
+  width: 30%;
 
 }
 
@@ -311,59 +313,92 @@ img.loading-gif {
 }
 
 .footer {
-  position: absolute;
-  z-index: 1;
-  height: 300px;
-  width: 100%;
-  margin-top: -300px;
+  width:100%;
+  height: 200px;
+  position:relative;
+  bottom:0;
+  left:0;
+  margin-top: -200px;
   background-color:  #84596b;
   color: #ffffff;
   text-align: center;
-  font-size: 150%;
+  font-size: 120%;
 }
 
 .footer_desc1 {
-  float: left;
-  width: 50%;
-  text-align: center;
-  font-size: 90%;
-  padding-top: 4%;
+  background-color: #84596b;
+  padding: 1% 5% 4% 5%;
+  position: absolute;
+  top:0;
 }
 
 .footer_desc2 {
-  text-align: right;
-  padding-bottom: 12%;
-  position: relative;
-  padding-top: 2%;
-
-}
-
-.contact {
-  text-align: right;
+  text-align: left;
+  width: 40%;
   position: absolute;
-  bottom: 0px;
-  right: 1%
+  left: 10px;
+  margin-top: 5%;
 }
 
-@media (max-width: 1000px) {
-  .footer { margin-top: 0px; }
+.links > tbody > tr > td {
+  width: 20%;
+}
+
+.links > tbody > tr > td > a {
+  font-size: 140%;
+  color: #fff;
+  text-decoration: none;
+}
+
+.links > tbody > tr > td > a:hover, .links > tbody > tr > td > a:active, .contact:hover, .contact:active {
+  text-decoration: underline;
+}
+
+.footer_desc3 {
+  text-align: right;
+  width: 50%;
+  position: absolute;
+  right: 10px;
+  float: right;
+  margin-top: 5%;
+}
+
+.footer_desc3 > a {
+  color: #fff;
+}
+
+.contactModalHeader {
+  text-align: left;
+  color: #84596b;
+}
+
+.form-group {
+  border: solid 1px #84596b;
+}
+
+@media (max-width: 991px) {
+
   .price_range_text { font-size: 80%; }
   .logo { width: 20%; height: 20%; }
 }
 @media (max-width: 891px) { .moreLessLikeBtn { margin-bottom: 5%; width: 100%;} }
 @media (max-width: 800px) { .returnBtn { margin-left: 36%; } .loadMoreBtn { margin-left: 36% } }
+@media (max-width: 767px) { .footer { margin-top: 0px; } }
 @media (max-width: 700px) { .clothing-image { width: 100%; height: 40%; } .loadMoreBtn { margin-left: 39% } }
 @media (max-width: 590px) { .continueBtn { margin-left: 30%; } }
 @media (max-width: 550px) { .returnBtn { margin-left: 30%; } .loadMoreBtn { margin-left: 34% } }
-@media (max-width: 539px) { .loveHteBtn { width: 45%;} }
+@media (max-width: 539px) { .loveHateBtn { width: 45%;} }
 @media (max-width: 450px) { .logo { width: 50%; height: 50%; padding-top: 10%; } .loadMoreBtn { margin-left: 35% } }
 @media (max-width: 439px) { .loading-gif { width: 70%; height: 50% } }
+@media (max-width: 362px) { .footer { height: 250px; } }
 @media (max-width: 360px) {
   .submitBtn { padding-left: 0%; }
   .moreLessLikeBtn { font-size: 50%; }
   .returnBtn { margin-left: 20%; }
   .loadMoreBtn { margin-left: 27% }
 }
+@media (max-width: 341px) { .footer { height: 250px; } }
+
 
 .tag-template .left-panel {
   float: left;
@@ -386,6 +421,7 @@ img.loading-gif {
   height: 48px;
   vertical-align: middle;
 }
+
 .autocomplete-template .right-panel {
   float: left;
   margin-left: 5px;

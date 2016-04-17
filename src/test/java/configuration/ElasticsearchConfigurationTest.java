@@ -1,7 +1,6 @@
 package configuration;
 
 import com.styleme.configuration.ElasticsearchConfiguration;
-import junit.framework.Assert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,6 +22,8 @@ public class ElasticsearchConfigurationTest {
     private String topshopType;
     private String newLookType;
     private String motelType;
+    private String nastyGalType;
+    private String riverIslandType;
     private String styleMapping;
     private String clothingMapping;
 
@@ -31,12 +32,14 @@ public class ElasticsearchConfigurationTest {
         elasticsearchConfiguration = new ElasticsearchConfiguration();
         fashionIndex = "fashion";
         sitesIndex = "sites";
-        mensSitesIndex = "mensSites";
+        mensSitesIndex = "mens_sites";
         mappingsIndex = "mappings";
         styleType = "styles";
         topshopType = "topshop";
         newLookType = "newLook";
         motelType = "motel";
+        nastyGalType = "nastygal";
+        riverIslandType = "riverisland";
         styleMapping = "{\n" +
                 "\"properties\": {\n" +
                 "\"style\": {\n" +
@@ -150,8 +153,18 @@ public class ElasticsearchConfigurationTest {
     }
 
     @Test
+    public void getNastyGalTypeTest() {
+        assertEquals(nastyGalType, elasticsearchConfiguration.getNastyGalType());
+    }
+
+    @Test
+    public void getRiverIslandTypeTest() {
+        assertEquals(riverIslandType, elasticsearchConfiguration.getRiverIslandType());
+    }
+
+    @Test
     public void getMensSitesIndexTest() {
-        assertEquals(sitesIndex, elasticsearchConfiguration.getSitesIndex("mens"));
+        assertEquals(mensSitesIndex, elasticsearchConfiguration.getSitesIndex("mens"));
     }
 
     @Test
@@ -178,6 +191,7 @@ public class ElasticsearchConfigurationTest {
     public void getMotelTypeTest() {
         assertEquals(motelType, elasticsearchConfiguration.getMotelType());
     }
+
 
     @Test
     public void getStyleMappingTest() {

@@ -21,11 +21,11 @@
   "image": "clothing/swimwear.png"
 }, {
   "name": "Suits",
-  "image": "clothing/jackets.png"
+  "image": "clothing/blazer.png"
 }, {
   "name": "Shirts",
-  "image": "clothing/tops.png"
+  "image": "clothing/shirt.png"
 }, {
   "name": "Jumpers",
-  "image": "clothing/tops.png"
+  "image": "clothing/hoodie.png"
 }]
