@@ -7,7 +7,6 @@ import com.styleme.pojos.Style;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.common.collect.Lists;
-import org.elasticsearch.common.jackson.core.type.TypeReference;
 import org.elasticsearch.search.SearchHit;
 
 import java.io.IOException;
@@ -34,6 +33,21 @@ public class ElasticsearchResponseParser {
             e.printStackTrace();
         }
         return style;
+    }
+
+    public static Clothing getResponseToClothing(GetResponse getResponse, ObjectReader objectReader){
+        Clothing clothing = null;
+        try {
+            String source = getResponse.getSourceAsString();
+            if(source != null) {
+                clothing = objectReader.readValue(source);
+                clothing = objectReader.readValue(source);
+            }
+        } catch (Exception e) {
+            System.err.println("Exception error");
+            e.printStackTrace();
+        }
+        return clothing;
     }
 
     public static List<Clothing> searchResponseToClothingList(SearchResponse response, ObjectReader objectReader) {

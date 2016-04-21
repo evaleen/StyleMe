@@ -12,7 +12,7 @@ import java.util.*;
  *
  * Encapsulates a Style Object
  */
-public class Style implements Comparable<Style> {
+public class Style {
 
     private String style;
     private Set<Map<String, Integer>> terms;
@@ -35,8 +35,8 @@ public class Style implements Comparable<Style> {
     }
 
     @Override
-    public int compareTo(Style style) {
-        return style.getStyle().compareTo(this.style);
+    public boolean equals(Object o){
+        return o != null && o instanceof Style && this.style.equals(((Style) o).getStyle());
     }
 
     public String getStyle() {

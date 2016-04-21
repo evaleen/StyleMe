@@ -2,7 +2,6 @@ package com.styleme.retrievers;
 
 import com.styleme.configuration.ElasticsearchConfiguration;
 import com.styleme.factories.ElasticsearchClientFactory;
-import com.styleme.factories.JSONObjectMapperFactory;
 import com.styleme.parsers.ElasticsearchResponseParser;
 import com.styleme.pojos.Clothing;
 import com.styleme.pojos.Style;
@@ -13,6 +12,7 @@ import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.index.query.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.List;
 
@@ -29,19 +29,17 @@ public class ElasticsearchRetriever {
     private Client elasticsearchClient;
     private ElasticsearchConfiguration elasticsearchConfiguration;
     private StyleSelector styleSelector;
+    private ObjectMapper objectMapper;
 
     public ElasticsearchRetriever() {
-        this(ElasticsearchClientFactory.getClient(), new ElasticsearchConfiguration(), new StyleSelector());
+        this(ElasticsearchClientFactory.getClient(), new ElasticsearchConfiguration(), new StyleSelector(), new ObjectMapper());
     }
 
-    public ElasticsearchRetriever(Client elasticsearchClient, ElasticsearchConfiguration elasticsearchConfiguration, StyleSelector styleSelector) {
+    public ElasticsearchRetriever(Client elasticsearchClient, ElasticsearchConfiguration elasticsearchConfiguration, StyleSelector styleSelector, ObjectMapper objectMapper) {
         this.elasticsearchClient = elasticsearchClient;
         this.elasticsearchConfiguration = elasticsearchConfiguration;
         this.styleSelector = styleSelector;
-    }
-
-    public List<Clothing> getSearch(List<String> incTerms, List<String> decTerms) {
-        return styleSelector.getClothingWithUpdatedScores(incTerms, decTerms);
+        this.objectMapper = objectMapper;
     }
 
     public List<Clothing> getSearchSuggestions(String gender, String styleName, List<String> types, List<String> colours, List<String> range) {
@@ -50,11 +48,24 @@ public class ElasticsearchRetriever {
         return styleSelector.getClothingSuggestionsForStyle(style, clothing);
     }
 
+    public List<Clothing> getSearch(String gender, String styleName, List<String> types, List<String> colours, List<String> range, List<String> incTerms, List<String> decTerms) {
+        Style style = getStyle(styleName);
+        List<Clothing> clothing = getClothing(gender, types, colours, range);
+        return styleSelector.getClothingWithUpdatedScores(style, clothing, incTerms, decTerms);
+    }
+
     public Style getStyle(String style) {
         GetResponse getResponse = elasticsearchClient.prepareGet(elasticsearchConfiguration.getFashionIndex(), elasticsearchConfiguration.getStyleType(), style)
                 .execute()
                 .actionGet();
-        return ElasticsearchResponseParser.getResponseToStyle(getResponse, JSONObjectMapperFactory.getObjectReader(Style.class));
+        return ElasticsearchResponseParser.getResponseToStyle(getResponse, objectMapper.reader(Style.class));
+    }
+
+    public Clothing getClothingItem(String gender, String type, String id) {
+        GetResponse getResponse = elasticsearchClient.prepareGet(elasticsearchConfiguration.getSitesIndex(gender), type, id)
+                .execute()
+                .actionGet();
+        return ElasticsearchResponseParser.getResponseToClothing(getResponse, objectMapper.reader(Clothing.class));
     }
 
     private List<Clothing> getClothing(String gender, List<String> types, List<String> colours, List<String> range){
@@ -73,6 +84,6 @@ public class ElasticsearchRetriever {
             searchRequest.setQuery(qb.must(termsQuery("colours", coloursArray)).minimumShouldMatch("1"));
         }
         SearchResponse response = searchRequest.execute().actionGet();
-        return ElasticsearchResponseParser.searchResponseToClothingList(response, JSONObjectMapperFactory.getObjectReader(Clothing.class));
+        return ElasticsearchResponseParser.searchResponseToClothingList(response, objectMapper.reader(Clothing.class));
     }
 }

@@ -39,26 +39,40 @@ public class ClothingDescriptionParser {
             case "nastygal":    getNastyGalDescription(url, image, document, title, type, gender);
                                 break;
             case "riverisland": getRiverIslandDescription(url, image, document, title, type, gender);
+                                break;
+            case "oipolloi":    getOiPolloiDescription(url, image, document, title, type, gender);
+        }
+    }
+
+    private void getOiPolloiDescription(String url, String image, Document document, String title, String type, String gender) {
+        try {
+            String description = document.select("div.product-description").first().text();
+            String price = "";
+            if(document.select("p.product-pricing").hasClass("product-price-reduced")) {
+                price = document.select("span.price.price-on-sale.price-inc-vat").first().child(0).text();
+            } else { price = document.select("span.price.price-full.price-inc-vat").first().child(0).text(); }
+            String currency = getCurrency(price);
+            double priceNum = convertPrice(price);
+            Set<String> colours = coloursFactory.getColoursFromDetails(document.select("span.colour").first().text());
+            insertClothingItemIntoES("oipolloi", title, type, gender, url, image, description, priceNum, currency, colours);
+        } catch (NullPointerException e) {
+            System.err.println("Error extracting information from " + url);
+            System.err.println(e.getMessage());
         }
     }
 
     private void getRiverIslandDescription(String url, String image, Document document, String title, String type, String gender) {
         try {
             String description = document.select("div.product__description").first().text();
-            System.out.println(description);
             String price = document.select("div.price").first().text();
             String currency = getCurrency(price);
             double priceNum = convertPrice(price);
-            System.out.println(currency + " " + priceNum);
             Set<String> colours = coloursFactory.getColoursFromDetails(title);
-            System.out.println(colours);
             insertClothingItemIntoES("riverisland", title, type, gender, url, image, description, priceNum, currency, colours);
         } catch (NullPointerException e) {
             System.err.println("Error extracting information from " + url);
             System.err.println(e.getMessage());
         }
-
-
     }
 
     private void getNastyGalDescription(String url, String image, Document document, String title, String type, String gender) {
@@ -97,7 +111,7 @@ public class ClothingDescriptionParser {
             String price = document.getElementsByClass("ProductPrice").first().text();
             String currency = getCurrency(price);
             double priceNum = convertPrice(price);
-            Set<String> colours = coloursFactory.getColoursFromDetails(title + " " + description);
+            Set<String> colours = coloursFactory.getColoursFromDetails(title);
             insertClothingItemIntoES("motel", title, type, gender, url, image, description, priceNum, currency, colours);
         } catch (NullPointerException e) {
             System.err.println("Error extracting information from " + url);
@@ -115,7 +129,7 @@ public class ClothingDescriptionParser {
             String price = priceSpan.text();
             String currency = getCurrency(price);
             double priceNum = convertPrice(price);
-            Set<String> colours = coloursFactory.getColoursFromDetails(title + " " + description);
+            Set<String> colours = coloursFactory.getColoursFromDetails(title);
             insertClothingItemIntoES("newlook", title, type, gender, url, image, description, priceNum, currency, colours);
         } catch (NullPointerException e) {
             System.err.println("Error extracting information from " + url);

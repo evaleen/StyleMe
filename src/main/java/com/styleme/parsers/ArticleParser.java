@@ -50,7 +50,6 @@ public class ArticleParser {
                 String articles = getDocAndParse(url[0], url[1]);
                 articles = sentenceParser.removeStopWordsAndPunctuation(articles);
                 writer.write(articles + "\n");
-
             }
             reader.close();
             writer.close();

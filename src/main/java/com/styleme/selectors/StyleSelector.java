@@ -10,17 +10,13 @@ import java.util.*;
  */
 public class StyleSelector {
 
-    private List<Clothing> selectedClothing;
-
-    public StyleSelector() {
-        selectedClothing = new ArrayList<>();
-    }
+    public StyleSelector() {}
 
     public List<Clothing> getClothingSuggestionsForStyle(Style style, List<Clothing> clothing) {
         TreeMap<Integer, Set<Clothing>> scores = new TreeMap<>();
         Set<Clothing> items;
         for(Clothing item : clothing) {
-            item = getClothingScore(item, style.getStyle(), style.getTerms());
+            item = getClothingScore(item, style);
             if(scores.containsKey(item.getScore())) {
                 items = scores.get(item.getScore());
             } else {
@@ -29,14 +25,14 @@ public class StyleSelector {
             items.add(item);
             scores.put(item.getScore(), items);
         }
-        selectedClothing = getSortedClothesList(scores);
-        return getTop(selectedClothing, 3);
+        return getTop(getSortedClothesList(scores), 3);
     }
 
-    public List<Clothing> getClothingWithUpdatedScores(List<String> incTerms, List<String> decTerms) {
+    public List<Clothing> getClothingWithUpdatedScores(Style style, List<Clothing> clothing, List<String> incTerms, List<String> decTerms) {
         TreeMap<Integer, Set<Clothing>> scores = new TreeMap<>();
         Set<Clothing> items;
-        for(Clothing item : selectedClothing) {
+        for(Clothing item : clothing) {
+            item = getClothingScore(item,style);
             item = updateClothingScore(item, incTerms, decTerms);
             if(scores.containsKey(item.getScore())) {
                 items = scores.get(item.getScore());
@@ -67,12 +63,12 @@ public class StyleSelector {
         return item;
     }
 
-    private Clothing getClothingScore(Clothing item, String styleName, Set<Map<String, Integer>> styleTerms) {
+    private Clothing getClothingScore(Clothing item, Style style) {
         String description = item.getName() + " " + item.getDescription();
         List<String> descriptionWords = Arrays.asList(description.split(" "));
         int score = 0;
-        if (description.contains(styleName)) score = score + 3;
-        for(Map<String, Integer> term : styleTerms) {
+        if (description.contains(style.getStyle())) score = score + 3;
+        for(Map<String, Integer> term : style.getTerms()) {
             for(String name : term.keySet())
                 if(descriptionWords.contains(name)) {
                     score = score + term.get(name);

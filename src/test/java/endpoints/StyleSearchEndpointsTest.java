@@ -50,7 +50,6 @@ public class StyleSearchEndpointsTest {
 
         incTerms = Arrays.asList("preppy");
         decTerms = Arrays.asList("chic");
-
     }
 
     @Test
@@ -62,8 +61,8 @@ public class StyleSearchEndpointsTest {
 
     @Test
     public void getClothingTest() {
-        when(elasticsearchRetriever.getSearch(incTerms, decTerms)).thenReturn(returnedClothing);
-        List<Clothing> clothing = styleSearchEndpoints.getClothing(incTerms, decTerms);
+        when(elasticsearchRetriever.getSearch(gender, style, types, colours, range, incTerms, decTerms)).thenReturn(returnedClothing);
+        List<Clothing> clothing = styleSearchEndpoints.getClothing(gender, style, types, colours, range, incTerms, decTerms);
         assertEquals(clothing, returnedClothing);
     }
 

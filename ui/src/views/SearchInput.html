@@ -73,7 +73,7 @@
               <tags-input ng-model="types" display-property="name" placeholder="Add a clothing type"
                 replace-spaces-with-dashes="false" template="tag-template" add-from-autocomplete-only="true">
                 <auto-complete source="loadTags($query, 'mensClothing.json')" min-length="0"
-                load-on-focus="true" max-results-to-show="50" template="autocomplete-template">
+                load-on-focus="true" load-on-empty="true" max-results-to-show="50" template="autocomplete-template">
               </auto-complete>
             </tags-input>
           </div>
@@ -133,7 +133,7 @@
         </div>
       </div>
       </script>
-  <div class="footer">
+  <div class="footer footer-search">
       <div class="footer_desc2">
         The clothing results are drawn from:
         <table class="links">
@@ -145,7 +145,7 @@
           <td><a ng-href="https://www.missguided.eu/">MissGuided</a></td>
         </tr><tr>
           <td><a ng-href="http://eu.topshop.com/?geoip=home">Topshop</a></td>
-          <td><a ng-href="http://eu.topman.com/?geoip=home">Topman</a></td>
+          <td><a ng-href="hhttp://eu.riverisland.com/">River Island</a></td>
         </tr>
       </table>
     </div>
@@ -163,7 +163,7 @@
                 </button>
               </div>
               <div class="clearfix modal-body">
-                <form class="form-horizontal ng-pristine ng-valid" role="form" action="resources/mail.php" method="post" id="contact_form">
+                <form class="form-horizontal ng-pristine ng-valid" name="contact_form" action="resources/mail.php" method="POST" id="contact_form">
                   <div class="form-group">
                     <input class="form-control" type="text" placeholder="Name" name="name" id="name" title="Your Name" required>
                   </div>
@@ -173,7 +173,7 @@
                   <div class="form-group">
                     <textarea rows="4" cols="50" class="form-control" type="test" placeholder="Message" name="message" id="message" title="Your Message" required></textarea>
                   </div>
-                  <button class="btn btn-send button sendBtn" value="submit" name="submit" ng-click="showMessage()">Send</button>
+                  <button class="btn btn-send button sendBtn" value="submit" name="submit">Send</button>
                 </form>
               </div>
             </div>
@@ -182,32 +182,3 @@
       </div>
   </div>
 </div>
-<!--div class="footer">
-  <div class="footer_desc1">
-    StyleMe performs natural language processing on Style Blogs to determine words associated with styles.<br>
-    Utilizing this enables the Style Selector algorithm to determine the style of a clothing item. <br>
-    StyleMe also learns from you after every use! <br>
-    By "rating" a clothing item if you think its relevant to the style,
-    or "hating" it if its not, the algorithm is constantly improving your help!
-    </div>
-    <div class="footer_desc2">
-      <StyleMe is the Final Year Project of 4th year Computer Applications student Eibhlín McGeady.>
-      <div class="contact">
-        <u>Get in Touch!</u>
-        <div class="">
-        <form class="form-horizontal ng-pristine ng-valid" role="form" action="scripts/services/mail.php" method="post">
-          <div class="form-group">
-            <input class="form-control" type="text" placeholder="Name" name="name" id="name" title="Your Name" required>
-          </div>
-          <div class="form-group">
-            <input class="form-control" type="email" placeholder="Email" name="email" id="email" title="Your Email" required>
-          </div>
-          <div class="form-group">
-            <textarea rows="4" cols="50" class="form-control" type="test" placeholder="Message" name="message" id="message" title="Your Message" required></textarea>
-          </div>
-          <button class="btn btn-send" value="submit" name="submit">Send</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div-->

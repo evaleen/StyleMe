@@ -24,6 +24,7 @@ public class ElasticsearchConfigurationTest {
     private String motelType;
     private String nastyGalType;
     private String riverIslandType;
+    private String oiPolloiType;
     private String styleMapping;
     private String clothingMapping;
 
@@ -40,6 +41,7 @@ public class ElasticsearchConfigurationTest {
         motelType = "motel";
         nastyGalType = "nastygal";
         riverIslandType = "riverisland";
+        oiPolloiType = "oipolloi";
         styleMapping = "{\n" +
                 "\"properties\": {\n" +
                 "\"style\": {\n" +
@@ -58,7 +60,7 @@ public class ElasticsearchConfigurationTest {
                 "\"type\": \"string\"\n" +
                 "},\n" +
                 "\"score\": {\n" +
-                "\"type\": \"number\"\n" +
+                "\"type\": \"integer\"\n" +
                 "}\n" +
                 "}\n" +
                 "}\n" +
@@ -183,15 +185,19 @@ public class ElasticsearchConfigurationTest {
     }
 
     @Test
-    public void getBoohooTypeTest() {
-        assertEquals(newLookType, elasticsearchConfiguration.getNewLookType());
-    }
-
-    @Test
     public void getMotelTypeTest() {
         assertEquals(motelType, elasticsearchConfiguration.getMotelType());
     }
 
+    @Test
+    public void getNewLookTypeTest() {
+        assertEquals(newLookType, elasticsearchConfiguration.getNewLookType());
+    }
+
+    @Test
+    public void getOiPolloiTypeTest() {
+        assertEquals(oiPolloiType, elasticsearchConfiguration.getOiPolloiType());
+    }
 
     @Test
     public void getStyleMappingTest() {

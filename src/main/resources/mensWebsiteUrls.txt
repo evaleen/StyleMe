@@ -1,3 +1,13 @@
+oipolloi jackets https://www.oipolloi.com/collections/outerwear
+oipolloi knitwear https://www.oipolloi.com/collections/knitwear
+oipolloi jumpers https://www.oipolloi.com/collections/sweats
+oipolloi shirts https://www.oipolloi.com/collections/shirts
+oipolloi tops https://www.oipolloi.com/collections/t-shirts
+oipolloi tops https://www.oipolloi.com/collections/polos
+oipolloi denim https://www.oipolloi.com/collections/jeans
+oipolloi trousers https://www.oipolloi.com/collections/trousers
+oipolloi shorts https://www.oipolloi.com/collections/shorts
+oipolloi swimwear https://www.oipolloi.com/collections/swim-shorts
 topshop suits http://eu.topman.com/en/tmeu/category/clothing-617800/mens-blazers-5369757/N-bleZ7y7?No=0&Nrpp=20&siteId=%2F13061
 topshop suits http://eu.topman.com/en/tmeu/category/suits-shop-617796/slim-fit-suits-2205379/N-c4tZ7y7?No=0&Nrpp=20&siteId=%2F13061
 topshop suits http://eu.topman.com/en/tmeu/category/suits-shop-617796/skinny-fit-suits-2205363/N-c4sZ7y7?No=0&Nrpp=20&siteId=%2F13061

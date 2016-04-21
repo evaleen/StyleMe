@@ -45,31 +45,31 @@ public class ColoursFactory {
 
 
     private List<String> getBlackShades() {
-        return Arrays.asList("black", "monochrome", "zebra");
+        return Arrays.asList("black", "monochrome", "zebra", "noir");
     }
     
     private List<String> getWhiteShades() {
-        return Arrays.asList("white", "ivory", "monochrome", "zebra", "eggshell", "alabaster");
+        return Arrays.asList("white", "ivory", "monochrome", "zebra", "eggshell", "alabaster", "mastic", "blanc");
     }
 
     private List<String> getRedShades() {
-        return Arrays.asList("red", "tomato", "crimson", "ruby");
+        return Arrays.asList("red", "tomato", "crimson", "ruby", "rouge");
     }
 
     private List<String> getOrangeShades() {
-        return Arrays.asList("orange", "rust", "teracotta", "copper", "coral", "apricot", "honey");
+        return Arrays.asList("orange", "rust", "teracotta", "copper", "coral", "apricot", "honey", "rouille", "clementine");
     }
 
     private List<String> getYellowShades() {
-        return Arrays.asList("yellow", "mustard", "honey", "lemon", "gold");
+        return Arrays.asList("yellow", "mustard", "honey", "lemon", "gold", "heather", "jaune");
     }
 
     private List<String> getGreenShades() {
-        return Arrays.asList("green", "khaki", "teal", "mint", "turquoise", "lime", "olive");
+        return Arrays.asList("green", "khaki", "teal", "mint", "turquoise", "lime", "olive", "jungle", "kerry", "vert","leaf");
     }
 
     private List<String> getBlueShades() {
-        return Arrays.asList("blue", "cobalt", "teal", "sapphire", "turquoise");
+        return Arrays.asList("blue", "cobalt", "teal", "sapphire", "turquoise", "beetle", "royal", "bleu", "sax", "bugatti");
     }
 
     private List<String> getPurpleShades() {
@@ -77,15 +77,15 @@ public class ColoursFactory {
     }
 
     private List<String> getPinkShades() {
-        return Arrays.asList("pink", "blush", "coral", "peach", "rose", "raspberry", "salmon");
+        return Arrays.asList("pink", "blush", "coral", "peach", "rose", "raspberry", "salmon", "paprika");
     }
 
     private List<String> getBrownShades() {
-        return Arrays.asList("brown","taupe", "mink", "bronze", "tan", "coffee", "chocolate");
+        return Arrays.asList("brown","taupe", "mink", "bronze", "tan", "coffee", "chocolate", "tarmac", "vicuna", "marron");
     }
 
     private List<String> getBeigeShades() {
-        return Arrays.asList("beige", "nude", "camel", "tan", "clay", "oatmeal");
+        return Arrays.asList("beige", "nude", "camel", "tan", "clay", "oatmeal", "sand");
     }
 
     private List<String> getMetallicShades() {
@@ -93,15 +93,15 @@ public class ColoursFactory {
     }
     
     private List<String> getNavyShades() {
-        return Arrays.asList("navy");
+        return Arrays.asList("navy", "beetle", "marine", "anthracite");
     }
 
     private List<String> getGreyShades() {
-        return Arrays.asList("gray", "stone", "charcoal", "grey", "silver");
+        return Arrays.asList("gray", "stone", "charcoal", "grey", "silver", "gris");
     }
     
     private List<String> getMaroonShades() {
-        return Arrays.asList("maroon", "wine", "burgundy", "oxblood");
+        return Arrays.asList("maroon", "wine", "burgundy", "oxblood", "bordeaux");
     }
     
     private List<String> getCreamShades() {
@@ -109,7 +109,7 @@ public class ColoursFactory {
     }
 
     private List<String> getMultiPatterns() {
-        return Arrays.asList("multi", "monochrome", "zebra", "floral", "aztec", "paisley", "polka", "stripe");
+        return Arrays.asList("multi", "monochrome", "zebra", "floral", "aztec", "paisley", "polka", "stripe", "ecru");
     }
 
 }

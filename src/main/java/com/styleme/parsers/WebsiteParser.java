@@ -66,7 +66,25 @@ public class WebsiteParser {
             case "nastygal":    getNastyGalClothingImagesAndLinks(doc, type, gender);
                                 break;
             case "riverisland": getRiverIslandClothingImagesAndLinks(doc, type, gender);
+                                break;
+            case "oipolloi":    getOiPolloiClothingImagesAndLinks(doc, type, gender);
        }
+    }
+
+    private void getOiPolloiClothingImagesAndLinks(Document doc, String type, String gender) {
+        try {
+            Elements list = doc.getElementsByClass("collection-product");
+            for (Element el : list) {
+                if(!el.hasClass("product-not-available")) {
+                    String url = el.select("a.collection-product-link").first().absUrl("href");
+                    String image = el.select("img.collection-product-image").first().absUrl("src");
+                    String title = el.select("span.title").first().text();
+                    getLink(url, image, "oipolloi", title, type, gender);
+                }
+            }
+        } catch (NullPointerException e) {
+            System.err.println("Error extracting information from Oi Polloi site" + "\n" + e.getMessage());
+        }
     }
 
     private void getRiverIslandClothingImagesAndLinks(Document doc, String type, String gender) {

@@ -19,7 +19,7 @@ public class ElasticsearchConfiguration {
     private String missguidedType;
     private String nastyGalType;
     private String riverIslandType;
-    private String boohooType;
+    private String oiPolloiType;
     private String styleMapping;
     private String clothingMapping;
 
@@ -35,7 +35,7 @@ public class ElasticsearchConfiguration {
         this.missguidedType = "missguided";
         this.nastyGalType = "nastygal";
         this.riverIslandType = "riverisland";
-        this.boohooType = "boohoo";
+        this.oiPolloiType = "oipolloi";
         this.styleMapping = "{\n" +
                                 "\"properties\": {\n" +
                                     "\"style\": {\n" +
@@ -54,7 +54,7 @@ public class ElasticsearchConfiguration {
                                                 "\"type\": \"string\"\n" +
                                             "},\n" +
                                             "\"score\": {\n" +
-                                                "\"type\": \"number\"\n" +
+                                                "\"type\": \"integer\"\n" +
                                             "}\n" +
                                         "}\n" +
                                     "}\n" +
@@ -162,7 +162,7 @@ public class ElasticsearchConfiguration {
 
     public String getRiverIslandType() {return this.riverIslandType; }
 
-    public String getBoohooType() {return this.boohooType; }
+    public String getOiPolloiType() { return this.oiPolloiType; }
 
     public String getStyleMapping() { return this.styleMapping; }
 

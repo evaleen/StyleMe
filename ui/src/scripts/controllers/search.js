@@ -65,6 +65,6 @@ angular.module('styleMeApp').controller('SearchCtrl', function($scope, $window, 
       $scope.path = $scope.path + "&c=" + $scope.convertToString($scope.colours);
       $scope.path = $scope.path + "&min=" + $scope.minPrice + "&max=" + $scope.maxPrice;
       $location.path($scope.path);
-    };
+    }
   };
 });

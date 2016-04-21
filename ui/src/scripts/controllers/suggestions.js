@@ -33,8 +33,7 @@ angular.module('styleMeApp').controller('SuggestionsCtrl', function($scope, $loc
       style: $scope.style,
       types: $scope.types,
       colours: $scope.colours,
-      range: $scope.range,
-      websites: $scope.websites
+      range: $scope.range
     }, function(list) {
       $scope.clothingList = list;
       $scope.removeLoading();
@@ -104,7 +103,7 @@ angular.module('styleMeApp').controller('SuggestionsCtrl', function($scope, $loc
   };
 
   $scope.returnToSearch = function() {
-    $location.path('/');
+    $location.path('/'+ $scope.gender);
   };
 
 });

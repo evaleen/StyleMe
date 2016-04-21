@@ -154,6 +154,7 @@ a.modal-link:hover {
 
 .modal-btn {
   margin-left: 15%;
+  margin-top: 5%;
 }
 
 .close span {
@@ -175,6 +176,7 @@ a.link:hover {
 }
 .modal-details {
   overflow: hidden;
+  min-width: 30%;
 }
 
 img.loading-gif {
@@ -318,11 +320,14 @@ img.loading-gif {
   position:relative;
   bottom:0;
   left:0;
-  margin-top: -200px;
   background-color:  #84596b;
   color: #ffffff;
   text-align: center;
   font-size: 120%;
+}
+
+.footer-search {
+  margin-top: -200px;
 }
 
 .footer_desc1 {
@@ -383,7 +388,7 @@ img.loading-gif {
 }
 @media (max-width: 891px) { .moreLessLikeBtn { margin-bottom: 5%; width: 100%;} }
 @media (max-width: 800px) { .returnBtn { margin-left: 36%; } .loadMoreBtn { margin-left: 36% } }
-@media (max-width: 767px) { .footer { margin-top: 0px; } }
+@media (max-width: 767px) { .footer-search { margin-top: 0px; } }
 @media (max-width: 700px) { .clothing-image { width: 100%; height: 40%; } .loadMoreBtn { margin-left: 39% } }
 @media (max-width: 590px) { .continueBtn { margin-left: 30%; } }
 @media (max-width: 550px) { .returnBtn { margin-left: 30%; } .loadMoreBtn { margin-left: 34% } }

@@ -36,11 +36,11 @@ angular.module('styleMeApp').controller('ResultsCtrl', function($scope, $window,
 
   $scope.getClothes = function() {
     GetClothes.get({
-      //style: $scope.style,
-      //types: $scope.types,
-      //colours: $scope.colours,
-      //range: $scope.range,
-      //websites: $scope.websites,
+      gender : $scope.gender,
+      style: $scope.style,
+      types: $scope.types,
+      colours: $scope.colours,
+      range: $scope.range,
       incTerms: $scope.incTerms,
       decTerms: $scope.decTerms
     }, function(list) {
@@ -89,7 +89,7 @@ angular.module('styleMeApp').controller('ResultsCtrl', function($scope, $window,
     });
     var image = document.getElementById('love'+index);
     image.src = "images/love_inverted.png";
-    var image = document.getElementById('dislike'+index);
+    image = document.getElementById('dislike'+index);
     image.src = "images/dislike.png";
   };
 
@@ -100,12 +100,12 @@ angular.module('styleMeApp').controller('ResultsCtrl', function($scope, $window,
     });
     var image = document.getElementById('dislike'+index);
     image.src = "images/dislike_inverted.png";
-    var image = document.getElementById('love'+index);
+    image = document.getElementById('love'+index);
     image.src = "images/love.png";
   };
 
-  $scope.goSearch = function() {
-    $location.path('/');
+  $scope.returnToSearch = function() {
+    $location.path('/' + $scope.gender);
   };
 
   $scope.$watch('clothingList', function(val) {

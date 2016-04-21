@@ -74,7 +74,7 @@ public class TestStyleSelector {
     @Test
     public void getClothingWithUpdatedScoresTest() {
         styleSelector.getClothingSuggestionsForStyle(style, clothingList);
-        List<Clothing> returnedClothing = styleSelector.getClothingWithUpdatedScores(incTerms, decTerms);
+        List<Clothing> returnedClothing = styleSelector.getClothingWithUpdatedScores(style, clothingList, incTerms, decTerms);
         assertEquals(returnedClothing, returnedList);
 
     }

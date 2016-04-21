@@ -14,7 +14,7 @@ import java.util.Map;
 /*
  * @author Eibhlin McGeady
  *
- * Sets up Elasticsearch index with mapping
+ * Sets up Elasticsearch indexes with mapping
  */
 public class ElasticsearchSetup {
 
@@ -80,7 +80,7 @@ public class ElasticsearchSetup {
         IndexMetaData indexMetaData = clusterState.getMetaData().index(elasticsearchConfiguration.getMappingsIndex());
         MappingMetaData mappingMetaData = indexMetaData.mapping(elasticsearchConfiguration.getTopshopType());
         try {
-            Map<String, Object> mapping = mappingMetaData.getSourceAsMap();
+            Map mapping = mappingMetaData.getSourceAsMap();
             mapping = (Map) mapping.get("properties");
             mapping = (Map) mapping.get("description");
             if (mapping.containsKey("fields")) {

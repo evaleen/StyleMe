@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('styleMeApp').controller('SearchInputCtrl', function($scope, $http, $window, $location, $rootScope, Attributes, ParseService) {
+angular.module('styleMeApp').controller('SearchInputCtrl', function($scope, $http, $window, $location, $rootScope, $routeParams, Attributes, ParseService) {
 
   jQuery(document).ready(function ($) {
     $('#tabs').tab();
@@ -14,6 +14,14 @@ angular.module('styleMeApp').controller('SearchInputCtrl', function($scope, $htt
     $scope.MensStyles = Attributes.getMensStyles();
     $scope.types = [];
     $scope.colours = [];
+    $scope.gender = $routeParams.gender;
+    if($scope.gender == "mens") {
+      $scope.reset("#womensTab", "#mensTab");
+      $("#womens").removeClass("active");
+      $("#mens").addClass("active");
+    } else {
+      $scope.reset("#mensTab", "#womensTab");
+    }
   };
 
   $scope.selectWomensStyle = function(style) {

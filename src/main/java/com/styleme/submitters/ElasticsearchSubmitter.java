@@ -22,19 +22,15 @@ public class ElasticsearchSubmitter {
     private Client elasticsearchClient;
     private ElasticsearchConfiguration elasticsearchConfiguration;
     private ObjectMapper objectMapper;
-//    private String fashionIndex = "fashion";
-//    private String styleType = "styles";
-//    private String sitesIndex = "sites";
 
     public ElasticsearchSubmitter() {
-        this(ElasticsearchClientFactory.getClient());
-        elasticsearchConfiguration = new ElasticsearchConfiguration();
-        objectMapper = new ObjectMapper();
+        this(ElasticsearchClientFactory.getClient(), new ElasticsearchConfiguration(), new ObjectMapper());
     }
 
-    public ElasticsearchSubmitter(Client elasticsearchClient) {
+    public ElasticsearchSubmitter(Client elasticsearchClient, ElasticsearchConfiguration elasticsearchConfiguration, ObjectMapper objectMapper) {
         this.elasticsearchClient = elasticsearchClient;
-        elasticsearchConfiguration = new ElasticsearchConfiguration();
+        this.elasticsearchConfiguration = elasticsearchConfiguration;
+        this.objectMapper = objectMapper;
     }
 
     public void postStyle(Style style) {

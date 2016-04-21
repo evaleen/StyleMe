@@ -13,7 +13,7 @@ import java.util.Set;
  *
  * Encapsulates a Clothing object
  */
-public class Clothing implements Comparable<Clothing> {
+public class Clothing implements Comparable<Clothing>{
 
     private String id;
     private String name;
@@ -53,7 +53,14 @@ public class Clothing implements Comparable<Clothing> {
 
     @Override
     public int compareTo(Clothing clothing) {
-        return this.name.compareTo(clothing.getName());
+        return this.id.compareTo(clothing.getId());
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(o != null && o instanceof Clothing) {
+            return this.id.equals(((Clothing) o).getId());
+        } else return false;
     }
 
     public String getId() { return this.id; }

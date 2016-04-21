@@ -20,6 +20,11 @@ public class StyleTermUpdater {
         this.elasticsearchSubmitter = new ElasticsearchSubmitter();
     }
 
+    public StyleTermUpdater(ElasticsearchRetriever elasticsearchRetriever, ElasticsearchSubmitter elasticsearchSubmitter) {
+        this.elasticsearchRetriever = elasticsearchRetriever;
+        this.elasticsearchSubmitter = elasticsearchSubmitter;
+    }
+
     public void incrementStyleTerms(String styleName, List<String> terms) {
         Style style = elasticsearchRetriever.getStyle(styleName);
         for(Map<String, Integer> term : style.getTerms()) {
@@ -30,10 +35,9 @@ public class StyleTermUpdater {
             }
         }
         elasticsearchSubmitter.postStyle(style);
-
     }
 
-    public void decrementTerms(String styleName, List<String> terms) {
+    public void decrementStyleTerms(String styleName, List<String> terms) {
         Style style = elasticsearchRetriever.getStyle(styleName);
         for(Map<String, Integer> term : style.getTerms()) {
             for(String incTerm : terms) {

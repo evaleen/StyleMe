@@ -43,8 +43,9 @@ public class StyleSearchEndpoints {
     @Path("/clothes")
     @GET()
     @Consumes(MediaType.APPLICATION_JSON)
-    public List<Clothing> getClothing(@QueryParam("incTerms") List<String> incTerms, @QueryParam("decTerms") List<String> decTerms) {
-        return elasticsearchRetriever.getSearch(incTerms, decTerms);
+    public List<Clothing> getClothing(@QueryParam("gender") String gender, @QueryParam("style") String style, @QueryParam("types") List<String> types, @QueryParam("colours") List<String> colours,
+                                      @QueryParam("range") List<String> range, @QueryParam("incTerms") List<String> incTerms, @QueryParam("decTerms") List<String> decTerms) {
+        return elasticsearchRetriever.getSearch(gender, style, types, colours, range, incTerms, decTerms);
     }
 
     @Path("/incrementTerms")
@@ -58,7 +59,7 @@ public class StyleSearchEndpoints {
     @POST()
     @Consumes(MediaType.APPLICATION_JSON)
     public void decrementTerms(@QueryParam("style") String style, @QueryParam("terms") List<String> terms) {
-        styleTermUpdater.decrementTerms(style, terms);
+        styleTermUpdater.decrementStyleTerms(style, terms);
     }
 
 }
