@@ -12,6 +12,8 @@ import java.util.Set;
  * @author Eibhlin McGeady
  *
  * Encapsulates a Clothing object
+ * Creates a JSON object of the Clothing object
+ *
  */
 public class Clothing implements Comparable<Clothing>{
 

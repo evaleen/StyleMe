@@ -9,6 +9,9 @@ import static junit.framework.TestCase.assertEquals;
 
 /**
  * @author Eibhlin McGeady
+ *
+ * Units tests for methods in the ElasticsearchConfiguration class
+ *
  */
 public class ElasticsearchConfigurationTest {
     

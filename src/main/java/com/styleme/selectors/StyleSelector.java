@@ -7,6 +7,9 @@ import java.util.*;
 
 /**
  * @author Eibhlin McGeady
+ *
+ * Ranking algorithm for clothing items based on a selected style
+ *
  */
 public class StyleSelector {
 

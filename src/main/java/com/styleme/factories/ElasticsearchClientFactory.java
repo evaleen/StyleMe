@@ -11,6 +11,7 @@ import static org.elasticsearch.node.NodeBuilder.nodeBuilder;
  * @author Eibhlin McGeady
  *
  * A factory that creates an Elasticsearch client, with the cluster name recommends.
+ *
  */
 public class ElasticsearchClientFactory {
 

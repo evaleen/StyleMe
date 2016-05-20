@@ -12,6 +12,9 @@ import static junit.framework.TestCase.assertEquals;
 
 /**
  * @author Eibhlin McGeady
+ *
+ * Unit tests for methods in the ClothingDescriptionParser class
+ *
  */
 public class ClothingDescriptionParserTest {
 

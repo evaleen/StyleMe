@@ -28,13 +28,11 @@ public class GloveVectorization {
             File file = new ClassPathResource("glove.6B.300d.txt").getFile();
             WordVectors wordVectors = WordVectorSerializer.loadTxtVectors(file);
 
-            System.out.println("glove");
             styleWordVectorsSubmitter.getStylesAndPostToElasticsearch(wordVectors, stylesFileName);
 
         } catch (IOException e) {
             System.err.println("Error accessing file");
             e.printStackTrace();
         }
-
     }
 }

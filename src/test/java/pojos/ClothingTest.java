@@ -12,6 +12,9 @@ import static junit.framework.Assert.assertEquals;
 
 /**
  * @author Eibhlin McGeady
+ *
+ * Unit tests for methods in the Clothing POJO class
+ *
  */
 public class ClothingTest {
 

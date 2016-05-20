@@ -18,10 +18,10 @@ var app = angular
     .config(function($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/SearchInput.html',
+                templateUrl: 'views/searchInput.html',
                 controller: 'SearchInputCtrl'
             }).when('/:gender', {
-                templateUrl: 'views/SearchInput.html',
+                templateUrl: 'views/searchInput.html',
                 controller: 'SearchInputCtrl'
             })
             .when('/suggestions/:details', {

@@ -16,6 +16,9 @@ import java.util.*;
 
 /**
  * @author Eibhlin McGeady
+ *
+ * Unit tests for methods in the StyleTermUpdater class
+ *
  */
 public class StyleTermUpdaterTest extends ElasticsearchIntegrationTest {
 
@@ -30,7 +33,6 @@ public class StyleTermUpdaterTest extends ElasticsearchIntegrationTest {
     private Set<String> terms;
     private List<String> incTerms;
     private List<String> decTerms;
-    private Set<Map<String, Integer>> incrementedTerms;
 
     @Before
     public void setUp() throws Exception {
@@ -59,7 +61,6 @@ public class StyleTermUpdaterTest extends ElasticsearchIntegrationTest {
         styleTermUpdater.incrementStyleTerms(styleName, incTerms);
         Style updatedStyle = elasticsearchRetriever.getStyle(styleName);
         Set<Map<String, Integer>> updatedTerms = getUpdatedTerms(style.getTerms(), 1);
-        //assertEquals(updatedTerms, updatedStyle.getTerms());
         for(Map<String, Integer> term: updatedTerms) {
             assertTrue(updatedStyle.getTerms().contains(term));
         }
@@ -70,7 +71,6 @@ public class StyleTermUpdaterTest extends ElasticsearchIntegrationTest {
         styleTermUpdater.decrementStyleTerms(styleName, decTerms);
         Style updatedStyle = elasticsearchRetriever.getStyle(styleName);
         Set<Map<String, Integer>> updatedTerms = getUpdatedTerms(style.getTerms(), -1);
-        //assertEquals(updatedTerms, updatedStyle.getTerms());
         for(Map<String, Integer> term: updatedTerms) {
             assertTrue(updatedStyle.getTerms().contains(term));
         }

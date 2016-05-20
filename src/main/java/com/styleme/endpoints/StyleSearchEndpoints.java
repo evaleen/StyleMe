@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * @author Eibhlin McGeady
  *
- * Endoints that receive the Ajax request from the frontend and return the relevant information
+ * Endoints that receive the GET or POST requests from the frontend and return the relevant information
  *
  */
 

@@ -6,13 +6,10 @@ import com.styleme.pojos.Clothing;
 import com.styleme.pojos.Style;
 import com.styleme.retrievers.ElasticsearchRetriever;
 import com.styleme.selectors.StyleSelector;
-import org.elasticsearch.client.ElasticsearchClient;
 import org.elasticsearch.test.ElasticsearchIntegrationTest;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
+
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -21,6 +18,9 @@ import java.util.Set;
 
 /**
  * @author Eibhlin McGeady
+ *
+ * Unit tests for methods in the ElasticsearchRetreiver class
+ *
  */
 public class ElasticsearchRetreiverTest extends ElasticsearchIntegrationTest {
 

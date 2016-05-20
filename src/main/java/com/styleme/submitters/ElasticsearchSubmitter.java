@@ -13,8 +13,8 @@ import org.elasticsearch.client.Client;
  *
  * @author Eibhlin McGeady
  *
- * Posts JSON to Elasticsearch
- * Deletes JSON from Elasticsearch
+ * Posts JSON objects to Elasticsearch
+ * Deletes JSON objects from Elasticsearch
  *
  */
 public class ElasticsearchSubmitter {

@@ -19,12 +19,13 @@ import static org.quartz.TriggerBuilder.newTrigger;
  * @author Eibhlin McGeady
  *
  * Server launcher for StyleMe
+ *
  */
 public class StyleMeServerLauncher  extends Service<StyleMeServerConfiguration> {
 
     private static ElasticsearchSetup elasticsearchSetup;
     private static SchedulerFactory scheduleFactory;
-    //    private static ArticleParser articleParser;
+//    private static ArticleParser articleParser;
 //    private static Word2VecRawText word2Vec;
 //    private static GloveVectorization gloveVectorization;
 //    private String parsedStyleSentencesFile = "parsed_style_sentences.txt";
@@ -54,6 +55,8 @@ public class StyleMeServerLauncher  extends Service<StyleMeServerConfiguration> 
                 .setInitParam("allowedMethods", "OPTIONS,GET,PUT,POST,HEAD");
 
         elasticsearchSetup.setup();
+        WebsiteParser websiteParser = new WebsiteParser();
+        websiteParser.parseWebsites("src/main/resources/mensWebsiteUrls.txt", "mens");
 
         try {
             Scheduler scheduler = scheduleFactory.getScheduler();

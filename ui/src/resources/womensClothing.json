@@ -1,31 +1,31 @@
 [{
-  "name": "Dresses",
-  "image": "clothing/dress.png"
+    "name": "Dresses",
+    "image": "clothing/dress.png"
 }, {
-  "name": "Playsuits",
-  "image": "clothing/playsuit.png"
+    "name": "Playsuits",
+    "image": "clothing/playsuit.png"
 }, {
-  "name": "Tops",
-  "image": "clothing/top.png"
+    "name": "Tops",
+    "image": "clothing/top.png"
 }, {
-  "name": "Skirts",
-  "image": "clothing/skirt.png"
+    "name": "Skirts",
+    "image": "clothing/skirt.png"
 }, {
-  "name": "Shorts",
-  "image": "clothing/shorts.png"
+    "name": "Shorts",
+    "image": "clothing/shorts.png"
 }, {
-  "name": "Jackets",
-  "image": "clothing/jacket.png"
+    "name": "Jackets",
+    "image": "clothing/jacket.png"
 }, {
-  "name": "Denim",
-  "image": "clothing/denim.png"
+    "name": "Denim",
+    "image": "clothing/denim.png"
 }, {
-  "name": "Knitwear",
-  "image": "clothing/knitwear.png"
+    "name": "Knitwear",
+    "image": "clothing/knitwear.png"
 }, {
-  "name": "Trousers",
-  "image": "clothing/trousers.png"
+    "name": "Trousers",
+    "image": "clothing/trousers.png"
 }, {
-  "name": "Swimwear",
-  "image": "clothing/swimwear.png"
+    "name": "Swimwear",
+    "image": "clothing/swimwear.png"
 }]

@@ -9,6 +9,9 @@ import java.util.Map;
 
 /**
  * @author Eibhlin McGeady
+ *
+ * Updates the relevance of style terms in a style object and re-posts to Elasticsearch
+ *
  */
 public class StyleTermUpdater {
 

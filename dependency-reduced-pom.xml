@@ -68,14 +68,22 @@
     </dependencies>
   </dependencyManagement>
   <properties>
+    <lucene.version>4.10.4</lucene.version>
+    <randomizedtesting-runner.version>2.1.10</randomizedtesting-runner.version>
+    <json.version>20151123</json.version>
+    <quartz.version>2.2.2</quartz.version>
+    <jetty.version>8.1.10.v20130312</jetty.version>
+    <hamcrest.version>1.3</hamcrest.version>
     <canova.version>0.0.0.14</canova.version>
+    <dropwizard.version>0.6.2</dropwizard.version>
+    <jsoup.version>1.8.3</jsoup.version>
+    <elasticsearch.version>1.4.1</elasticsearch.version>
     <nd4j.version>0.4-rc3.8</nd4j.version>
-    <elasticsearch.version>1.7.1</elasticsearch.version>
-    <jdk.version>1.7</jdk.version>
-    <jackson.version>2.5.1</jackson.version>
-    <lucene.version>5.2.1</lucene.version>
-    <randomizedtesting-runner.version>2.0.5</randomizedtesting-runner.version>
     <dl4j.version>0.4-rc3.8</dl4j.version>
+    <jackson.version>2.5.1</jackson.version>
+    <mockito.version>2.0.2-beta</mockito.version>
+    <jdk.version>1.7</jdk.version>
+    <groovy.version>2.4.4</groovy.version>
   </properties>
 </project>
 

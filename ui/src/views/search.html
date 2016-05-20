@@ -1,66 +1,53 @@
 <div class="search" ng-init="init()">
     <div class="title">
-      <img class="logo" src="images/logo.jpg">
+        <img class="logo" src="images/logo.jpg">
     </div>
-    <!-- A little intro and the form & submit button -->
     <!-- styles -->
     <form class="form-horizontal" role="form">
-      <div class="row styles">
-        <h1>Choose a Style</h1>
-        <ul class="StylesList">
-          <li ng-repeat="style in styles">
-            <button class="btn btn-md button" ng-class="{selectedStyle: style.selected, unselected: !style.selected}" ng-click="select(style)" >{{style.name}}</button>
-          </li>
-        </ul>
-      </div>
-      <!-- clothing type -->
-      <div class="row types">
-        <h1>Clothing Types</h1>
-          <div class="list">
-          <ul>
-            <li ng-repeat="type in types">
-              <input type="checkbox" ng-model="type.checked" />
-              <span></span>{{type.name}}
-            </li>
-          </ul>
+        <div class="row styles">
+            <h1>Choose a Style</h1>
+            <ul class="StylesList">
+                <li ng-repeat="style in styles">
+                    <button class="btn btn-md button" ng-class="{selectedStyle: style.selected, unselected: !style.selected}" ng-click="select(style)">{{style.name}}</button>
+                </li>
+            </ul>
         </div>
-      </div>
-      <!-- price range -->
-      <div class="row price">
-        <h1>Price Range</h1>
-        <div class="range">
-            <input type="text" id="amount" readonly size=8/>
-            <div class="slider" id="slider"></div>
+        <!-- clothing type -->
+        <div class="row types">
+            <h1>Clothing Types</h1>
+            <div class="list">
+                <ul>
+                    <li ng-repeat="type in types">
+                        <input type="checkbox" ng-model="type.checked" />
+                        <span></span>{{type.name}}
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-     </form>
-      <!-- colours -->
-      <div class="row colours">
+        <!-- price range -->
+        <div class="row price">
+            <h1>Price Range</h1>
+            <div class="range">
+                <input type="text" id="amount" readonly size=8/>
+                <div class="slider" id="slider"></div>
+            </div>
+        </div>
+    </form>
+    <!-- colours -->
+    <div class="row colours">
         <h1>Colours</h1>
         <div class="list">
-          <ul>
-            <li ng-repeat="colour in colours">
-              <input type="checkbox" ng-model="colour.checked" />
-              <span></span>{{colour.name}}
-            </li>
-          </ul>
-        </div>
-      </div>
-      <!-- websites >
-      <div class="row websites">
-        <h1>Webistes</h1>
-          <div class="list">
             <ul>
-              <li ng-repeat="website in websites">
-                <input type="checkbox" ng-model="website.checked" />
-                <span></span>{{website.name}}
-              </li>
+                <li ng-repeat="colour in colours">
+                    <input type="checkbox" ng-model="colour.checked" />
+                    <span></span>{{colour.name}}
+                </li>
             </ul>
-          </div>
-      </div-->
+        </div>
+    </div>
     </form>
     <!-- search button -->
-    <div class = "submitBtn">
-      <button type="button" ng-click="submit()" class="btn btn-lg button">Search</button>
+    <div class="submitBtn">
+        <button type="button" ng-click="submit()" class="btn btn-lg button">Search</button>
     </div>
 </div>

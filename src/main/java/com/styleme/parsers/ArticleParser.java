@@ -21,7 +21,7 @@ import java.io.*;
  * www.thechroniclesofher.com -tcoh
  * www.zanita.com - zanita
  * www.brooketestoni.com - brooke
- * Extracts article content and stores it in a file
+ * Extracts article content and stores it in a text file
  *
  */
 public class ArticleParser {
@@ -99,7 +99,6 @@ public class ArticleParser {
     private String parseContinueReadingBlog(Document doc, String linkName, String postClassName) {
         String text = "";
         Elements links = doc.getElementsByClass(linkName);
-        System.out.println("num links " + links.size());
         for(Element link : links) {
             if(link.hasAttr("href")) {
                 text += connectToBlog(link, postClassName);
@@ -137,7 +136,6 @@ public class ArticleParser {
         Elements posts = doc.getElementsByClass(postClassName);
         for(Element post : posts) {
             text += post.text();
-            System.out.println(post.text());
         }
         return text;
     }

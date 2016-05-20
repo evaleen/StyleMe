@@ -10,9 +10,9 @@ import java.io.*;
 /**
  * @author Eibhlin McGeady
  *
- * Parses each HTML online clothing websites NastyGal, NewLook, Missguided, MotelRocks, Topshop & River Island
+ * Parses each HTML online clothing websites NastyGal, NewLook, Missguided, MotelRocks, Topshop, OiPolloi & River Island
  * Extracts a link to individual clothing pages, to the clothing items image
- * Extracts attribute information about each clothing item
+ * and the title correpsonding to the clothing item
  *
  */
 public class WebsiteParser {
@@ -50,10 +50,12 @@ public class WebsiteParser {
             getClothingLinksAndImages(doc, site, type, gender);
         } catch (IOException e) {
             System.err.println("Error connecting to url " + url + "\n" + e.getMessage());
+        } catch (NullPointerException e) {
+            System.err.println("Error extracting information from " + url + "\n" + e.getMessage());
         }
     }
 
-    private void getClothingLinksAndImages(Document doc, String site, String type, String gender) {
+    private void getClothingLinksAndImages(Document doc, String site, String type, String gender) throws NullPointerException  {
         switch (site) {
             case "topshop":     getTopshopClothingImagesAndLinks(doc, type, gender);
                                 break;
@@ -71,110 +73,82 @@ public class WebsiteParser {
        }
     }
 
-    private void getOiPolloiClothingImagesAndLinks(Document doc, String type, String gender) {
-        try {
-            Elements list = doc.getElementsByClass("collection-product");
-            for (Element el : list) {
-                if(!el.hasClass("product-not-available")) {
-                    String url = el.select("a.collection-product-link").first().absUrl("href");
-                    String image = el.select("img.collection-product-image").first().absUrl("src");
-                    String title = el.select("span.title").first().text();
-                    getLink(url, image, "oipolloi", title, type, gender);
-                }
+    private void getOiPolloiClothingImagesAndLinks(Document doc, String type, String gender) throws NullPointerException {
+        Elements list = doc.getElementsByClass("collection-product");
+        for (Element el : list) {
+            if(!el.hasClass("product-not-available")) {
+                String url = el.select("a.collection-product-link").first().absUrl("href");
+                String image = el.select("img.collection-product-image").first().absUrl("src");
+                String title = el.select("span.title").first().text();
+                getLink(url, image, "oipolloi", title, type, gender);
             }
-        } catch (NullPointerException e) {
-            System.err.println("Error extracting information from Oi Polloi site" + "\n" + e.getMessage());
         }
     }
 
-    private void getRiverIslandClothingImagesAndLinks(Document doc, String type, String gender) {
-        try {
-            Elements list = doc.getElementsByClass("products-listing").get(0).children();
-            for (Element el : list) {
-                String url = el.select("a").first().absUrl("href");
-                String image = el.select("img.productlisting-image").first().absUrl("src");
-                String title = el.select("img.productlisting-image").first().attr("alt");
-                getLink(url, image, "riverisland", title, type, gender);
-            }
-        } catch (NullPointerException e) {
-            System.err.println("Error extracting information from River Island site" + "\n" + e.getMessage());
+    private void getRiverIslandClothingImagesAndLinks(Document doc, String type, String gender) throws NullPointerException {
+        Elements list = doc.getElementsByClass("products-listing").get(0).children();
+        for (Element el : list) {
+            String url = el.select("a").first().absUrl("href");
+            String image = el.select("img.productlisting-image").first().absUrl("src");
+            String title = el.select("img.productlisting-image").first().attr("alt");
+            getLink(url, image, "riverisland", title, type, gender);
         }
     }
 
-    private void getNastyGalClothingImagesAndLinks(Document doc, String type, String gender) {
-        try {
-            Elements list = doc.getElementsByClass("category-item");
-            for (Element el : list) {
-                String url = el.select("a.product-link").first().absUrl("href");
-                String image = el.select("img.category-item-thumb").first().absUrl("src");
-                String title = el.select("div.product-name").first().text();
-                getLink(url, image, "nastygal", title, type, gender);
-            }
-        } catch (NullPointerException e) {
-            System.err.println("Error extracting information from Nasty Gal site" + "\n" + e.getMessage());
+    private void getNastyGalClothingImagesAndLinks(Document doc, String type, String gender) throws NullPointerException {
+        Elements list = doc.getElementsByClass("category-item");
+        for (Element el : list) {
+            String url = el.select("a.product-link").first().absUrl("href");
+            String image = el.select("img.category-item-thumb").first().absUrl("src");
+            String title = el.select("div.product-name").first().text();
+            getLink(url, image, "nastygal", title, type, gender);
         }
     }
 
-    private void getMissguidedClothingImagesAndLinks(Document doc, String type, String gender) {
-       try {
-            Elements list = doc.getElementsByClass("products-grid__item");
-            for(Element el : list) {
-                String url = el.child(0).absUrl("href");
-                Element img = el.getElementsByClass("category-products__image").first();
-                String image = img.absUrl("src");
-                String title = el.child(0).attr("title");
-                getLink(url, image, "missguided", title, type, gender);
-            }
-       } catch (NullPointerException e) {
-           System.err.println("Error extracting information from Missguided site" + "\n" + e.getMessage());
-       }
-    }
-
-    private void getNewLookClothingImagesAndLinks(Document doc, String type, String gender) {
-        try {
-            Elements list = doc.getElementsByClass("product");
-            for(Element el : list) {
-                Element link = el.child(1);
-                String url = link.absUrl("href");
-                String image = link.child(0).absUrl("src");
-                String title = el.getElementsByClass("desc").first().text();
-                getLink(url, image, "newlook", title, type, gender);
-            }
-        } catch (NullPointerException e) {
-            System.err.println("Error extracting information from New Look site" + "\n" + e.getMessage());
+    private void getMissguidedClothingImagesAndLinks(Document doc, String type, String gender) throws NullPointerException{
+        Elements list = doc.getElementsByClass("products-grid__item");
+        for(Element el : list) {
+            String url = el.child(0).absUrl("href");
+            Element img = el.getElementsByClass("category-products__image").first();
+            String image = img.absUrl("src");
+            String title = el.child(0).attr("title");
+            getLink(url, image, "missguided", title, type, gender);
         }
     }
 
-    private void getMotelImagesAndLinks(Document doc, String type, String gender) {
-        try {
-            Elements list = doc.getElementsByClass("catproddiv");
-            for(Element el : list) {
-                Element link =  el.getElementsByClass("xProductImage").get(0).child(0);
-                String url = link.absUrl("href");
-                Element img = link.child(0);
-                String image = img.absUrl("src");
-                if(image.equals("")) image = img.absUrl("pagespeed_high_res_src");
-                String title = el.getElementsByClass("xProductDetails").get(0).text();
-                getLink(url, image, "motel", title, type, gender);
-            }
-        } catch (NullPointerException e) {
-            System.err.println("Error extracting information from Motel site" + "\n" + e.getMessage());
+    private void getNewLookClothingImagesAndLinks(Document doc, String type, String gender) throws NullPointerException {
+        Elements list = doc.getElementsByClass("product");
+        for(Element el : list) {
+            Element link = el.child(1);
+            String url = link.absUrl("href");
+            String image = link.child(0).absUrl("src");
+            String title = el.getElementsByClass("desc").first().text();
+            getLink(url, image, "newlook", title, type, gender);
         }
     }
 
-    private void getTopshopClothingImagesAndLinks(Document doc, String type, String gender) {
-        try {
-            Elements list = doc.getElementsByClass("product");
-            for(Element el : list) {
-                Element link = el.child(0);
-                String url = link.absUrl("href");
-                Element img = link.child(0);
-                String title = img.attr("alt");
-                String image = img.absUrl("src");
-                getLink(url, image, "topshop", title, type, gender);
-            }
-        } catch (NullPointerException e) {
-            System.err.println("Error extracting information from Topshop site" + "\n" + e.getMessage());
+    private void getMotelImagesAndLinks(Document doc, String type, String gender) throws NullPointerException {
+        Elements list = doc.getElementsByClass("catproddiv");
+        for(Element el : list) {
+            Element link =  el.getElementsByClass("xProductImage").get(0).child(0);
+            String url = link.absUrl("href");
+            Element img = link.child(0);
+            String image = img.absUrl("src");
+            if(image.equals("")) image = img.absUrl("pagespeed_high_res_src");
+            String title = el.getElementsByClass("xProductDetails").get(0).text();
+            getLink(url, image, "motel", title, type, gender);
+        }
+    }
+
+    private void getTopshopClothingImagesAndLinks(Document doc, String type, String gender) throws NullPointerException {
+        Elements list = doc.getElementsByClass("product");
+        for(Element el : list) {
+            Element link = el.child(0);
+            String url = link.absUrl("href");
+            Element img = link.child(0);
+            String title = img.attr("alt");
+            String image = img.absUrl("src");
+            getLink(url, image, "topshop", title, type, gender);
         }
     }
 
@@ -184,8 +158,10 @@ public class WebsiteParser {
                     .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36")
                     .get();
             clothingDescriptionParser.getDescription(url, image, clothingDesc, site, title, type, gender);
-        } catch (Exception e) {
-            System.err.println("Error connecting to url " + url + "\n" + e.getMessage());
+        }catch(IOException e) {
+            System.err.println("Error connecting to " + url + "\n" + e.getMessage());
+        } catch (NullPointerException e) {
+            System.err.println("Error extracting information from " +  url + "\n" + e.getMessage());
         }
     }
 

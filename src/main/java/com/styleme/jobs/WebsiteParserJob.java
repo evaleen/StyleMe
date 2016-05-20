@@ -9,7 +9,8 @@ import org.quartz.JobExecutionException;
 /*
  * @author Eibhlin McGeady
  *
- * Job class that implements the Website Parser class
+ * Job class that updates the men's and women's clothing items in the database
+ *
 */
 public class WebsiteParserJob implements Job {
 

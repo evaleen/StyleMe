@@ -11,6 +11,8 @@ import java.util.*;
  * @author Eibhlin McGeady
  *
  * Encapsulates a Style Object
+ * Creates a JSON object for the style obejct
+ *
  */
 public class Style {
 

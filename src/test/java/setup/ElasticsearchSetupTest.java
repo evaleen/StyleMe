@@ -2,21 +2,25 @@ package setup;
 
 import com.styleme.configuration.ElasticsearchConfiguration;
 import com.styleme.setup.ElasticsearchSetup;
-import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequestBuilder;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsRequest;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.test.ElasticsearchIntegrationTest;
 import org.json.JSONException;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
 
+import static org.junit.Assert.assertTrue;
+
 /**
  * @author Eibhlin McGeady
+ *
+ * Unit test for methods in the ElasticsearchSetup class
+ *
  */
 public class ElasticsearchSetupTest extends ElasticsearchIntegrationTest {
+
     private ElasticsearchSetup elasticsearchSetup;
     private ElasticsearchConfiguration elasticsearchConfiguration;
     private Client client;

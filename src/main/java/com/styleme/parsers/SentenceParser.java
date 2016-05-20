@@ -8,7 +8,7 @@ import java.util.HashSet;
 /**
  * @author Eibhlin McGeady
  *
- * Parses a sentence to remove common words and punctuation
+ * Parses text to remove stop words and punctuation
  *
  */
 public class SentenceParser {

@@ -12,6 +12,9 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * @author Eibhlin McGeady
+ *
+ * Unit tests for methods in the StyleSelector class
+ *
  */
 public class TestStyleSelector {
 

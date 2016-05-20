@@ -18,6 +18,9 @@ import static org.mockito.Mockito.when;
 
 /**
  * @author Eibhlin McGeady
+ *
+ * Unit tests for methods in the StyleSearchEndpoints Class
+ *
  */
 public class StyleSearchEndpointsTest {
 

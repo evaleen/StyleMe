@@ -17,6 +17,9 @@ import java.util.HashSet;
 
 /**
  * @author Eibhlin McGeady
+ *
+ * Unit tests for methods in the ElasticsearchSubmitters class
+ *
  */
 public class ElasticsearchSubmittersTest extends ElasticsearchIntegrationTest {
 

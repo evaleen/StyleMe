@@ -4,6 +4,9 @@ import java.util.*;
 
 /**
  * @author Eibhlin McGeady
+ *
+ * Assigns colours to a clothing item based on shades in a clothing item's title/description
+ *
  */
 public class ColoursFactory {
     

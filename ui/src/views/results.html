@@ -1,114 +1,118 @@
 <div class="results" ng-init="init()">
-  <div class="title">
-    <a ng-click="returnToSearch()">
-      <img class="logo" src="images/logo.png">
-    </a>
-  </div>
-  <div class="loading text-center modal fade" id="loadingDialog" tabindex="-1" role="dialog">
-    <img id="loading" class="loading-gif" src="images/loading.gif">
-  </div>
-  <div ng-show="isEmpty(clothingList)" class="empty">
-    Sorry, no clothes match this search!
-  </div>
-  <div class="clothing-display">
-    <div class="clothing-list" ng-repeat="clothing in clothingList | limitTo:resultLimit">
-      <div class="clothing-item">
-        <a class="modal-link" data-toggle="modal" data-target="#viewClothing{{$index}}">
-          <img class="clothing-image result-image" ng-src="{{clothing.image}}">
-          <span class="item-name">{{clothing.name}} - {{clothing.price}} {{clothing.currency}}</span>
+    <div class="title">
+        <a ng-click="returnToSearch()">
+            <img class="logo" src="images/logo.png">
         </a>
-        <img class="loveHateBtn" id="love{{$index}}" data-toggle="tooltipLove" title="Rate it!" ng-click="incrementTerms(clothing.terms, $index)" ng-src="images/love.png"></img>
-        <img class="loveHateBtn" id="dislike{{$index}}" data-toggle="tooltipHate" title="Hate it!" ng-click="decrementTerms(clothing.terms, $index)" ng-src="images/dislike.png"></img>
-      </div>
-      <div class="modal fade" id="viewClothing{{$index}}" tabindex="-1" role="dialog">
-        <div class="modal-dialog" >
-          <div class="modal-content">
-            <div class="modal-header contactModalHeader">
-              {{clothing.name}}
-              <button type="button" id="close" class="close" data-dismiss="modal">
-                <span>&times;</span>
-                <span class="sr-only">Close</span>
-              </button>
-            </div>
-            <div class="clearfix modal-body">
-              <div class=modal-image>
-                <img class="clothing-image-modal" ng-src="{{clothing.image}}">
-              </div>
-              <div class=modal-details>
-                <table class="clothing-table">
-                  <tr>
-                    <td> <b> Colours: </b> {{getListAsString(clothing.colours)}} </td>
-                  </tr>
-                  <tr>
-                    <td> <b> Price: </b> {{clothing.price}} {{clothing.currency}} </td>
-                  </tr>
-                  <tr>
-                    <td> <b> Description: </b> {{clothing.description}}</td>
-                  </tr>
-                </table>
-              </div>
-              <br><br>
-              <button type="button" class="btn btn-lg button modal-btn" ng-click="open(clothing.url)">
-                Link to Item
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-  <div class="loadMoreBtn" ng-show="loaded" ng-hide="empty">
-    <button ng-click="loadMore()" ng-show="moreResults" type="button" class="btn btn-lg button">Load More</button>
-  </div>
-  <div class = "returnBtn" ng-show="loaded">
-    <button type="button" ng-click="returnToSearch()" class="btn btn-lg button">Back To Search</button>
-  </div>
-</div>
-<div class="footer">
-    <div class="footer_desc2">
-      The clothing results are drawn from:
-      <table class="links">
-        <tr>
-        <td><a ng-href="http://www.motelrocks.com/">Motel</a></td>
-        <td><a ng-href="http://www.nastygal.com/">NastyGal</a></td>
-      </tr><tr>
-        <td><a ng-href="http://www.newlook.com/eu/">New Look</a></td>
-        <td><a ng-href="https://www.missguided.eu/">MissGuided</a></td>
-      </tr><tr>
-        <td><a ng-href="http://eu.topshop.com/?geoip=home">Topshop</a></td>
-        <td><a ng-href="hhttp://eu.riverisland.com/">River Island</a></td>
-      </tr>
-    </table>
-  </div>
-    <div class="footer_desc3">
-      StyleMe is the Final Year Project of 4th year DCU Computer Applications student Eibhlín McGeady.<br>
-      <a class="contact" data-toggle="modal" data-target="#ContactModal">Get in touch!</a>
-      <div class="modal fade" id="ContactModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" >
-          <div class="modal-content">
-            <div class="modal-header contactModalHeader">
-              Send a Message
-              <button type="button" id="close" class="close" data-dismiss="modal">
-                <span>&times;</span>
-                <span class="sr-only">Close</span>
-              </button>
+    <div class="loading text-center modal fade" id="loadingDialog" tabindex="-1" role="dialog">
+        <img id="loading" class="loading-gif" src="images/loading.gif">
+    </div>
+    <div ng-show="isEmpty(clothingList)" class="empty">
+        Sorry, no clothes match this search!
+    </div>
+    <div class="clothing-display">
+        <div class="clothing-list" ng-repeat="clothing in clothingList | limitTo:resultLimit">
+            <div class="clothing-item">
+                <a class="modal-link" data-toggle="modal" data-target="#viewClothing{{$index}}">
+                    <img class="clothing-image result-image" ng-src="{{clothing.image}}">
+                    <span class="item-name">{{clothing.name}} - {{clothing.price}} {{clothing.currency}}</span>
+                </a>
+                <img class="loveHateBtn" id="love{{$index}}" data-toggle="tooltipLove" title="Rate it!" ng-click="incrementTerms(clothing.terms, $index)" ng-src="images/love.png"></img>
+                <img class="loveHateBtn" id="dislike{{$index}}" data-toggle="tooltipHate" title="Hate it!" ng-click="decrementTerms(clothing.terms, $index)" ng-src="images/dislike.png"></img>
             </div>
-            <div class="clearfix modal-body">
-              <form class="form-horizontal ng-pristine ng-valid" role="form" action="resources/mail.php" method="post" id="contact_form">
-                <div class="form-group">
-                  <input class="form-control" type="text" placeholder="Name" name="name" id="name" title="Your Name" required>
+            <div class="modal fade" id="viewClothing{{$index}}" tabindex="-1" role="dialog" data-backdrop="static">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header contactModalHeader">
+                            {{clothing.name}}
+                            <button type="button" id="close" class="close" data-dismiss="modal">
+                                <span>&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                        </div>
+                        <div class="clearfix modal-body">
+                            <div class=modal-image>
+                                <img class="clothing-image-modal" ng-src="{{clothing.image}}">
+                            </div>
+                            <div class=modal-details>
+                                <table class="clothing-table">
+                                    <tr>
+                                        <td> <b> Colours: </b> {{getListAsString(clothing.colours)}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td> <b> Price: </b> {{clothing.price}} {{clothing.currency}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td> <b> Description: </b> {{clothing.description}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br>
+                            <br>
+                            <button type="button" class="btn btn-lg button modal-btn" ng-click="open(clothing.url)">
+                                Link to Item
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                  <input class="form-control" type="email" placeholder="Email" name="email" id="email" title="Your Email" required>
-                </div>
-                <div class="form-group">
-                  <textarea rows="4" cols="50" class="form-control" type="test" placeholder="Message" name="message" id="message" title="Your Message" required></textarea>
-                </div>
-                <button class="btn btn-send button sendBtn" value="submit" name="submit" ng-click="showMessage()">Send</button>
-              </form>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
+    <div class="loadMoreBtn" ng-hide="isEmpty" ng-show="loaded">
+        <button ng-click="loadMore()" ng-show="moreResults" type="button" class="btn btn-lg button">Load More</button>
+    </div>
+    <div class="returnBtn" ng-show="loaded">
+        <button type="button" ng-click="returnToSearch()" class="btn btn-lg button">Back To Search</button>
+    </div>
+</div>
+<div class="footer" id=footer>
+    <div class="footer_desc2">
+        The clothing results are drawn from:
+        <table class="links">
+            <tr>
+                <td><a ng-href="http://www.motelrocks.com/">Motel</a></td>
+                <td><a ng-href="http://www.nastygal.com/">NastyGal</a></td>
+            </tr>
+            <tr>
+                <td><a ng-href="http://www.newlook.com/eu/">New Look</a></td>
+                <td><a ng-href="https://www.missguided.eu/">MissGuided</a></td>
+            </tr>
+            <tr>
+                <td><a ng-href="http://eu.topshop.com/?geoip=home">Topshop</a></td>
+                <td><a ng-href="hhttp://eu.riverisland.com/">River Island</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="footer_desc3">
+        StyleMe is the Final Year Project of 4th year DCU Computer Applications student Eibhlín McGeady.
+        <br>
+        <a class="contact" data-toggle="modal" data-target="#ContactModal">Get in touch!</a>
+        <div class="modal fade" id="ContactModal" tabindex="-1" role="dialog" data-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header contactModalHeader">
+                        Send a Message
+                        <button type="button" id="close" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                    </div>
+                    <div class="clearfix modal-body">
+                        <form class="form-horizontal ng-pristine ng-valid" role="form" action="resources/mail.php" method="post" id="contact_form">
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Name" name="name" id="name" title="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="email" placeholder="Email" name="email" id="email" title="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea rows="4" cols="50" class="form-control" type="test" placeholder="Message" name="message" id="message" title="Your Message" required></textarea>
+                            </div>
+                            <button class="btn btn-send button sendBtn" value="submit" name="submit" ng-click="showMessage()">Send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

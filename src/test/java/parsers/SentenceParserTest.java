@@ -11,6 +11,9 @@ import static junit.framework.Assert.assertEquals;
 
 /**
  * @author Eibhlin McGeady
+ *
+ * Unit tests for methods in the SentenceParser class
+ *
  */
 public class SentenceParserTest {
 
